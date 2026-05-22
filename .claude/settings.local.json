@@ -19,7 +19,12 @@
       "Bash(npm list *)",
       "Bash(node -e \"const m = require\\('/Users/yuchenbao/Documents/React-personnal-site/node_modules/@mui/icons-material/Menu.js'\\); console.log\\(typeof m, typeof m.default\\)\")",
       "Bash(node *)",
-      "Bash(curl -s \"http://localhost:5173/src/components/Navbar.tsx\")"
+      "Bash(curl -s \"http://localhost:5173/src/components/Navbar.tsx\")",
+      "Bash(curl -s http://localhost:5174/)",
+      "Bash(chromium-cli http://localhost:5174/ --screenshot /tmp/hero_gamer_btn.png)",
+      "Bash(chromium --headless --disable-gpu --screenshot=/tmp/hero_gamer_btn.png http://localhost:5174/)",
+      "Bash(chromium-cli http://localhost:5174/ --screenshot /tmp/hero_v2.png)",
+      "Bash(chromium --headless --disable-gpu --screenshot=/tmp/hero_v2.png --window-size=1280,720 http://localhost:5174/)"
     ]
   }
 }

@@ -38,10 +38,6 @@ const StarDoodle = () => (
   </svg>
 );
 
-const gameSlots = [
-  { id: "ttt", icon: "⭕", label: "Tic-Tac-Toe", bg: "#fef9c3" },
-  { id: "rps", icon: "✂️", label: "Rock Paper\nScissors", bg: "#dbeafe" },
-];
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -122,23 +118,9 @@ export default function Hero() {
                 <GameControllerDoodle />
               </Box>
 
-              <Box className="hero-slots-grid">
-                {gameSlots.map((game) => (
-                  <Box
-                    key={game.id}
-                    onClick={() => navigate("/games")}
-                    className="hero-slot"
-                    sx={{ bgcolor: game.bg }}
-                  >
-                    <Typography className="hero-slot__icon">{game.icon}</Typography>
-                    <Typography className="hero-slot__label">{game.label}</Typography>
-                  </Box>
-                ))}
-              </Box>
-
-              <Box onClick={() => navigate("/games")} className="hero-slot hero-slot--mem">
-                <Typography className="hero-slot__icon">🃏</Typography>
-                <Typography className="hero-slot__label">Memory</Typography>
+              <Box onClick={() => navigate("/games")} className="hero-play-btn">
+                <Typography className="hero-play-btn__label">▶ ENTER GAME SPACE</Typography>
+                <Typography className="hero-play-btn__sub">3 games · click to play</Typography>
               </Box>
 
               <Box className="hero-star">
