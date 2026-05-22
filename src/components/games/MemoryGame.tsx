@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Box, Typography, Button } from "@mui/material";
 
 const EMOJIS = ["🍕", "🎸", "🌈", "🦊", "🍦", "🎲", "🌙", "⚡"];
@@ -14,7 +14,7 @@ export default function MemoryGame() {
   const [moves, setMoves] = useState(0);
   const [locked, setLocked] = useState(false);
 
-  const handleFlip = (i: number) => {
+  const handleFlip = useCallback((i: number) => {
     if (locked || flipped.includes(i) || matched.has(i)) return;
     const next = [...flipped, i];
     setFlipped(next);
@@ -33,15 +33,15 @@ export default function MemoryGame() {
         }, 900);
       }
     }
-  };
+  }, [locked, flipped, matched, cards]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setCards(createDeck());
     setFlipped([]);
     setMatched(new Set());
     setMoves(0);
     setLocked(false);
-  };
+  }, []);
 
   const isComplete = matched.size === cards.length;
 

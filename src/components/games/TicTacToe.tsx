@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Box, Typography, Button } from "@mui/material";
 
 type Cell = "X" | "O" | null;
@@ -42,7 +42,7 @@ export default function TicTacToe() {
 
   const winner = checkWinner(board);
 
-  const handleClick = (i: number) => {
+  const handleClick = useCallback((i: number) => {
     if (!playerTurn || board[i] || winner) return;
     const next = [...board];
     next[i] = "X";
@@ -61,12 +61,12 @@ export default function TicTacToe() {
       if (w2 === "O") setScore((s) => ({ ...s, cpu: s.cpu + 1 }));
       setPlayerTurn(true);
     }, 350);
-  };
+  }, [playerTurn, board, winner]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setBoard(Array(9).fill(null));
     setPlayerTurn(true);
-  };
+  }, []);
 
   const status = winner
     ? winner === "draw" ? "Draw! 🤝" : winner === "X" ? "You win! 🎉" : "CPU wins 🤖"

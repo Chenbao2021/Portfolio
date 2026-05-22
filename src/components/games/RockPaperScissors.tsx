@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Box, Typography, Button } from "@mui/material";
 
 type Choice = "rock" | "paper" | "scissors";
@@ -27,24 +27,24 @@ export default function RockPaperScissors() {
   const [p2Choice, setP2Choice] = useState<Choice | null>(null);
   const [score, setScore] = useState({ p1: 0, p2: 0 });
 
-  const handleP1 = (choice: Choice) => {
+  const handleP1 = useCallback((choice: Choice) => {
     setP1Choice(choice);
     setPhase("p2");
-  };
+  }, []);
 
-  const handleP2 = (choice: Choice) => {
+  const handleP2 = useCallback((choice: Choice) => {
     setP2Choice(choice);
     setPhase("result");
     const r = getResult(p1Choice!, choice);
     if (r === "p1") setScore((s) => ({ ...s, p1: s.p1 + 1 }));
     if (r === "p2") setScore((s) => ({ ...s, p2: s.p2 + 1 }));
-  };
+  }, [p1Choice]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setPhase("p1");
     setP1Choice(null);
     setP2Choice(null);
-  };
+  }, []);
 
   const result = phase === "result" && p1Choice && p2Choice ? getResult(p1Choice, p2Choice) : null;
   const resultText =

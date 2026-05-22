@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   AppBar,
@@ -84,11 +84,14 @@ export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
 
+  const onScroll = useCallback(() => setScrolled(window.scrollY > 24), []);
+  const openDrawer = useCallback(() => setDrawerOpen(true), []);
+  const closeDrawer = useCallback(() => setDrawerOpen(false), []);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [onScroll]);
 
   return (
     <>
@@ -164,7 +167,7 @@ export default function Navbar() {
             {/* Mobile hamburger */}
             <IconButton
               sx={{ display: { md: "none" }, color: "#2d2d2d" }}
-              onClick={() => setDrawerOpen(true)}
+              onClick={openDrawer}
               aria-label="open menu"
             >
               <HamburgerIcon />
@@ -177,7 +180,7 @@ export default function Navbar() {
       <Drawer
         anchor="right"
         open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
+        onClose={closeDrawer}
         PaperProps={{
           sx: {
             width: 240,
@@ -206,7 +209,7 @@ export default function Navbar() {
           >
             Chen.dev ✏️
           </Typography>
-          <IconButton onClick={() => setDrawerOpen(false)} size="small">
+          <IconButton onClick={closeDrawer} size="small">
             <CloseIconSvg />
           </IconButton>
         </Box>
@@ -218,7 +221,7 @@ export default function Navbar() {
                 <ListItemButton
                   component={Link}
                   to={link.to}
-                  onClick={() => setDrawerOpen(false)}
+                  onClick={closeDrawer}
                   sx={{
                     "&:hover": { bgcolor: "#fef9c3" },
                     bgcolor: isActive ? "#fef9c3" : "transparent",

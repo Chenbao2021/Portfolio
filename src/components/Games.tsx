@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
   Box,
   Typography,
@@ -78,9 +78,9 @@ export default function Games() {
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<DialogView>("picker");
 
-  const openPicker = () => { setView("picker"); setOpen(true); };
-  const openGame = (id: GameId) => { setView(id); setOpen(true); };
-  const close = () => setOpen(false);
+  const openPicker = useCallback(() => { setView("picker"); setOpen(true); }, []);
+  const openGame = useCallback((id: GameId) => { setView(id); setOpen(true); }, []);
+  const close = useCallback(() => setOpen(false), []);
 
   const activeGame = view !== "picker" ? games.find((g) => g.id === view) ?? null : null;
   const isPicker = view === "picker";
