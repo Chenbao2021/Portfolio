@@ -1,15 +1,39 @@
-import React from 'react'
-import { Box, Typography, Container } from '@mui/material'
-import './LearningNotes.less'
+import React, { JSX } from "react";
+import { Box, Typography, Container } from "@mui/material";
+import "./LearningNotes.less";
 
-const ConnectorLine = () => (
-  <svg width="40" height="20" viewBox="0 0 40 20" fill="none" className="notes-connector">
-    <path d="M20 2 L20 18" stroke="#d1d5db" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round"/>
-    <path d="M14 12 L20 18 L26 12" stroke="#d1d5db" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+interface Mistake {
+  bad: string;
+  learned: string;
+}
+
+const ConnectorLine = (): JSX.Element => (
+  <svg
+    width="40"
+    height="20"
+    viewBox="0 0 40 20"
+    fill="none"
+    className="notes-connector"
+  >
+    <path
+      d="M20 2 L20 18"
+      stroke="#d1d5db"
+      strokeWidth="1.5"
+      strokeDasharray="3 2"
+      strokeLinecap="round"
+    />
+    <path
+      d="M14 12 L20 18 L26 12"
+      stroke="#d1d5db"
+      strokeWidth="1.5"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
-)
+);
 
-export default function LearningNotes() {
+export default function LearningNotes(): JSX.Element {
   return (
     <Box component="section" id="notes" className="notes-section">
       <Container maxWidth="lg">
@@ -24,7 +48,9 @@ export default function LearningNotes() {
 
         <Box className="notes-board">
           <Box className="notes-board__tab">
-            <Typography className="notes-board__tab-text">brainstorm / ongoing</Typography>
+            <Typography className="notes-board__tab-text">
+              brainstorm / ongoing
+            </Typography>
           </Box>
 
           <Box className="notes-columns">
@@ -35,15 +61,22 @@ export default function LearningNotes() {
                   🔭 Currently exploring
                 </Typography>
                 {[
-                  'Cloud infra (making it less scary)',
-                  'Better system design patterns',
-                  'How LLMs handle context windows',
-                  'Writing cleaner abstractions',
+                  "Cloud infra (making it less scary)",
+                  "Better system design patterns",
+                  "How LLMs handle context windows",
+                  "Writing cleaner abstractions",
                   'Why some codebases feel "good"',
-                ].map(item => (
+                ].map((item) => (
                   <Box key={item} className="notes-exploring__item">
-                    <Typography className="notes-exploring__arrow">→</Typography>
-                    <Typography variant="body2" className="notes-exploring__text">{item}</Typography>
+                    <Typography className="notes-exploring__arrow">
+                      →
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      className="notes-exploring__text"
+                    >
+                      {item}
+                    </Typography>
                   </Box>
                 ))}
               </Box>
@@ -62,24 +95,33 @@ export default function LearningNotes() {
                   ❓ Questions I'm chasing
                 </Typography>
                 {[
-                  'When is abstraction helpful vs. just clever?',
-                  'How do you build software that ages well?',
-                  'What makes a codebase a joy to work in?',
+                  "When is abstraction helpful vs. just clever?",
+                  "How do you build software that ages well?",
+                  "What makes a codebase a joy to work in?",
                   'Is "good enough" ever actually good enough?',
-                ].map(q => (
+                ].map((q) => (
                   <Box key={q} className="notes-questions__item">
                     <Typography className="notes-questions__mark">?</Typography>
-                    <Typography variant="body2" className="notes-questions__text">{q}</Typography>
+                    <Typography
+                      variant="body2"
+                      className="notes-questions__text"
+                    >
+                      {q}
+                    </Typography>
                   </Box>
                 ))}
               </Box>
 
               <Box className="notes-flows">
                 <Box className="notes-flow notes-flow--read">
-                  <Typography className="notes-flow__text">Read → try → break → fix → repeat</Typography>
+                  <Typography className="notes-flow__text">
+                    Read → try → break → fix → repeat
+                  </Typography>
                 </Box>
                 <Box className="notes-flow notes-flow--ask">
-                  <Typography className="notes-flow__text">Ask → explore → document → share</Typography>
+                  <Typography className="notes-flow__text">
+                    Ask → explore → document → share
+                  </Typography>
                 </Box>
               </Box>
             </Box>
@@ -91,14 +133,34 @@ export default function LearningNotes() {
                   🐛 Mistakes that taught me
                 </Typography>
                 {[
-                  { bad: 'Pushed to prod on a Friday', learned: 'Never. Again.' },
-                  { bad: 'Skipped documentation', learned: 'Suffered 3 months later. Documented everything after.' },
-                  { bad: 'Over-engineered a simple feature', learned: 'YAGNI is real wisdom, not just a meme.' },
-                  { bad: "Didn't write any tests", learned: 'Now I write them second. Improvement.' },
-                ].map(({ bad, learned }) => (
+                  {
+                    bad: "Pushed to prod on a Friday",
+                    learned: "Never. Again.",
+                  },
+                  {
+                    bad: "Skipped documentation",
+                    learned:
+                      "Suffered 3 months later. Documented everything after.",
+                  },
+                  {
+                    bad: "Over-engineered a simple feature",
+                    learned: "YAGNI is real wisdom, not just a meme.",
+                  },
+                  {
+                    bad: "Didn't write any tests",
+                    learned: "Now I write them second. Improvement.",
+                  },
+                ].map(({ bad, learned }: Mistake) => (
                   <Box key={bad} className="notes-mistake">
-                    <Typography variant="body2" className="notes-mistake__bad">✗ {bad}</Typography>
-                    <Typography variant="body2" className="notes-mistake__learned">→ {learned}</Typography>
+                    <Typography variant="body2" className="notes-mistake__bad">
+                      ✗ {bad}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      className="notes-mistake__learned"
+                    >
+                      → {learned}
+                    </Typography>
                   </Box>
                 ))}
               </Box>
@@ -111,12 +173,14 @@ export default function LearningNotes() {
             </Typography>
             <Box className="notes-wins-grid">
               {[
-                '🎯 How React reconciliation actually works (finally)',
-                '📦 Proper Docker layer caching saves so much CI time',
-                '✍️ Writing for clarity makes you think more clearly',
-              ].map(win => (
+                "🎯 How React reconciliation actually works (finally)",
+                "📦 Proper Docker layer caching saves so much CI time",
+                "✍️ Writing for clarity makes you think more clearly",
+              ].map((win) => (
                 <Box key={win} className="notes-win">
-                  <Typography variant="body2" className="notes-win__text">{win}</Typography>
+                  <Typography variant="body2" className="notes-win__text">
+                    {win}
+                  </Typography>
                 </Box>
               ))}
             </Box>
@@ -124,5 +188,5 @@ export default function LearningNotes() {
         </Box>
       </Container>
     </Box>
-  )
+  );
 }

@@ -1,7 +1,7 @@
 export interface Category {
   name: string
   icon: string
-  bg: string
+  colorKey: 'blue' | 'green' | 'pink' | 'yellow' | 'purple' | 'orange'
   skills: string[]
 }
 
@@ -9,37 +9,37 @@ export const categories: Category[] = [
   {
     name: 'Frontend',
     icon: '🎨',
-    bg: '#dbeafe',
+    colorKey: 'blue',
     skills: ['React', 'TypeScript', 'CSS', 'PWA', 'HTML / CSS', 'Vite'],
   },
   {
     name: 'Backend',
     icon: '⚙️',
-    bg: '#dcfce7',
+    colorKey: 'green',
     skills: ['C#', 'SQL Server', 'REST APIs', 'Node.js (learning)'],
   },
   {
     name: 'Cloud / Infra',
     icon: '☁️',
-    bg: '#fce7f3',
+    colorKey: 'pink',
     skills: ['Azure', 'Terraform', 'CI/CD'],
   },
   {
     name: 'AI Tools',
     icon: '🤖',
-    bg: '#fef9c3',
+    colorKey: 'yellow',
     skills: ['Claude', 'ChatGPT', 'AI-assisted workflow', 'Prompt thinking'],
   },
   {
     name: 'Design / Thinking',
     icon: '✏️',
-    bg: '#f3e8ff',
+    colorKey: 'purple',
     skills: ['UX Thinking', 'Component Design', 'Info Architecture', 'System Design (learning)'],
   },
   {
     name: 'Writing & Clarity',
     icon: '📝',
-    bg: '#fff7ed',
+    colorKey: 'orange',
     skills: ['Technical Writing', 'Task Recaps', 'Documentation', 'Code Review'],
   },
 ]

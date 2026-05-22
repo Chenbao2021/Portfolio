@@ -3,7 +3,7 @@ export interface ContactLink {
   handle: string
   href: string
   icon: string
-  bg: string
+  colorKey: 'yellow' | 'gray' | 'blue'
   btnText: string
 }
 
@@ -13,7 +13,7 @@ export const links: ContactLink[] = [
     handle: 'yuchenbao2015@gmail.com',
     href: 'mailto:yuchenbao2015@gmail.com',
     icon: '✉️',
-    bg: '#fef9c3',
+    colorKey: 'yellow',
     btnText: 'Send Email',
   },
   {
@@ -21,7 +21,7 @@ export const links: ContactLink[] = [
     handle: '@yuchenbao',
     href: '#',
     icon: '🐙',
-    bg: '#f3f4f6',
+    colorKey: 'gray',
     btnText: 'View GitHub',
   },
   {
@@ -29,7 +29,7 @@ export const links: ContactLink[] = [
     handle: 'in/yuchenbao',
     href: 'https://www.linkedin.com/in/yuchenbao/',
     icon: '💼',
-    bg: '#dbeafe',
+    colorKey: 'blue',
     btnText: 'Connect',
   },
 ]

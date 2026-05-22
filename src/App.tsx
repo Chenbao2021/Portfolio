@@ -80,7 +80,7 @@ const theme = createTheme({
   },
 })
 
-function Layout() {
+function Layout(): JSX.Element {
   return (
     <Box className="app-layout">
       <Navbar />
@@ -91,7 +91,7 @@ function Layout() {
   )
 }
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
     <BrowserRouter>
       <StyledEngineProvider injectFirst>

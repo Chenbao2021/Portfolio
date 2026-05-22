@@ -1,9 +1,10 @@
-import React from 'react'
-import { Box, Typography, Container } from '@mui/material'
-import { cards } from '../data/about'
-import './About.less'
+import React from "react";
+import { Box, Typography, Container } from "@mui/material";
+import { cards } from "../data/about";
+import "./About.less";
+import { JSX } from "@emotion/react/jsx-dev-runtime";
 
-export default function About() {
+export default function About(): JSX.Element {
   return (
     <Box component="section" id="about" className="about-section">
       <Container maxWidth="lg">
@@ -20,18 +21,18 @@ export default function About() {
         </Box>
 
         <Box className="about-grid">
-          {cards.map(card => (
+          {cards.map((card) => (
             <Box
               key={card.title}
-              className="about-card"
-              sx={{ bgcolor: card.bg, transform: `rotate(${card.rotation})` }}
+              className={`about-card about-card--${card.colorKey}`}
             >
               <Box className="about-card__header">
-                <Typography className="about-card__icon">{card.icon}</Typography>
+                <Typography className="about-card__icon">
+                  {card.icon}
+                </Typography>
                 <Typography
                   variant="h5"
                   className="about-card__title"
-                  sx={{ borderBottom: `2.5px solid ${card.accentBorder}` }}
                 >
                   {card.title}
                 </Typography>
@@ -45,7 +46,8 @@ export default function About() {
           <Typography className="about-footnote__pin">📌</Typography>
           <Box>
             <Typography className="about-footnote__quote">
-              "I'm not trying to look perfect. I'm trying to become clearer and more useful every year."
+              "I'm not trying to look perfect. I'm trying to become clearer and
+              more useful every year."
             </Typography>
             <Typography variant="caption" className="about-footnote__caption">
               — something I remind myself every Monday morning
@@ -54,5 +56,5 @@ export default function About() {
         </Box>
       </Container>
     </Box>
-  )
+  );
 }

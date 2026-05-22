@@ -1,9 +1,10 @@
-import React from 'react'
-import { Box, Typography, Container } from '@mui/material'
-import { principles } from '../data/workPhilosophy'
-import './WorkPhilosophy.less'
+import React from "react";
+import { Box, Typography, Container } from "@mui/material";
+import { principles } from "../data/workPhilosophy";
+import "./WorkPhilosophy.less";
+import { JSX } from "@emotion/react/jsx-dev-runtime";
 
-export default function WorkPhilosophy() {
+export default function WorkPhilosophy(): JSX.Element {
   return (
     <Box component="section" id="philosophy" className="philosophy-section">
       <Container maxWidth="lg">
@@ -26,7 +27,8 @@ export default function WorkPhilosophy() {
               </Box>
 
               <Typography className="philosophy-blackboard__quote">
-                "The best code I've written<br/>
+                "The best code I've written
+                <br />
                 is the code I didn't write."
               </Typography>
               <Typography className="philosophy-blackboard__attribution">
@@ -42,7 +44,8 @@ export default function WorkPhilosophy() {
 
             <Box className="philosophy-sticky">
               <Typography className="philosophy-sticky__text">
-                📌 measure twice, cut once.<br/>
+                📌 measure twice, cut once.
+                <br />
                 (also: read the error message)
               </Typography>
             </Box>
@@ -52,10 +55,19 @@ export default function WorkPhilosophy() {
           <Box className="philosophy-principles">
             {principles.map((p) => (
               <Box key={p.rule} className="philosophy-principle">
-                <Typography className="philosophy-principle__emoji">{p.emoji}</Typography>
+                <Typography className="philosophy-principle__emoji">
+                  {p.emoji}
+                </Typography>
                 <Box>
-                  <Typography className="philosophy-principle__rule">{p.rule}</Typography>
-                  <Typography variant="body2" className="philosophy-principle__note">{p.note}</Typography>
+                  <Typography className="philosophy-principle__rule">
+                    {p.rule}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    className="philosophy-principle__note"
+                  >
+                    {p.note}
+                  </Typography>
                 </Box>
               </Box>
             ))}
@@ -63,5 +75,5 @@ export default function WorkPhilosophy() {
         </Box>
       </Container>
     </Box>
-  )
+  );
 }

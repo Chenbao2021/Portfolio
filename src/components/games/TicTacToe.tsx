@@ -4,6 +4,11 @@ import "./TicTacToe.less";
 
 type Cell = "X" | "O" | null;
 
+interface Score {
+  you: number;
+  cpu: number;
+}
+
 const LINES = [
   [0, 1, 2], [3, 4, 5], [6, 7, 8],
   [0, 3, 6], [1, 4, 7], [2, 5, 8],
@@ -34,10 +39,10 @@ function cpuMove(board: Cell[]): number {
   return empty[Math.floor(Math.random() * empty.length)];
 }
 
-export default function TicTacToe() {
+export default function TicTacToe(): JSX.Element {
   const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
   const [playerTurn, setPlayerTurn] = useState(true);
-  const [score, setScore] = useState({ you: 0, cpu: 0 });
+  const [score, setScore] = useState<Score>({ you: 0, cpu: 0 });
 
   const winner = checkWinner(board);
 

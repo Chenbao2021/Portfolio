@@ -15,24 +15,22 @@ import "./Games.less";
 type GameId = "ttt" | "rps" | "mem";
 type DialogView = "picker" | GameId;
 
-const games: {
+interface GameConfig {
   id: GameId;
   title: string;
   icon: string;
   desc: string;
-  bg: string;
-  accentBorder: string;
-  rotation: string;
+  colorKey: 'yellow' | 'blue' | 'green';
   Component: React.ComponentType;
-}[] = [
+}
+
+const games: GameConfig[] = [
   {
     id: "ttt",
     title: "Tic-Tac-Toe",
     icon: "⭕",
     desc: "You vs CPU — first to three in a row",
-    bg: "#fef9c3",
-    accentBorder: "#fde047",
-    rotation: "-1deg",
+    colorKey: "yellow",
     Component: TicTacToe,
   },
   {
@@ -40,9 +38,7 @@ const games: {
     title: "Rock Paper Scissors",
     icon: "✂️",
     desc: "2 players — hidden choices, then reveal",
-    bg: "#dbeafe",
-    accentBorder: "#93c5fd",
-    rotation: "0.8deg",
+    colorKey: "blue",
     Component: RockPaperScissors,
   },
   {
@@ -50,27 +46,25 @@ const games: {
     title: "Memory",
     icon: "🃏",
     desc: "Flip cards and find all 8 pairs",
-    bg: "#dcfce7",
-    accentBorder: "#86efac",
-    rotation: "-0.6deg",
+    colorKey: "green",
     Component: MemoryGame,
   },
 ];
 
-const CloseIcon = () => (
+const CloseIcon = (): JSX.Element => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
     <line x1="2" y1="2" x2="14" y2="14" stroke="#2d2d2d" strokeWidth="2.2" strokeLinecap="round" />
     <line x1="14" y1="2" x2="2" y2="14" stroke="#2d2d2d" strokeWidth="2.2" strokeLinecap="round" />
   </svg>
 );
 
-const BackIcon = () => (
+const BackIcon = (): JSX.Element => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
     <path d="M11 4 L6 9 L11 14" stroke="#2d2d2d" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
-export default function Games() {
+export default function Games(): JSX.Element {
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<DialogView>("picker");
 
@@ -101,15 +95,13 @@ export default function Games() {
             <Box
               key={game.id}
               onClick={() => openGame(game.id)}
-              className="games-card"
-              sx={{ bgcolor: game.bg, transform: `rotate(${game.rotation})` }}
+              className={`games-card games-card--${game.colorKey}`}
             >
               <Box className="games-card__header">
                 <Typography className="games-card__icon">{game.icon}</Typography>
                 <Typography
                   variant="h5"
                   className="games-card__title"
-                  sx={{ borderBottom: `2.5px solid ${game.accentBorder}` }}
                 >
                   {game.title}
                 </Typography>
@@ -127,8 +119,7 @@ export default function Games() {
         maxWidth={isPicker ? "sm" : "xs"}
         fullWidth
         PaperProps={{
-          className: "games-dialog-paper",
-          sx: { bgcolor: activeGame?.bg ?? "#ffffff" },
+          className: `games-dialog-paper${activeGame ? ` games-dialog--${activeGame.colorKey}` : ""}`,
         }}
       >
         <Box className="games-dialog-header">
@@ -152,8 +143,7 @@ export default function Games() {
                 <Box
                   key={game.id}
                   onClick={() => setView(game.id)}
-                  className="games-picker-item"
-                  sx={{ bgcolor: game.bg }}
+                  className={`games-picker-item games-picker-item--${game.colorKey}`}
                 >
                   <Typography className="games-picker-item__icon">{game.icon}</Typography>
                   <Box>

@@ -5,6 +5,11 @@ import "./RockPaperScissors.less";
 type Choice = "rock" | "paper" | "scissors";
 type Phase = "p1" | "p2" | "result";
 
+interface Score {
+  p1: number;
+  p2: number;
+}
+
 const OPTIONS: { value: Choice; emoji: string; label: string }[] = [
   { value: "rock", emoji: "🪨", label: "Rock" },
   { value: "paper", emoji: "📄", label: "Paper" },
@@ -22,11 +27,11 @@ function getResult(p1: Choice, p2: Choice): "p1" | "p2" | "draw" {
   return BEATS[p1] === p2 ? "p1" : "p2";
 }
 
-export default function RockPaperScissors() {
+export default function RockPaperScissors(): JSX.Element {
   const [phase, setPhase] = useState<Phase>("p1");
   const [p1Choice, setP1Choice] = useState<Choice | null>(null);
   const [p2Choice, setP2Choice] = useState<Choice | null>(null);
-  const [score, setScore] = useState({ p1: 0, p2: 0 });
+  const [score, setScore] = useState<Score>({ p1: 0, p2: 0 });
 
   const handleP1 = useCallback((choice: Choice) => {
     setP1Choice(choice);

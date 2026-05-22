@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { Box, Typography, Container, Button } from '@mui/material'
 import './NotePage.less'
 
-export default function NotePage() {
+export default function NotePage(): JSX.Element {
   const { slug } = useParams<{ slug: string }>()
 
   return (

@@ -4,11 +4,11 @@ import "./MemoryGame.less";
 
 const EMOJIS = ["🍕", "🎸", "🌈", "🦊", "🍦", "🎲", "🌙", "⚡"];
 
-function createDeck() {
+function createDeck(): string[] {
   return [...EMOJIS, ...EMOJIS].sort(() => Math.random() - 0.5);
 }
 
-export default function MemoryGame() {
+export default function MemoryGame(): JSX.Element {
   const [cards, setCards] = useState(createDeck);
   const [flipped, setFlipped] = useState<number[]>([]);
   const [matched, setMatched] = useState<Set<number>>(new Set());

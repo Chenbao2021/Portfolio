@@ -7,9 +7,8 @@ export interface Project {
   role: string
   github?: string
   demo?: string
-  accent: string
+  colorKey: 'yellow' | 'blue' | 'green' | 'pink'
   emoji: string
-  rotation: string
 }
 
 export const projects: Project[] = [
@@ -21,9 +20,8 @@ export const projects: Project[] = [
     tech: ['Node.js', 'TypeScript', 'CLI', 'Regex'],
     role: 'Solo — designed, built, wrote the docs (all three lines of them)',
     github: '#',
-    accent: '#fef9c3',
+    colorKey: 'yellow',
     emoji: '🗂️',
-    rotation: '-1.2deg',
   },
   {
     name: 'DevNotes Dashboard',
@@ -34,9 +32,8 @@ export const projects: Project[] = [
     role: 'Full-stack — both the product idea and all the code',
     github: '#',
     demo: '#',
-    accent: '#dbeafe',
+    colorKey: 'blue',
     emoji: '📒',
-    rotation: '0.8deg',
   },
   {
     name: 'Link Analyzer Bot',
@@ -46,9 +43,8 @@ export const projects: Project[] = [
     tech: ['Python', 'FastAPI', 'OpenAI API', 'BeautifulSoup'],
     role: 'Backend + prompt engineering — the prompts took longer than the code',
     github: '#',
-    accent: '#dcfce7',
+    colorKey: 'green',
     emoji: '🔗',
-    rotation: '-0.6deg',
   },
   {
     name: 'Habit Tracker PWA',
@@ -58,8 +54,7 @@ export const projects: Project[] = [
     tech: ['React', 'PWA', 'IndexedDB', 'Vite'],
     role: 'Design + development. The design took embarrassingly long.',
     demo: '#',
-    accent: '#fce7f3',
+    colorKey: 'pink',
     emoji: '✅',
-    rotation: '1.1deg',
   },
 ]

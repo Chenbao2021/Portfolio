@@ -114,6 +114,33 @@
   text-align: right;
 }
 
+// Card color modifier classes (bg + rotation + title underline)
+.games-card--yellow {
+  background-color: #fef9c3;
+  transform: rotate(-1deg);
+  .games-card__title { border-bottom: 2.5px solid #fde047; }
+}
+.games-card--blue {
+  background-color: #dbeafe;
+  transform: rotate(0.8deg);
+  .games-card__title { border-bottom: 2.5px solid #93c5fd; }
+}
+.games-card--green {
+  background-color: #dcfce7;
+  transform: rotate(-0.6deg);
+  .games-card__title { border-bottom: 2.5px solid #86efac; }
+}
+
+// Picker item color modifier classes
+.games-picker-item--yellow { background-color: #fef9c3; }
+.games-picker-item--blue   { background-color: #dbeafe; }
+.games-picker-item--green  { background-color: #dcfce7; }
+
+// Dialog color modifier classes
+.games-dialog--yellow { background-color: #fef9c3 !important; }
+.games-dialog--blue   { background-color: #dbeafe !important; }
+.games-dialog--green  { background-color: #dcfce7 !important; }
+
 // Dialog
 .games-dialog-paper {
   border: 2px solid @dark !important;
