@@ -1,15 +1,7 @@
-@dark: #2d2d2d;
-@md: ~"(min-width: 900px)";
+@import "../styles/mixins";
 
 .philosophy-section {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background-color: #faf9f7;
-
-  @media @md {
-    padding-top: 96px;
-    padding-bottom: 96px;
-  }
+  .section-padding(#faf9f7);
 }
 
 .philosophy-grid {
@@ -25,13 +17,8 @@
 }
 
 .philosophy-title {
-  font-size: 2.4rem !important;
-  color: @dark !important;
+  .section-title();
   margin-bottom: 16px !important;
-
-  @media @md {
-    font-size: 3.5rem !important;
-  }
 }
 
 .philosophy-intro {

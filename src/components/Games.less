@@ -1,51 +1,11 @@
-@dark: #2d2d2d;
-@md: ~"(min-width: 900px)";
-@sm: ~"(min-width: 600px)";
+@import "../styles/mixins";
 
 .games-section {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background-color: #f4f3ef;
-
-  @media @md {
-    padding-top: 96px;
-    padding-bottom: 96px;
-  }
+  .section-padding(#f4f3ef);
 }
 
 .games-header {
   margin-bottom: 56px;
-}
-
-.games-header__badge {
-  display: inline-block;
-  background-color: @dark;
-  color: #ffffff;
-  padding: 3.2px 16px;
-  border-radius: 3px 7px 5px 2px;
-  margin-bottom: 12px;
-  transform: rotate(-0.8deg);
-}
-
-.games-header__badge-text {
-  font-family: "Caveat", cursive;
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-}
-
-.games-title {
-  font-size: 2.4rem !important;
-  color: @dark !important;
-
-  @media @md {
-    font-size: 3.5rem !important;
-  }
-}
-
-.games-subtitle {
-  color: #9ca3af;
-  margin-top: 8px;
-  font-style: italic;
 }
 
 .games-grid {
@@ -67,7 +27,6 @@
   display: flex;
   flex-direction: column;
 
-  // Alternating border-radius
   &:nth-child(odd) {
     border-radius: 4px 12px 8px 4px;
   }
@@ -114,7 +73,6 @@
   text-align: right;
 }
 
-// Card color modifier classes (bg + rotation + title underline)
 .games-card--yellow {
   background-color: #fef9c3;
   transform: rotate(-1deg);
@@ -131,17 +89,14 @@
   .games-card__title { border-bottom: 2.5px solid #86efac; }
 }
 
-// Picker item color modifier classes
 .games-picker-item--yellow { background-color: #fef9c3; }
 .games-picker-item--blue   { background-color: #dbeafe; }
 .games-picker-item--green  { background-color: #dcfce7; }
 
-// Dialog color modifier classes
 .games-dialog--yellow { background-color: #fef9c3 !important; }
 .games-dialog--blue   { background-color: #dbeafe !important; }
 .games-dialog--green  { background-color: #dcfce7 !important; }
 
-// Dialog
 .games-dialog-paper {
   border: 2px solid @dark !important;
   border-radius: 6px 14px 10px 6px !important;

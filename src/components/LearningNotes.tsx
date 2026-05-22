@@ -1,5 +1,6 @@
 import React, { JSX } from "react";
 import { Box, Typography, Container } from "@mui/material";
+import SectionHeader from "./SectionHeader";
 import "./LearningNotes.less";
 
 interface Mistake {
@@ -37,14 +38,11 @@ export default function LearningNotes(): JSX.Element {
   return (
     <Box component="section" id="notes" className="notes-section">
       <Container maxWidth="lg">
-        <Box className="notes-header">
-          <Typography variant="h2" className="notes-title">
-            🧠 Thinking Board
-          </Typography>
-          <Typography variant="body1" className="notes-subtitle">
-            notes to self, questions I'm chasing, things that recently clicked
-          </Typography>
-        </Box>
+        <SectionHeader
+          className="notes-header"
+          title="🧠 Thinking Board"
+          subtitle="notes to self, questions I'm chasing, things that recently clicked"
+        />
 
         <Box className="notes-board">
           <Box className="notes-board__tab">

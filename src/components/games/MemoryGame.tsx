@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import GameScoreRow from "./GameScoreRow";
+import GameResetButton from "./GameResetButton";
 import "./MemoryGame.less";
 
 const EMOJIS = ["🍕", "🎸", "🌈", "🦊", "🍦", "🎲", "🌙", "⚡"];
@@ -48,10 +50,10 @@ export default function MemoryGame(): JSX.Element {
 
   return (
     <Box>
-      <Box className="mem-score-row">
-        <Typography className="mem-score-text">Moves: {moves}</Typography>
-        <Typography className="mem-score-text">{matched.size / 2} / {EMOJIS.length} pairs</Typography>
-      </Box>
+      <GameScoreRow
+        left={`Moves: ${moves}`}
+        right={`${matched.size / 2} / ${EMOJIS.length} pairs`}
+      />
 
       <Box className="mem-grid">
         {cards.map((emoji, i) => {
@@ -79,9 +81,7 @@ export default function MemoryGame(): JSX.Element {
         <Typography className="mem-complete">Done in {moves} moves! 🎉</Typography>
       )}
 
-      <Button variant="outlined" size="small" onClick={reset} fullWidth>
-        {isComplete ? "Play again ↺" : "Reset ↺"}
-      </Button>
+      <GameResetButton onClick={reset} label={isComplete ? "Play again ↺" : "Reset ↺"} />
     </Box>
   );
 }

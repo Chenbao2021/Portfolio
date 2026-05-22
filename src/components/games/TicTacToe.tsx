@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { Box, Typography, Button } from "@mui/material";
+import GameScoreRow from "./GameScoreRow";
+import GameResetButton from "./GameResetButton";
 import "./TicTacToe.less";
 
 type Cell = "X" | "O" | null;
@@ -78,10 +80,7 @@ export default function TicTacToe(): JSX.Element {
 
   return (
     <Box>
-      <Box className="ttt-score-row">
-        <Typography className="ttt-score-text">You: {score.you}</Typography>
-        <Typography className="ttt-score-text">CPU: {score.cpu}</Typography>
-      </Box>
+      <GameScoreRow left={`You: ${score.you}`} right={`CPU: ${score.cpu}`} />
 
       <Box className="ttt-grid">
         {board.map((cell, i) => {
@@ -105,11 +104,7 @@ export default function TicTacToe(): JSX.Element {
 
       <Typography className="ttt-status">{status}</Typography>
 
-      {winner && (
-        <Button variant="outlined" size="small" onClick={reset} fullWidth>
-          Play again ↺
-        </Button>
-      )}
+      {winner && <GameResetButton onClick={reset} />}
     </Box>
   );
 }

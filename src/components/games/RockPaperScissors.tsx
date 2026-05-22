@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import GameScoreRow from "./GameScoreRow";
+import GameResetButton from "./GameResetButton";
 import "./RockPaperScissors.less";
 
 type Choice = "rock" | "paper" | "scissors";
@@ -61,10 +63,7 @@ export default function RockPaperScissors(): JSX.Element {
 
   return (
     <Box>
-      <Box className="rps-score-row">
-        <Typography className="rps-score-text">P1: {score.p1}</Typography>
-        <Typography className="rps-score-text">P2: {score.p2}</Typography>
-      </Box>
+      <GameScoreRow left={`P1: ${score.p1}`} right={`P2: ${score.p2}`} />
 
       {phase === "p1" && (
         <Box>
@@ -120,9 +119,7 @@ export default function RockPaperScissors(): JSX.Element {
             {resultText}
           </Typography>
 
-          <Button variant="outlined" onClick={reset} fullWidth>
-            Play again ↺
-          </Button>
+          <GameResetButton onClick={reset} />
         </Box>
       )}
     </Box>

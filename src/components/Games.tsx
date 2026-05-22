@@ -10,6 +10,7 @@ import {
 import TicTacToe from "./games/TicTacToe";
 import RockPaperScissors from "./games/RockPaperScissors";
 import MemoryGame from "./games/MemoryGame";
+import SectionHeader from "./SectionHeader";
 import "./Games.less";
 
 type GameId = "ttt" | "rps" | "mem";
@@ -78,17 +79,12 @@ export default function Games(): JSX.Element {
   return (
     <Box component="section" id="game" className="games-section">
       <Container maxWidth="lg">
-        <Box className="games-header">
-          <Box className="games-header__badge">
-            <Typography className="games-header__badge-text">take a break</Typography>
-          </Box>
-          <Typography variant="h2" className="games-title">
-            Game Space 🎮
-          </Typography>
-          <Typography variant="body1" className="games-subtitle">
-            small games I built for fun — more coming
-          </Typography>
-        </Box>
+        <SectionHeader
+          className="games-header"
+          badge="take a break"
+          title="Game Space 🎮"
+          subtitle="small games I built for fun — more coming"
+        />
 
         <Box className="games-grid">
           {games.map((game) => (

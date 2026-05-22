@@ -1,16 +1,7 @@
-@dark: #2d2d2d;
-@md: ~"(min-width: 900px)";
-@sm: ~"(min-width: 600px)";
+@import "../styles/mixins";
 
 .contact-section {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background-color: #f4f3ef;
-
-  @media @md {
-    padding-top: 96px;
-    padding-bottom: 96px;
-  }
+  .section-padding(#f4f3ef);
 }
 
 .contact-header {
@@ -19,13 +10,8 @@
 }
 
 .contact-title {
-  font-size: 2.4rem !important;
-  color: @dark !important;
+  .section-title();
   margin-bottom: 24px !important;
-
-  @media @md {
-    font-size: 3.5rem !important;
-  }
 }
 
 .contact-quote-card {
@@ -104,7 +90,6 @@
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  // Alternating border-radius (same pattern as skills/philosophy)
   &:nth-child(odd) {
     border-radius: 4px 12px 8px 4px;
   }

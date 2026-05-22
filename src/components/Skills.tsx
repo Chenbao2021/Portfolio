@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography, Container, Chip } from "@mui/material";
 import { categories } from "../data/skills";
+import SectionHeader from "./SectionHeader";
 import "./Skills.less";
 import { JSX } from "@emotion/react/jsx-dev-runtime";
 
@@ -8,19 +9,12 @@ export default function Skills(): JSX.Element {
   return (
     <Box component="section" id="skills" className="skills-section">
       <Container maxWidth="lg">
-        <Box className="skills-header">
-          <Box className="skills-header__badge">
-            <Typography className="skills-header__badge-text">
-              my toolbox
-            </Typography>
-          </Box>
-          <Typography variant="h2" className="skills-title">
-            Skills & Tools 🧰
-          </Typography>
-          <Typography variant="body1" className="skills-subtitle">
-            things I actually use, not things I put on a resumé and forgot about
-          </Typography>
-        </Box>
+        <SectionHeader
+          className="skills-header"
+          badge="my toolbox"
+          title="Skills & Tools 🧰"
+          subtitle="things I actually use, not things I put on a resumé and forgot about"
+        />
 
         <Box className="skills-grid">
           {categories.map((cat) => (

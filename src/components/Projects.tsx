@@ -1,20 +1,18 @@
 import React, { JSX } from "react";
 import { Box, Typography, Container, Chip, Button, Stack } from "@mui/material";
 import { projects } from "../data/projects";
+import SectionHeader from "./SectionHeader";
 import "./Projects.less";
 
 export default function Projects(): JSX.Element {
   return (
     <Box component="section" id="projects" className="projects-section">
       <Container maxWidth="lg">
-        <Box className="projects-header">
-          <Typography variant="h2" className="projects-title">
-            Projects 📌
-          </Typography>
-          <Typography variant="body1" className="projects-subtitle">
-            things I actually finished (and a few I'm still tweaking)
-          </Typography>
-        </Box>
+        <SectionHeader
+          className="projects-header"
+          title="Projects 📌"
+          subtitle="things I actually finished (and a few I'm still tweaking)"
+        />
 
         <Box className="projects-grid">
           {projects.map((project) => (

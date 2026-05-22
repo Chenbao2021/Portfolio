@@ -1,34 +1,11 @@
-@dark: #2d2d2d;
-@md: ~"(min-width: 900px)";
+@import "../styles/mixins";
 
 .projects-section {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background-color: #faf9f7;
-
-  @media @md {
-    padding-top: 96px;
-    padding-bottom: 96px;
-  }
+  .section-padding(#faf9f7);
 }
 
 .projects-header {
   margin-bottom: 56px;
-}
-
-.projects-title {
-  font-size: 2.4rem !important;
-  color: @dark !important;
-
-  @media @md {
-    font-size: 3.5rem !important;
-  }
-}
-
-.projects-subtitle {
-  color: #9ca3af;
-  margin-top: 4px;
-  font-style: italic;
 }
 
 .projects-grid {

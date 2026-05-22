@@ -1,35 +1,11 @@
-@dark: #2d2d2d;
-@md: ~"(min-width: 900px)";
-@sm: ~"(min-width: 600px)";
+@import "../styles/mixins";
 
 .notes-section {
-  padding-top: 64px;
-  padding-bottom: 64px;
-  background-color: #f4f3ef;
-
-  @media @md {
-    padding-top: 96px;
-    padding-bottom: 96px;
-  }
+  .section-padding(#f4f3ef);
 }
 
 .notes-header {
   margin-bottom: 56px;
-}
-
-.notes-title {
-  font-size: 2.4rem !important;
-  color: @dark !important;
-  margin-bottom: 8px !important;
-
-  @media @md {
-    font-size: 3.5rem !important;
-  }
-}
-
-.notes-subtitle {
-  color: #9ca3af;
-  font-style: italic;
 }
 
 .notes-board {
@@ -76,7 +52,6 @@
   }
 }
 
-// Column 1 — Exploring
 .notes-col-exploring {
   display: flex;
   flex-direction: column;
@@ -133,7 +108,6 @@
   line-height: 1.5;
 }
 
-// Column 2 — Questions
 .notes-col-questions {
   display: flex;
   flex-direction: column;
@@ -197,7 +171,6 @@
   color: #374151;
 }
 
-// Column 3 — Mistakes
 .notes-mistakes {
   background-color: #dcfce7;
   border: 2px solid @dark;
@@ -237,7 +210,6 @@
   margin-top: 2.4px !important;
 }
 
-// Bottom bar — Recent wins
 .notes-recent {
   margin-top: 32px;
   padding-top: 32px;
@@ -284,7 +256,6 @@
   line-height: 1.55 !important;
 }
 
-// ConnectorLine SVG
 .notes-connector {
   display: block;
   margin: 0 auto;
