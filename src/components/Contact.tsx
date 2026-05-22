@@ -1,33 +1,7 @@
 import React from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
+import { links } from "../data/contact";
 import "./Contact.less";
-
-const links = [
-  {
-    label: "Email",
-    handle: "yuchenbao2015@gmail.com",
-    href: "mailto:yuchenbao2015@gmail.com",
-    icon: "✉️",
-    bg: "#fef9c3",
-    btnText: "Send Email",
-  },
-  {
-    label: "GitHub",
-    handle: "@yuchenbao",
-    href: "#",
-    icon: "🐙",
-    bg: "#f3f4f6",
-    btnText: "View GitHub",
-  },
-  {
-    label: "LinkedIn",
-    handle: "in/yuchenbao",
-    href: "https://www.linkedin.com/in/yuchenbao/",
-    icon: "💼",
-    bg: "#dbeafe",
-    btnText: "Connect",
-  },
-];
 
 const WaveDoodle = () => (
   <svg width="80" height="16" viewBox="0 0 80 16" fill="none">

@@ -13,6 +13,7 @@ import {
   ListItemText,
   Container,
 } from "@mui/material";
+import { navLinks } from "../data/navbar";
 import "./Navbar.less";
 
 const HamburgerIcon = () => (
@@ -29,16 +30,6 @@ const CloseIconSvg = () => (
     <line x1="16" y1="4" x2="4" y2="16" stroke="#2d2d2d" strokeWidth="2" strokeLinecap="round" />
   </svg>
 );
-
-const navLinks: { label: string; to: string }[] = [
-  { label: "About", to: "/about" },
-  { label: "Skills", to: "/skills" },
-  { label: "Projects", to: "/projects" },
-  { label: "Notes", to: "/notes" },
-  { label: "Philosophy", to: "/philosophy" },
-  { label: "Games", to: "/games" },
-  { label: "Contact", to: "/contact" },
-];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
