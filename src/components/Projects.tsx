@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Typography, Container, Chip, Button, Stack } from '@mui/material'
+import './Projects.less'
 
 interface Project {
   name: string
@@ -69,132 +70,77 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <Box component="section" id="projects" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#faf9f7' }}>
+    <Box component="section" id="projects" className="projects-section">
       <Container maxWidth="lg">
-        {/* Header */}
-        <Box sx={{ mb: 7 }}>
-          <Typography variant="h2" sx={{ fontSize: { xs: '2.4rem', md: '3.5rem' }, color: '#2d2d2d' }}>
+        <Box className="projects-header">
+          <Typography variant="h2" className="projects-title">
             Projects 📌
           </Typography>
-          <Typography variant="body1" sx={{ color: '#9ca3af', mt: 0.5, fontStyle: 'italic' }}>
+          <Typography variant="body1" className="projects-subtitle">
             things I actually finished (and a few I'm still tweaking)
           </Typography>
         </Box>
 
-        {/* Grid */}
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
-            gap: 4,
-          }}
-        >
+        <Box className="projects-grid">
           {projects.map(project => (
             <Box
               key={project.name}
-              sx={{
-                bgcolor: '#ffffff',
-                border: '2px solid #2d2d2d',
-                borderRadius: '4px 14px 10px 4px',
-                boxShadow: '5px 5px 0 rgba(0,0,0,0.1)',
-                overflow: 'hidden',
-                transform: `rotate(${project.rotation})`,
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                '&:hover': {
-                  transform: 'rotate(0deg) translateY(-5px)',
-                  boxShadow: '8px 8px 0 rgba(0,0,0,0.12)',
-                },
-              }}
+              className="projects-card"
+              sx={{ transform: `rotate(${project.rotation})` }}
             >
-              {/* Accent strip */}
-              <Box
-                sx={{
-                  bgcolor: project.accent,
-                  borderBottom: '2px solid #2d2d2d',
-                  px: 3,
-                  py: 2.5,
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: 1.5,
-                }}
-              >
-                <Typography sx={{ fontSize: '2rem', lineHeight: 1.2, mt: 0.2 }}>{project.emoji}</Typography>
+              <Box className="projects-card__strip" sx={{ bgcolor: project.accent }}>
+                <Typography className="projects-card__emoji">{project.emoji}</Typography>
                 <Box>
-                  <Typography variant="h5" sx={{ fontSize: '1.5rem', fontWeight: 700, lineHeight: 1.2 }}>
+                  <Typography variant="h5" className="projects-card__name">
                     {project.name}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#6b7280', mt: 0.3, fontSize: '0.88rem' }}>
+                  <Typography variant="body2" className="projects-card__tagline">
                     {project.tagline}
                   </Typography>
                 </Box>
               </Box>
 
-              {/* Body */}
-              <Box sx={{ p: 3 }}>
-                {/* Why */}
-                <Box sx={{ mb: 2 }}>
-                  <Typography variant="caption" sx={{ fontWeight: 700, color: '#9ca3af', letterSpacing: '0.08em', fontSize: '0.68rem', textTransform: 'uppercase' }}>
+              <Box className="projects-card__body">
+                <Box className="projects-card__why">
+                  <Typography variant="caption" className="projects-card__why-label">
                     Why I built it
                   </Typography>
-                  <Typography variant="body2" sx={{ mt: 0.5, color: '#374151', lineHeight: 1.65 }}>
+                  <Typography variant="body2" className="projects-card__why-text">
                     {project.why}
                   </Typography>
                 </Box>
 
-                {/* Lesson */}
-                <Box
-                  sx={{
-                    bgcolor: '#fef9c3',
-                    border: '1.5px solid #fde047',
-                    borderRadius: '2px 8px 5px 2px',
-                    p: 1.8,
-                    mb: 2.5,
-                  }}
-                >
-                  <Typography variant="caption" sx={{ fontWeight: 700, color: '#78350f', fontSize: '0.68rem', display: 'block', mb: 0.5 }}>
+                <Box className="projects-card__lesson">
+                  <Typography variant="caption" className="projects-card__lesson-label">
                     💡 Lesson learned
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#374151', fontSize: '0.88rem', lineHeight: 1.55 }}>
+                  <Typography variant="body2" className="projects-card__lesson-text">
                     {project.lesson}
                   </Typography>
                 </Box>
 
-                {/* Tech */}
-                <Box sx={{ mb: 2 }}>
-                  <Typography variant="caption" sx={{ color: '#9ca3af', fontWeight: 700, fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                <Box className="projects-card__stack">
+                  <Typography variant="caption" className="projects-card__stack-label">
                     Stack
                   </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.8, mt: 0.8 }}>
+                  <Box className="projects-card__chips">
                     {project.tech.map(t => (
-                      <Chip
-                        key={t}
-                        label={t}
-                        size="small"
-                        sx={{
-                          bgcolor: '#f3f4f6',
-                          border: '1.5px solid #d1d5db',
-                          borderRadius: '3px 6px 3px 6px',
-                          fontWeight: 600,
-                          fontSize: '0.75rem',
-                        }}
-                      />
+                      <Chip key={t} label={t} size="small" className="projects-chip" />
                     ))}
                   </Box>
                 </Box>
 
-                {/* Role */}
-                <Typography variant="caption" sx={{ color: '#9ca3af', fontStyle: 'italic', display: 'block', mb: 2.5 }}>
+                <Typography variant="caption" className="projects-card__role">
                   My role: {project.role}
                 </Typography>
 
-                {/* Buttons */}
                 <Stack direction="row" spacing={1.5}>
                   {project.github && (
                     <Button
                       variant="outlined"
                       size="small"
                       href={project.github}
-                      sx={{ fontSize: '0.82rem', px: 2, py: 0.6, bgcolor: '#fff', borderColor: '#2d2d2d', color: '#2d2d2d' }}
+                      className="projects-card__btn-github"
                     >
                       GitHub →
                     </Button>
@@ -204,7 +150,7 @@ export default function Projects() {
                       variant="contained"
                       size="small"
                       href={project.demo}
-                      sx={{ fontSize: '0.82rem', px: 2, py: 0.6, bgcolor: '#2d2d2d', color: '#fff', '&:hover': { bgcolor: '#1a1a1a' } }}
+                      className="projects-card__btn-demo"
                     >
                       Live Demo ↗
                     </Button>

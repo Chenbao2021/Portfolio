@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Box, Typography, Button } from "@mui/material";
+import "./RockPaperScissors.less";
 
 type Choice = "rock" | "paper" | "scissors";
 type Phase = "p1" | "p2" | "result";
@@ -52,171 +53,65 @@ export default function RockPaperScissors() {
     : result === "p2" ? "Player 2 wins! 🎉"
     : result === "draw" ? "It's a draw! 🤝"
     : "";
-  const resultColor =
-    result === "draw" ? "#6b7280" : "#ca8a04";
 
   return (
     <Box>
-      {/* Score */}
-      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
-        <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#6b7280" }}>
-          P1: {score.p1}
-        </Typography>
-        <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#6b7280" }}>
-          P2: {score.p2}
-        </Typography>
+      <Box className="rps-score-row">
+        <Typography className="rps-score-text">P1: {score.p1}</Typography>
+        <Typography className="rps-score-text">P2: {score.p2}</Typography>
       </Box>
 
-      {/* Phase: Player 1 chooses */}
       {phase === "p1" && (
         <Box>
-          <Typography
-            sx={{
-              fontFamily: '"Caveat", cursive',
-              fontSize: "1.15rem",
-              color: "#374151",
-              textAlign: "center",
-              mb: 2,
-            }}
-          >
-            Player 1, pick your move:
-          </Typography>
-          <Box sx={{ display: "flex", gap: 1 }}>
+          <Typography className="rps-prompt">Player 1, pick your move:</Typography>
+          <Box className="rps-choices">
             {OPTIONS.map((o) => (
-              <Box
-                key={o.value}
-                onClick={() => handleP1(o.value)}
-                sx={{
-                  flex: 1,
-                  textAlign: "center",
-                  py: 1.5,
-                  bgcolor: "#faf9f7",
-                  border: "2px solid #2d2d2d",
-                  borderRadius: "4px 10px 6px 4px",
-                  cursor: "pointer",
-                  boxShadow: "3px 3px 0 rgba(0,0,0,0.08)",
-                  transition: "all 0.15s ease",
-                  "&:hover": {
-                    bgcolor: "#fef9c3",
-                    transform: "translateY(-3px)",
-                    boxShadow: "5px 5px 0 rgba(0,0,0,0.1)",
-                  },
-                }}
-              >
-                <Typography sx={{ fontSize: "1.8rem" }}>{o.emoji}</Typography>
-                <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "0.85rem", color: "#6b7280" }}>
-                  {o.label}
-                </Typography>
+              <Box key={o.value} onClick={() => handleP1(o.value)} className="rps-choice rps-choice--p1">
+                <Typography className="rps-choice__emoji">{o.emoji}</Typography>
+                <Typography className="rps-choice__label">{o.label}</Typography>
               </Box>
             ))}
           </Box>
         </Box>
       )}
 
-      {/* Phase: Player 2 chooses */}
       {phase === "p2" && (
         <Box>
-          {/* P1 hidden confirmation */}
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 1.5,
-              mb: 2.5,
-              p: 1.5,
-              bgcolor: "#dcfce7",
-              border: "1.5px solid #2d2d2d",
-              borderRadius: "4px 10px 6px 4px",
-              boxShadow: "2px 2px 0 rgba(0,0,0,0.07)",
-            }}
-          >
-            <Typography sx={{ fontSize: "1.4rem" }}>🫥</Typography>
-            <Typography
-              sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#166534" }}
-            >
-              Player 1 has chosen — hidden!
-            </Typography>
+          <Box className="rps-p1-hidden">
+            <Typography className="rps-p1-hidden__icon">🫥</Typography>
+            <Typography className="rps-p1-hidden__text">Player 1 has chosen — hidden!</Typography>
           </Box>
-
-          <Typography
-            sx={{
-              fontFamily: '"Caveat", cursive',
-              fontSize: "1.15rem",
-              color: "#374151",
-              textAlign: "center",
-              mb: 2,
-            }}
-          >
-            Player 2, pick your move:
-          </Typography>
-          <Box sx={{ display: "flex", gap: 1 }}>
+          <Typography className="rps-prompt">Player 2, pick your move:</Typography>
+          <Box className="rps-choices">
             {OPTIONS.map((o) => (
-              <Box
-                key={o.value}
-                onClick={() => handleP2(o.value)}
-                sx={{
-                  flex: 1,
-                  textAlign: "center",
-                  py: 1.5,
-                  bgcolor: "#faf9f7",
-                  border: "2px solid #2d2d2d",
-                  borderRadius: "4px 10px 6px 4px",
-                  cursor: "pointer",
-                  boxShadow: "3px 3px 0 rgba(0,0,0,0.08)",
-                  transition: "all 0.15s ease",
-                  "&:hover": {
-                    bgcolor: "#dbeafe",
-                    transform: "translateY(-3px)",
-                    boxShadow: "5px 5px 0 rgba(0,0,0,0.1)",
-                  },
-                }}
-              >
-                <Typography sx={{ fontSize: "1.8rem" }}>{o.emoji}</Typography>
-                <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "0.85rem", color: "#6b7280" }}>
-                  {o.label}
-                </Typography>
+              <Box key={o.value} onClick={() => handleP2(o.value)} className="rps-choice rps-choice--p2">
+                <Typography className="rps-choice__emoji">{o.emoji}</Typography>
+                <Typography className="rps-choice__label">{o.label}</Typography>
               </Box>
             ))}
           </Box>
         </Box>
       )}
 
-      {/* Phase: Result */}
       {phase === "result" && p1Choice && p2Choice && (
         <Box>
-          {/* Reveal */}
-          <Box sx={{ display: "flex", justifyContent: "space-around", alignItems: "center", mb: 2.5 }}>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography sx={{ fontSize: "2.8rem" }}>
+          <Box className="rps-reveal">
+            <Box className="rps-reveal__player">
+              <Typography className="rps-reveal__emoji">
                 {OPTIONS.find((o) => o.value === p1Choice)!.emoji}
               </Typography>
-              <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#6b7280" }}>
-                Player 1
-              </Typography>
+              <Typography className="rps-reveal__name">Player 1</Typography>
             </Box>
-            <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1.4rem", color: "#9ca3af" }}>
-              vs
-            </Typography>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography sx={{ fontSize: "2.8rem" }}>
+            <Typography className="rps-reveal__vs">vs</Typography>
+            <Box className="rps-reveal__player">
+              <Typography className="rps-reveal__emoji">
                 {OPTIONS.find((o) => o.value === p2Choice)!.emoji}
               </Typography>
-              <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#6b7280" }}>
-                Player 2
-              </Typography>
+              <Typography className="rps-reveal__name">Player 2</Typography>
             </Box>
           </Box>
 
-          <Typography
-            sx={{
-              fontFamily: '"Caveat", cursive',
-              fontSize: "1.4rem",
-              textAlign: "center",
-              color: resultColor,
-              mb: 2.5,
-            }}
-          >
+          <Typography className={`rps-result ${result === "draw" ? "rps-result--draw" : "rps-result--winner"}`}>
             {resultText}
           </Typography>
 

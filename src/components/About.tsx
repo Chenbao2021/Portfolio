@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Typography, Container } from '@mui/material'
+import './About.less'
 
 interface Card {
   title: string
@@ -47,105 +48,49 @@ const cards: Card[] = [
 
 export default function About() {
   return (
-    <Box component="section" id="about" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#faf9f7' }}>
+    <Box component="section" id="about" className="about-section">
       <Container maxWidth="lg">
-        {/* Header */}
-        <Box sx={{ mb: 7 }}>
-          <Typography
-            variant="h2"
-            sx={{ fontSize: { xs: '2.4rem', md: '3.5rem' }, color: '#2d2d2d', mb: 1 }}
-          >
+        <Box className="about-header">
+          <Typography variant="h2" className="about-title">
             About Me
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box
-              sx={{
-                height: 4,
-                width: 56,
-                bgcolor: '#fef08a',
-                border: '1px solid #2d2d2d',
-                borderRadius: 1,
-              }}
-            />
-            <Typography variant="body1" sx={{ color: '#9ca3af', fontStyle: 'italic' }}>
+          <Box className="about-title-row">
+            <Box className="about-title-bar" />
+            <Typography variant="body1" className="about-subtitle">
               a few things worth knowing
             </Typography>
           </Box>
         </Box>
 
-        {/* Cards */}
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-            gap: 3,
-          }}
-        >
+        <Box className="about-grid">
           {cards.map(card => (
             <Box
               key={card.title}
-              sx={{
-                bgcolor: card.bg,
-                border: '2px solid #2d2d2d',
-                borderRadius: '4px 12px 8px 4px',
-                boxShadow: '5px 5px 0 rgba(0,0,0,0.1)',
-                p: 3.5,
-                transform: `rotate(${card.rotation})`,
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                '&:hover': {
-                  transform: 'rotate(0deg) translateY(-4px)',
-                  boxShadow: '7px 7px 0 rgba(0,0,0,0.13)',
-                },
-              }}
+              className="about-card"
+              sx={{ bgcolor: card.bg, transform: `rotate(${card.rotation})` }}
             >
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-                <Typography sx={{ fontSize: '1.5rem' }}>{card.icon}</Typography>
+              <Box className="about-card__header">
+                <Typography className="about-card__icon">{card.icon}</Typography>
                 <Typography
                   variant="h5"
-                  sx={{
-                    fontSize: '1.45rem',
-                    color: '#2d2d2d',
-                    borderBottom: `2.5px solid ${card.accentBorder}`,
-                    pb: 0.4,
-                  }}
+                  className="about-card__title"
+                  sx={{ borderBottom: `2.5px solid ${card.accentBorder}` }}
                 >
                   {card.title}
                 </Typography>
               </Box>
-              <Typography sx={{ color: '#374151', lineHeight: 1.75, fontSize: '0.95rem' }}>
-                {card.body}
-              </Typography>
+              <Typography className="about-card__body">{card.body}</Typography>
             </Box>
           ))}
         </Box>
 
-        {/* Pinned footnote */}
-        <Box
-          sx={{
-            mt: 5,
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: 2,
-            p: 3,
-            bgcolor: '#ffffff',
-            border: '1.5px dashed #9ca3af',
-            borderRadius: '4px 10px 6px 4px',
-            maxWidth: 560,
-          }}
-        >
-          <Typography sx={{ fontSize: '1.3rem', mt: 0.2 }}>📌</Typography>
+        <Box className="about-footnote">
+          <Typography className="about-footnote__pin">📌</Typography>
           <Box>
-            <Typography
-              sx={{
-                fontFamily: '"Caveat", cursive',
-                fontSize: '1.15rem',
-                color: '#374151',
-                lineHeight: 1.6,
-              }}
-            >
+            <Typography className="about-footnote__quote">
               "I'm not trying to look perfect. I'm trying to become clearer and more useful every year."
             </Typography>
-            <Typography variant="caption" sx={{ color: '#9ca3af', fontStyle: 'italic' }}>
+            <Typography variant="caption" className="about-footnote__caption">
               — something I remind myself every Monday morning
             </Typography>
           </Box>

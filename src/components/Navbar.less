@@ -1,0 +1,107 @@
+@dark: #2d2d2d;
+@bg: #faf9f7;
+@md: ~"(min-width: 900px)";
+
+.navbar-appbar {
+  background-color: transparent !important;
+  backdrop-filter: none;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  transition: all 0.25s ease;
+
+  &.is-scrolled {
+    background-color: rgba(250, 249, 247, 0.96) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid @dark !important;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.04) !important;
+  }
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.navbar-logo {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: @dark;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar-desktop-nav {
+  display: none;
+  gap: 4px;
+
+  @media @md {
+    display: flex;
+  }
+}
+
+.navbar-link {
+  color: @dark !important;
+  font-family: "Caveat", cursive !important;
+  font-size: 1.2rem !important;
+  padding: 6px 12px !important;
+  border-radius: 4px 6px 4px 6px !important;
+  background-color: transparent !important;
+  text-decoration: none !important;
+
+  &.is-active {
+    background-color: #fef9c3 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px;
+  }
+}
+
+.navbar-hamburger {
+  color: @dark;
+
+  @media @md {
+    display: none !important;
+  }
+}
+
+.navbar-drawer-paper {
+  width: 240px;
+  background-color: @bg !important;
+  border-left: 2px solid @dark !important;
+}
+
+.navbar-drawer-header {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1.5px dashed #d1d5db;
+  margin-bottom: 8px;
+}
+
+.navbar-drawer-logo {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: @dark;
+}
+
+.navbar-drawer-link {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+  border-radius: 4px !important;
+  width: calc(100% - 16px) !important;
+  text-align: left !important;
+
+  &:hover {
+    background-color: #fef9c3 !important;
+  }
+
+  &.is-active {
+    background-color: #fef9c3 !important;
+  }
+}

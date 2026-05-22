@@ -1,8 +1,9 @@
 import React from 'react'
 import { Box, Typography, Container } from '@mui/material'
+import './LearningNotes.less'
 
 const ConnectorLine = () => (
-  <svg width="40" height="20" viewBox="0 0 40 20" fill="none" style={{ display: 'block', margin: '0 auto' }}>
+  <svg width="40" height="20" viewBox="0 0 40 20" fill="none" className="notes-connector">
     <path d="M20 2 L20 18" stroke="#d1d5db" strokeWidth="1.5" strokeDasharray="3 2" strokeLinecap="round"/>
     <path d="M14 12 L20 18 L26 12" stroke="#d1d5db" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
@@ -10,71 +11,27 @@ const ConnectorLine = () => (
 
 export default function LearningNotes() {
   return (
-    <Box component="section" id="notes" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#f4f3ef' }}>
+    <Box component="section" id="notes" className="notes-section">
       <Container maxWidth="lg">
-        {/* Header */}
-        <Box sx={{ mb: 7 }}>
-          <Typography variant="h2" sx={{ fontSize: { xs: '2.4rem', md: '3.5rem' }, color: '#2d2d2d', mb: 1 }}>
+        <Box className="notes-header">
+          <Typography variant="h2" className="notes-title">
             🧠 Thinking Board
           </Typography>
-          <Typography variant="body1" sx={{ color: '#9ca3af', fontStyle: 'italic' }}>
+          <Typography variant="body1" className="notes-subtitle">
             notes to self, questions I'm chasing, things that recently clicked
           </Typography>
         </Box>
 
-        {/* Main board */}
-        <Box
-          sx={{
-            bgcolor: '#ffffff',
-            border: '2px solid #2d2d2d',
-            borderRadius: '6px 14px 10px 6px',
-            boxShadow: '7px 7px 0 rgba(0,0,0,0.08)',
-            p: { xs: 3, md: 5 },
-            position: 'relative',
-          }}
-        >
-          {/* Board label tab */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: -16,
-              left: 24,
-              bgcolor: '#2d2d2d',
-              color: '#ffffff',
-              px: 2.5,
-              py: 0.5,
-              borderRadius: '4px 8px 4px 4px',
-            }}
-          >
-            <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: '0.9rem', letterSpacing: '0.05em' }}>
-              brainstorm / ongoing
-            </Typography>
+        <Box className="notes-board">
+          <Box className="notes-board__tab">
+            <Typography className="notes-board__tab-text">brainstorm / ongoing</Typography>
           </Box>
 
-          {/* Three-column layout */}
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
-              gap: 3,
-              mt: 2,
-            }}
-          >
+          <Box className="notes-columns">
             {/* ── Column 1: Exploring ── */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Box
-                sx={{
-                  bgcolor: '#dbeafe',
-                  border: '2px solid #2d2d2d',
-                  borderRadius: '4px 10px 8px 4px',
-                  p: 2.5,
-                  boxShadow: '3px 3px 0 rgba(0,0,0,0.09)',
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ fontSize: '1.15rem', mb: 2, borderBottom: '1.5px solid #93c5fd', pb: 0.8 }}
-                >
+            <Box className="notes-col-exploring">
+              <Box className="notes-exploring">
+                <Typography variant="h6" className="notes-exploring__title">
                   🔭 Currently exploring
                 </Typography>
                 {[
@@ -84,47 +41,24 @@ export default function LearningNotes() {
                   'Writing cleaner abstractions',
                   'Why some codebases feel "good"',
                 ].map(item => (
-                  <Box key={item} sx={{ display: 'flex', gap: 1, mb: 1, alignItems: 'flex-start' }}>
-                    <Typography sx={{ color: '#60a5fa', fontWeight: 700, flexShrink: 0 }}>→</Typography>
-                    <Typography variant="body2" sx={{ color: '#374151', lineHeight: 1.55, fontSize: '0.88rem' }}>
-                      {item}
-                    </Typography>
+                  <Box key={item} className="notes-exploring__item">
+                    <Typography className="notes-exploring__arrow">→</Typography>
+                    <Typography variant="body2" className="notes-exploring__text">{item}</Typography>
                   </Box>
                 ))}
               </Box>
 
-              {/* Small sticky */}
-              <Box
-                sx={{
-                  bgcolor: '#fef9c3',
-                  border: '1.5px solid #2d2d2d',
-                  borderRadius: '2px 8px 5px 2px',
-                  p: 2,
-                  boxShadow: '3px 3px 0 rgba(0,0,0,0.08)',
-                  transform: 'rotate(-2.2deg)',
-                }}
-              >
-                <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: '1rem', color: '#374151', lineHeight: 1.5 }}>
+              <Box className="notes-sticky">
+                <Typography className="notes-sticky__text">
                   "Understanding beats memorizing. Every single time."
                 </Typography>
               </Box>
             </Box>
 
             {/* ── Column 2: Questions ── */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Box
-                sx={{
-                  bgcolor: '#fce7f3',
-                  border: '2px solid #2d2d2d',
-                  borderRadius: '10px 4px 4px 10px',
-                  p: 2.5,
-                  boxShadow: '3px 3px 0 rgba(0,0,0,0.09)',
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ fontSize: '1.15rem', mb: 2, borderBottom: '1.5px solid #f9a8d4', pb: 0.8 }}
-                >
+            <Box className="notes-col-questions">
+              <Box className="notes-questions">
+                <Typography variant="h6" className="notes-questions__title">
                   ❓ Questions I'm chasing
                 </Typography>
                 {[
@@ -133,120 +67,56 @@ export default function LearningNotes() {
                   'What makes a codebase a joy to work in?',
                   'Is "good enough" ever actually good enough?',
                 ].map(q => (
-                  <Box key={q} sx={{ display: 'flex', gap: 1, mb: 1.5, alignItems: 'flex-start' }}>
-                    <Typography sx={{ color: '#f472b6', fontWeight: 700, flexShrink: 0 }}>?</Typography>
-                    <Typography variant="body2" sx={{ color: '#374151', lineHeight: 1.55, fontSize: '0.88rem', fontStyle: 'italic' }}>
-                      {q}
-                    </Typography>
+                  <Box key={q} className="notes-questions__item">
+                    <Typography className="notes-questions__mark">?</Typography>
+                    <Typography variant="body2" className="notes-questions__text">{q}</Typography>
                   </Box>
                 ))}
               </Box>
 
-              {/* Process flows */}
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                {[
-                  { text: 'Read → try → break → fix → repeat', bg: '#dcfce7' },
-                  { text: 'Ask → explore → document → share', bg: '#fff7ed' },
-                ].map(flow => (
-                  <Box
-                    key={flow.text}
-                    sx={{
-                      bgcolor: flow.bg,
-                      border: '1.5px solid #2d2d2d',
-                      borderRadius: '3px 8px 5px 3px',
-                      p: 1.5,
-                      boxShadow: '2px 2px 0 rgba(0,0,0,0.08)',
-                    }}
-                  >
-                    <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: '1rem', color: '#374151' }}>
-                      {flow.text}
-                    </Typography>
-                  </Box>
-                ))}
+              <Box className="notes-flows">
+                <Box className="notes-flow notes-flow--read">
+                  <Typography className="notes-flow__text">Read → try → break → fix → repeat</Typography>
+                </Box>
+                <Box className="notes-flow notes-flow--ask">
+                  <Typography className="notes-flow__text">Ask → explore → document → share</Typography>
+                </Box>
               </Box>
             </Box>
 
             {/* ── Column 3: Mistakes ── */}
             <Box>
-              <Box
-                sx={{
-                  bgcolor: '#dcfce7',
-                  border: '2px solid #2d2d2d',
-                  borderRadius: '4px 4px 12px 4px',
-                  p: 2.5,
-                  boxShadow: '3px 3px 0 rgba(0,0,0,0.09)',
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{ fontSize: '1.15rem', mb: 2, borderBottom: '1.5px solid #86efac', pb: 0.8 }}
-                >
+              <Box className="notes-mistakes">
+                <Typography variant="h6" className="notes-mistakes__title">
                   🐛 Mistakes that taught me
                 </Typography>
                 {[
                   { bad: 'Pushed to prod on a Friday', learned: 'Never. Again.' },
                   { bad: 'Skipped documentation', learned: 'Suffered 3 months later. Documented everything after.' },
                   { bad: 'Over-engineered a simple feature', learned: 'YAGNI is real wisdom, not just a meme.' },
-                  { bad: 'Didn\'t write any tests', learned: 'Now I write them second. Improvement.' },
+                  { bad: "Didn't write any tests", learned: 'Now I write them second. Improvement.' },
                 ].map(({ bad, learned }) => (
-                  <Box key={bad} sx={{ mb: 2, pb: 1.5, borderBottom: '1px dashed #86efac', '&:last-child': { borderBottom: 'none', mb: 0, pb: 0 } }}>
-                    <Typography variant="body2" sx={{ color: '#dc2626', fontSize: '0.82rem', fontWeight: 700 }}>
-                      ✗ {bad}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: '#374151', fontSize: '0.82rem', mt: 0.3 }}>
-                      → {learned}
-                    </Typography>
+                  <Box key={bad} className="notes-mistake">
+                    <Typography variant="body2" className="notes-mistake__bad">✗ {bad}</Typography>
+                    <Typography variant="body2" className="notes-mistake__learned">→ {learned}</Typography>
                   </Box>
                 ))}
               </Box>
             </Box>
           </Box>
 
-          {/* Bottom bar — Recent wins */}
-          <Box
-            sx={{
-              mt: 4,
-              pt: 4,
-              borderTop: '2px dashed #e5e7eb',
-            }}
-          >
-            <Typography
-              sx={{
-                fontFamily: '"Caveat", cursive',
-                fontSize: '1rem',
-                color: '#9ca3af',
-                mb: 2,
-              }}
-            >
+          <Box className="notes-recent">
+            <Typography className="notes-recent__label">
               ⭐ recently learned / recently clicked:
             </Typography>
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(3, 1fr)' },
-                gap: 2,
-              }}
-            >
+            <Box className="notes-wins-grid">
               {[
                 '🎯 How React reconciliation actually works (finally)',
                 '📦 Proper Docker layer caching saves so much CI time',
                 '✍️ Writing for clarity makes you think more clearly',
               ].map(win => (
-                <Box
-                  key={win}
-                  sx={{
-                    bgcolor: '#faf9f7',
-                    border: '1.5px solid #e5e7eb',
-                    borderRadius: '3px 9px 6px 3px',
-                    p: 2,
-                    boxShadow: '2px 2px 0 rgba(0,0,0,0.06)',
-                    transition: 'transform 0.15s ease',
-                    '&:hover': { transform: 'translateY(-2px)' },
-                  }}
-                >
-                  <Typography variant="body2" sx={{ color: '#374151', fontSize: '0.9rem', lineHeight: 1.55 }}>
-                    {win}
-                  </Typography>
+                <Box key={win} className="notes-win">
+                  <Typography variant="body2" className="notes-win__text">{win}</Typography>
                 </Box>
               ))}
             </Box>

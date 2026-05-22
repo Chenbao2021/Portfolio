@@ -1,0 +1,122 @@
+@dark: #2d2d2d;
+@md: ~"(min-width: 900px)";
+@sm: ~"(min-width: 600px)";
+
+.about-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background-color: #faf9f7;
+
+  @media @md {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.about-header {
+  margin-bottom: 56px;
+}
+
+.about-title {
+  font-size: 2.4rem !important;
+  color: @dark !important;
+  margin-bottom: 8px !important;
+
+  @media @md {
+    font-size: 3.5rem !important;
+  }
+}
+
+.about-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.about-title-bar {
+  height: 4px;
+  width: 56px;
+  background-color: #fef08a;
+  border: 1px solid @dark;
+  border-radius: 4px;
+}
+
+.about-subtitle {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @media @sm {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-card {
+  border: 2px solid @dark;
+  border-radius: 4px 12px 8px 4px;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+  padding: 28px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: rotate(0deg) translateY(-4px) !important;
+    box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.13);
+  }
+}
+
+.about-card__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.about-card__icon {
+  font-size: 1.5rem;
+}
+
+.about-card__title {
+  font-size: 1.45rem !important;
+  color: @dark !important;
+  padding-bottom: 3.2px;
+}
+
+.about-card__body {
+  color: #374151;
+  line-height: 1.75;
+  font-size: 0.95rem;
+}
+
+.about-footnote {
+  margin-top: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1.5px dashed #9ca3af;
+  border-radius: 4px 10px 6px 4px;
+  max-width: 560px;
+}
+
+.about-footnote__pin {
+  font-size: 1.3rem;
+  margin-top: 1.6px;
+}
+
+.about-footnote__quote {
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem !important;
+  color: #374151 !important;
+  line-height: 1.6 !important;
+}
+
+.about-footnote__caption {
+  color: #9ca3af;
+  font-style: italic;
+}

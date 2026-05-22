@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Box, Typography, Button } from "@mui/material";
+import "./MemoryGame.less";
 
 const EMOJIS = ["🍕", "🎸", "🌈", "🦊", "🍦", "🎲", "🌙", "⚡"];
 
@@ -47,57 +48,27 @@ export default function MemoryGame() {
 
   return (
     <Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1.5 }}>
-        <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#6b7280" }}>
-          Moves: {moves}
-        </Typography>
-        <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#6b7280" }}>
-          {matched.size / 2} / {EMOJIS.length} pairs
-        </Typography>
+      <Box className="mem-score-row">
+        <Typography className="mem-score-text">Moves: {moves}</Typography>
+        <Typography className="mem-score-text">{matched.size / 2} / {EMOJIS.length} pairs</Typography>
       </Box>
 
-      <Box
-        sx={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: 0.8,
-          mb: 1.5,
-        }}
-      >
+      <Box className="mem-grid">
         {cards.map((emoji, i) => {
           const isFlipped = flipped.includes(i) || matched.has(i);
           const isMatchedCard = matched.has(i);
+
+          const cardClass = [
+            "mem-card",
+            isMatchedCard ? "mem-card--matched" : isFlipped ? "mem-card--flipped" : "",
+          ].filter(Boolean).join(" ");
+
           return (
-            <Box
-              key={i}
-              onClick={() => handleFlip(i)}
-              sx={{
-                height: 54,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                bgcolor: isMatchedCard ? "#dcfce7" : isFlipped ? "#fef9c3" : "#2d2d2d",
-                border: "2px solid #2d2d2d",
-                borderRadius: "3px 8px 5px 3px",
-                cursor: isFlipped ? "default" : "pointer",
-                transition: "all 0.2s ease",
-                "&:hover": !isFlipped
-                  ? { bgcolor: "#4b4b4b", transform: "scale(1.04)" }
-                  : {},
-              }}
-            >
+            <Box key={i} onClick={() => handleFlip(i)} className={cardClass}>
               {isFlipped ? (
-                <Typography sx={{ fontSize: "1.4rem" }}>{emoji}</Typography>
+                <Typography className="mem-card__emoji">{emoji}</Typography>
               ) : (
-                <Typography
-                  sx={{
-                    fontFamily: '"Caveat", cursive',
-                    fontSize: "1.1rem",
-                    color: "#6b7280",
-                  }}
-                >
-                  ?
-                </Typography>
+                <Typography className="mem-card__back">?</Typography>
               )}
             </Box>
           );
@@ -105,17 +76,7 @@ export default function MemoryGame() {
       </Box>
 
       {isComplete && (
-        <Typography
-          sx={{
-            fontFamily: '"Caveat", cursive',
-            fontSize: "1.05rem",
-            color: "#ca8a04",
-            textAlign: "center",
-            mb: 1,
-          }}
-        >
-          Done in {moves} moves! 🎉
-        </Typography>
+        <Typography className="mem-complete">Done in {moves} moves! 🎉</Typography>
       )}
 
       <Button variant="outlined" size="small" onClick={reset} fullWidth>

@@ -1,0 +1,166 @@
+@dark: #2d2d2d;
+@md: ~"(min-width: 900px)";
+@sm: ~"(min-width: 600px)";
+
+.contact-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background-color: #f4f3ef;
+
+  @media @md {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.contact-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.contact-title {
+  font-size: 2.4rem !important;
+  color: @dark !important;
+  margin-bottom: 24px !important;
+
+  @media @md {
+    font-size: 3.5rem !important;
+  }
+}
+
+.contact-quote-card {
+  display: inline-block;
+  background-color: #ffffff;
+  border: 2px solid @dark;
+  border-radius: 4px 14px 10px 4px;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.09);
+  padding: 24px;
+  max-width: 600px;
+  transform: rotate(-0.5deg);
+  text-align: left;
+  position: relative;
+
+  @media @md {
+    padding: 32px;
+  }
+}
+
+.contact-quote-card__pin {
+  position: absolute;
+  top: -10px;
+  right: 32px;
+  width: 16px;
+  height: 16px;
+  background-color: #60a5fa;
+  border-radius: 50%;
+  border: 1.5px solid @dark;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+
+.contact-quote-card__text {
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem !important;
+  color: #374151 !important;
+  line-height: 1.65 !important;
+  margin-bottom: 12px !important;
+
+  @media @md {
+    font-size: 1.4rem !important;
+  }
+}
+
+.contact-quote-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-quote-card__caption {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media @sm {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media @md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.contact-card {
+  border: 2px solid @dark;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 28px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  // Alternating border-radius (same pattern as skills/philosophy)
+  &:nth-child(odd) {
+    border-radius: 4px 12px 8px 4px;
+  }
+
+  &:nth-child(even) {
+    border-radius: 12px 4px 4px 12px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.14);
+  }
+}
+
+.contact-card__icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.contact-card__label {
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 4px !important;
+}
+
+.contact-card__handle {
+  color: #6b7280 !important;
+  margin-bottom: 20px !important;
+  font-size: 0.88rem !important;
+}
+
+.contact-card__btn {
+  font-size: 0.85rem !important;
+  background-color: #ffffff !important;
+  border-color: @dark !important;
+  color: @dark !important;
+  width: 100% !important;
+  padding-top: 6.4px !important;
+  padding-bottom: 6.4px !important;
+}
+
+.contact-footer {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 2px dashed #d1d5db;
+  text-align: center;
+}
+
+.contact-footer__built {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+.contact-footer__copy {
+  color: #d1d5db;
+  display: block;
+}

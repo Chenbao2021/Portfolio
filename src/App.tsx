@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material'
+import { StyledEngineProvider } from '@mui/material/styles'
+import './App.less'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -80,9 +82,9 @@ const theme = createTheme({
 
 function Layout() {
   return (
-    <Box sx={{ bgcolor: '#faf9f7', minHeight: '100vh' }}>
+    <Box className="app-layout">
       <Navbar />
-      <main style={{ paddingTop: '64px' }}>
+      <main className="app-main">
         <Outlet />
       </main>
     </Box>
@@ -92,6 +94,7 @@ function Layout() {
 export default function App() {
   return (
     <BrowserRouter>
+      <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Routes>
@@ -108,6 +111,7 @@ export default function App() {
           </Route>
         </Routes>
       </ThemeProvider>
+      </StyledEngineProvider>
     </BrowserRouter>
   )
 }

@@ -1,0 +1,121 @@
+@dark: #2d2d2d;
+
+.rps-score-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.rps-score-text {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.rps-prompt {
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  color: #374151;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.rps-choices {
+  display: flex;
+  gap: 8px;
+}
+
+.rps-choice {
+  flex: 1;
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #faf9f7;
+  border: 2px solid @dark;
+  border-radius: 4px 10px 6px 4px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.15s ease;
+}
+
+.rps-choice--p1:hover {
+  background-color: #fef9c3;
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.rps-choice--p2:hover {
+  background-color: #dbeafe;
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.rps-choice__emoji {
+  font-size: 1.8rem;
+}
+
+.rps-choice__label {
+  font-family: "Caveat", cursive;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.rps-p1-hidden {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #dcfce7;
+  border: 1.5px solid @dark;
+  border-radius: 4px 10px 6px 4px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.07);
+}
+
+.rps-p1-hidden__icon {
+  font-size: 1.4rem;
+}
+
+.rps-p1-hidden__text {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #166534;
+}
+
+.rps-reveal {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.rps-reveal__player {
+  text-align: center;
+}
+
+.rps-reveal__emoji {
+  font-size: 2.8rem;
+}
+
+.rps-reveal__name {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.rps-reveal__vs {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  color: #9ca3af;
+}
+
+.rps-result {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.rps-result--winner { color: #ca8a04; }
+.rps-result--draw   { color: #6b7280; }

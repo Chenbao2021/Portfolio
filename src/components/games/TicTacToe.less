@@ -1,0 +1,64 @@
+@dark: #2d2d2d;
+
+.ttt-score-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.ttt-score-text {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.ttt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.ttt-cell {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid @dark;
+  border-radius: 3px 8px 5px 3px;
+  transition: all 0.1s ease;
+  background-color: #faf9f7;
+}
+
+.ttt-cell--x { background-color: #fef9c3; }
+.ttt-cell--o { background-color: #dbeafe; }
+
+.ttt-cell--clickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-2px);
+  }
+}
+
+.ttt-cell--disabled {
+  cursor: default;
+}
+
+.ttt-cell__symbol {
+  font-family: "Caveat", cursive;
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+}
+
+.ttt-cell__symbol--x { color: #ca8a04 !important; }
+.ttt-cell__symbol--o { color: #3b82f6 !important; }
+
+.ttt-status {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 8px;
+}

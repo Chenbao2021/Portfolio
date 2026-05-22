@@ -1,0 +1,291 @@
+@dark: #2d2d2d;
+@md: ~"(min-width: 900px)";
+@sm: ~"(min-width: 600px)";
+
+.notes-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background-color: #f4f3ef;
+
+  @media @md {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.notes-header {
+  margin-bottom: 56px;
+}
+
+.notes-title {
+  font-size: 2.4rem !important;
+  color: @dark !important;
+  margin-bottom: 8px !important;
+
+  @media @md {
+    font-size: 3.5rem !important;
+  }
+}
+
+.notes-subtitle {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.notes-board {
+  background-color: #ffffff;
+  border: 2px solid @dark;
+  border-radius: 6px 14px 10px 6px;
+  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  position: relative;
+
+  @media @md {
+    padding: 40px;
+  }
+}
+
+.notes-board__tab {
+  position: absolute;
+  top: -16px;
+  left: 24px;
+  background-color: @dark;
+  color: #ffffff;
+  padding: 4px 20px;
+  border-radius: 4px 8px 4px 4px;
+}
+
+.notes-board__tab-text {
+  font-family: "Caveat", cursive;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+.notes-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 16px;
+
+  @media @sm {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media @md {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Column 1 — Exploring
+.notes-col-exploring {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notes-exploring {
+  background-color: #dbeafe;
+  border: 2px solid @dark;
+  border-radius: 4px 10px 8px 4px;
+  padding: 20px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.09);
+}
+
+.notes-exploring__title {
+  font-size: 1.15rem !important;
+  margin-bottom: 16px !important;
+  border-bottom: 1.5px solid #93c5fd;
+  padding-bottom: 6.4px;
+}
+
+.notes-exploring__item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: flex-start;
+}
+
+.notes-exploring__arrow {
+  color: #60a5fa;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.notes-exploring__text {
+  color: #374151 !important;
+  line-height: 1.55 !important;
+  font-size: 0.88rem !important;
+}
+
+.notes-sticky {
+  background-color: #fef9c3;
+  border: 1.5px solid @dark;
+  border-radius: 2px 8px 5px 2px;
+  padding: 16px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+  transform: rotate(-2.2deg);
+}
+
+.notes-sticky__text {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.5;
+}
+
+// Column 2 — Questions
+.notes-col-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notes-questions {
+  background-color: #fce7f3;
+  border: 2px solid @dark;
+  border-radius: 10px 4px 4px 10px;
+  padding: 20px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.09);
+}
+
+.notes-questions__title {
+  font-size: 1.15rem !important;
+  margin-bottom: 16px !important;
+  border-bottom: 1.5px solid #f9a8d4;
+  padding-bottom: 6.4px;
+}
+
+.notes-questions__item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.notes-questions__mark {
+  color: #f472b6;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.notes-questions__text {
+  color: #374151 !important;
+  line-height: 1.55 !important;
+  font-size: 0.88rem !important;
+  font-style: italic !important;
+}
+
+.notes-flows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notes-flow {
+  border: 1.5px solid @dark;
+  border-radius: 3px 8px 5px 3px;
+  padding: 12px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.notes-flow--read { background-color: #dcfce7; }
+.notes-flow--ask { background-color: #fff7ed; }
+
+.notes-flow__text {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #374151;
+}
+
+// Column 3 — Mistakes
+.notes-mistakes {
+  background-color: #dcfce7;
+  border: 2px solid @dark;
+  border-radius: 4px 4px 12px 4px;
+  padding: 20px;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.09);
+}
+
+.notes-mistakes__title {
+  font-size: 1.15rem !important;
+  margin-bottom: 16px !important;
+  border-bottom: 1.5px solid #86efac;
+  padding-bottom: 6.4px;
+}
+
+.notes-mistake {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #86efac;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.notes-mistake__bad {
+  color: #dc2626 !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+}
+
+.notes-mistake__learned {
+  color: #374151 !important;
+  font-size: 0.82rem !important;
+  margin-top: 2.4px !important;
+}
+
+// Bottom bar — Recent wins
+.notes-recent {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 2px dashed #e5e7eb;
+}
+
+.notes-recent__label {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+
+.notes-wins-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  @media @sm {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media @md {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.notes-win {
+  background-color: #faf9f7;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 3px 9px 6px 3px;
+  padding: 16px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.notes-win__text {
+  color: #374151 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
+}
+
+// ConnectorLine SVG
+.notes-connector {
+  display: block;
+  margin: 0 auto;
+}

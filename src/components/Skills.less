@@ -1,0 +1,133 @@
+@dark: #2d2d2d;
+@md: ~"(min-width: 900px)";
+@sm: ~"(min-width: 600px)";
+
+.skills-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background-color: #f4f3ef;
+
+  @media @md {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.skills-header {
+  margin-bottom: 56px;
+}
+
+.skills-header__badge {
+  display: inline-block;
+  background-color: @dark;
+  color: #ffffff;
+  padding: 3.2px 16px;
+  border-radius: 3px 7px 5px 2px;
+  margin-bottom: 12px;
+  transform: rotate(-0.8deg);
+}
+
+.skills-header__badge-text {
+  font-family: "Caveat", cursive;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.skills-title {
+  font-size: 2.4rem !important;
+  color: @dark !important;
+
+  @media @md {
+    font-size: 3.5rem !important;
+  }
+}
+
+.skills-subtitle {
+  color: #9ca3af;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @media @sm {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media @md {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.skills-cat {
+  border: 2px solid @dark;
+  border-radius: 4px 12px 8px 4px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:nth-child(even) {
+    border-radius: 12px 4px 4px 12px;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.14);
+  }
+}
+
+.skills-cat__header {
+  display: flex;
+  align-items: center;
+  gap: 9.6px;
+  margin-bottom: 20px;
+}
+
+.skills-cat__icon {
+  font-size: 1.4rem;
+}
+
+.skills-cat__name {
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+}
+
+.skills-cat__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7.2px;
+}
+
+.skills-chip {
+  background-color: #ffffff !important;
+  border: 1.5px solid @dark !important;
+  border-radius: 3px 7px 4px 3px !important;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+  font-weight: 600 !important;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    background-color: #f9fafb !important;
+    transform: translateY(-1px);
+  }
+}
+
+.skills-footer {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1.5px dashed #9ca3af;
+  border-radius: 3px 9px 6px 3px;
+  max-width: 440px;
+  transform: rotate(0.4deg);
+}
+
+.skills-footer__text {
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: #9ca3af;
+}

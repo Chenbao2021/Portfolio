@@ -1,0 +1,179 @@
+@dark: #2d2d2d;
+@md: ~"(min-width: 900px)";
+
+.projects-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  background-color: #faf9f7;
+
+  @media @md {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.projects-header {
+  margin-bottom: 56px;
+}
+
+.projects-title {
+  font-size: 2.4rem !important;
+  color: @dark !important;
+
+  @media @md {
+    font-size: 3.5rem !important;
+  }
+}
+
+.projects-subtitle {
+  color: #9ca3af;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+
+  @media @md {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.projects-card {
+  background-color: #ffffff;
+  border: 2px solid @dark;
+  border-radius: 4px 14px 10px 4px;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: rotate(0deg) translateY(-5px) !important;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.12);
+  }
+}
+
+.projects-card__strip {
+  border-bottom: 2px solid @dark;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.projects-card__emoji {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-top: 1.6px;
+}
+
+.projects-card__name {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+.projects-card__tagline {
+  color: #6b7280 !important;
+  margin-top: 2.4px !important;
+  font-size: 0.88rem !important;
+}
+
+.projects-card__body {
+  padding: 24px;
+}
+
+.projects-card__why {
+  margin-bottom: 16px;
+}
+
+.projects-card__why-label {
+  font-weight: 700 !important;
+  color: #9ca3af !important;
+  letter-spacing: 0.08em !important;
+  font-size: 0.68rem !important;
+  text-transform: uppercase !important;
+}
+
+.projects-card__why-text {
+  margin-top: 4px !important;
+  color: #374151 !important;
+  line-height: 1.65 !important;
+}
+
+.projects-card__lesson {
+  background-color: #fef9c3;
+  border: 1.5px solid #fde047;
+  border-radius: 2px 8px 5px 2px;
+  padding: 14.4px;
+  margin-bottom: 20px;
+}
+
+.projects-card__lesson-label {
+  font-weight: 700 !important;
+  color: #78350f !important;
+  font-size: 0.68rem !important;
+  display: block !important;
+  margin-bottom: 4px !important;
+}
+
+.projects-card__lesson-text {
+  color: #374151 !important;
+  font-size: 0.88rem !important;
+  line-height: 1.55 !important;
+}
+
+.projects-card__stack {
+  margin-bottom: 16px;
+}
+
+.projects-card__stack-label {
+  color: #9ca3af !important;
+  font-weight: 700 !important;
+  font-size: 0.68rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+.projects-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6.4px;
+  margin-top: 6.4px;
+}
+
+.projects-chip {
+  background-color: #f3f4f6 !important;
+  border: 1.5px solid #d1d5db !important;
+  border-radius: 3px 6px 3px 6px !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+}
+
+.projects-card__role {
+  color: #9ca3af !important;
+  font-style: italic !important;
+  display: block !important;
+  margin-bottom: 20px !important;
+}
+
+.projects-card__btn-github {
+  font-size: 0.82rem !important;
+  padding: 4.8px 16px !important;
+  background-color: #fff !important;
+  border-color: @dark !important;
+  color: @dark !important;
+}
+
+.projects-card__btn-demo {
+  font-size: 0.82rem !important;
+  padding: 4.8px 16px !important;
+  background-color: @dark !important;
+  color: #fff !important;
+
+  &:hover {
+    background-color: #1a1a1a !important;
+  }
+}

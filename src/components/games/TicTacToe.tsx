@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Box, Typography, Button } from "@mui/material";
+import "./TicTacToe.less";
 
 type Cell = "X" | "O" | null;
 
@@ -19,13 +20,11 @@ function checkWinner(board: Cell[]): Cell | "draw" | null {
 
 function cpuMove(board: Cell[]): number {
   const empty = board.map((c, i) => (c === null ? i : -1)).filter((i) => i >= 0);
-  // Try to win
   for (const [a, b, c] of LINES) {
     const cells = [board[a], board[b], board[c]];
     if (cells.filter((x) => x === "O").length === 2 && cells.includes(null))
       return [a, b, c][cells.indexOf(null)];
   }
-  // Block player
   for (const [a, b, c] of LINES) {
     const cells = [board[a], board[b], board[c]];
     if (cells.filter((x) => x === "X").length === 2 && cells.includes(null))
@@ -74,58 +73,32 @@ export default function TicTacToe() {
 
   return (
     <Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1.5 }}>
-        <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#6b7280" }}>
-          You: {score.you}
-        </Typography>
-        <Typography sx={{ fontFamily: '"Caveat", cursive', fontSize: "1rem", color: "#6b7280" }}>
-          CPU: {score.cpu}
-        </Typography>
+      <Box className="ttt-score-row">
+        <Typography className="ttt-score-text">You: {score.you}</Typography>
+        <Typography className="ttt-score-text">CPU: {score.cpu}</Typography>
       </Box>
 
-      <Box sx={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, mb: 1.5 }}>
-        {board.map((cell, i) => (
-          <Box
-            key={i}
-            onClick={() => handleClick(i)}
-            sx={{
-              height: 60,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              bgcolor: cell === "X" ? "#fef9c3" : cell === "O" ? "#dbeafe" : "#faf9f7",
-              border: "2px solid #2d2d2d",
-              borderRadius: "3px 8px 5px 3px",
-              cursor: !cell && !winner && playerTurn ? "pointer" : "default",
-              transition: "all 0.1s ease",
-              "&:hover": !cell && !winner && playerTurn
-                ? { bgcolor: "#f3f4f6", transform: "translateY(-2px)" }
-                : {},
-            }}
-          >
-            <Typography
-              sx={{
-                fontFamily: '"Caveat", cursive',
-                fontSize: "2rem",
-                fontWeight: 700,
-                color: cell === "X" ? "#ca8a04" : "#3b82f6",
-              }}
-            >
-              {cell}
-            </Typography>
-          </Box>
-        ))}
+      <Box className="ttt-grid">
+        {board.map((cell, i) => {
+          const cellClass = [
+            "ttt-cell",
+            cell === "X" ? "ttt-cell--x" : cell === "O" ? "ttt-cell--o" : "",
+            !cell && !winner && playerTurn ? "ttt-cell--clickable" : "ttt-cell--disabled",
+          ].filter(Boolean).join(" ");
+
+          return (
+            <Box key={i} onClick={() => handleClick(i)} className={cellClass}>
+              <Typography
+                className={`ttt-cell__symbol ${cell === "X" ? "ttt-cell__symbol--x" : "ttt-cell__symbol--o"}`}
+              >
+                {cell}
+              </Typography>
+            </Box>
+          );
+        })}
       </Box>
 
-      <Typography
-        sx={{
-          fontFamily: '"Caveat", cursive',
-          fontSize: "1rem",
-          color: "#6b7280",
-          textAlign: "center",
-          mb: 1,
-        }}
-      >
-        {status}
-      </Typography>
+      <Typography className="ttt-status">{status}</Typography>
 
       {winner && (
         <Button variant="outlined" size="small" onClick={reset} fullWidth>
