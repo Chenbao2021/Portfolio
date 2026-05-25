@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react'
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
+import React, { Suspense, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material'
 import { StyledEngineProvider } from '@mui/material/styles'
 import './App.less'
@@ -81,9 +81,16 @@ const theme = createTheme({
   },
 })
 
+function ScrollToTop(): null {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
+
 function Layout(): JSX.Element {
   return (
     <Box className="app-layout">
+      <ScrollToTop />
       <Navbar />
       <main className="app-main">
         <Outlet />
