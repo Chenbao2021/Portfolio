@@ -8,6 +8,7 @@ import {
   Stack,
   Dialog,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { projects, Project } from "../data/projects";
 import SectionHeader from "./SectionHeader";
 import "./Projects.less";
@@ -19,6 +20,8 @@ function ProjectModal({
   project: Project | null;
   onClose: () => void;
 }) {
+  const { t } = useTranslation();
+
   return (
     <Dialog
       open={!!project}
@@ -40,11 +43,8 @@ function ProjectModal({
               <Typography className="projects-modal__name">
                 {project.name}
               </Typography>
-              <Typography
-                variant="body2"
-                className="projects-card__tagline"
-              >
-                {project.tagline}
+              <Typography variant="body2" className="projects-card__tagline">
+                {t(`projects.${project.key}.tagline`)}
               </Typography>
             </Box>
             <button className="projects-modal__close" onClick={onClose}>
@@ -54,70 +54,50 @@ function ProjectModal({
 
           <Box className="projects-modal__body">
             <Box>
-              <Typography
-                variant="caption"
-                className="projects-card__why-label"
-              >
-                Why I built it
+              <Typography variant="caption" className="projects-card__why-label">
+                {t("projects.label_why")}
               </Typography>
-              <Typography
-                variant="body2"
-                className="projects-modal__why-text"
-              >
-                {project.why}
-              </Typography>
-            </Box>
-
-            {project.description && (
-              <Box>
-                <Typography
-                  variant="caption"
-                  className="projects-card__why-label"
-                >
-                  Description
-                </Typography>
-                <Box className="projects-card__description-lines">
-                  {project.description.map((line, i) => (
-                    <Box key={i} className="projects-card__description-row">
-                      <Typography
-                        variant="body2"
-                        className="projects-modal__description-line"
-                      >
-                        {line}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
-            )}
-
-            <Box className={`projects-modal__lesson projects-modal__lesson--${project.colorKey}`}>
-              <Typography
-                variant="caption"
-                className="projects-card__lesson-label"
-              >
-                💡 Lesson learned
-              </Typography>
-              <Typography
-                variant="body2"
-                className="projects-modal__lesson-text"
-              >
-                {project.lesson}
+              <Typography variant="body2" className="projects-modal__why-text">
+                {t(`projects.${project.key}.why`)}
               </Typography>
             </Box>
 
             <Box>
-              <Typography
-                variant="caption"
-                className="projects-card__stack-label"
-              >
-                Stack
+              <Typography variant="caption" className="projects-card__why-label">
+                {t("projects.label_description")}
+              </Typography>
+              <Box className="projects-card__description-lines">
+                {(t(`projects.${project.key}.description`, { returnObjects: true }) as string[]).map((line, i) => (
+                  <Box key={i} className="projects-card__description-row">
+                    <Typography
+                      variant="body2"
+                      className="projects-modal__description-line"
+                    >
+                      {line}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+
+            <Box className={`projects-modal__lesson projects-modal__lesson--${project.colorKey}`}>
+              <Typography variant="caption" className="projects-card__lesson-label">
+                {t("projects.label_lesson")}
+              </Typography>
+              <Typography variant="body2" className="projects-modal__lesson-text">
+                {t(`projects.${project.key}.lesson`)}
+              </Typography>
+            </Box>
+
+            <Box>
+              <Typography variant="caption" className="projects-card__stack-label">
+                {t("projects.label_stack")}
               </Typography>
               <Box className="projects-card__chips">
-                {project.tech.map((t) => (
+                {project.tech.map((tech) => (
                   <Chip
-                    key={t}
-                    label={t}
+                    key={tech}
+                    label={tech}
                     size="small"
                     className="projects-chip"
                   />
@@ -133,7 +113,7 @@ function ProjectModal({
                   href={project.github}
                   className="projects-card__btn-github"
                 >
-                  GitHub →
+                  {t("projects.btn_github")}
                 </Button>
               )}
               {project.demo && (
@@ -143,7 +123,7 @@ function ProjectModal({
                   href={project.demo}
                   className="projects-card__btn-demo"
                 >
-                  Live Demo ↗
+                  {t("projects.btn_demo")}
                 </Button>
               )}
             </Stack>
@@ -156,13 +136,14 @@ function ProjectModal({
 
 function ProjectGrid({ items }: { items: typeof projects }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { t } = useTranslation();
 
   return (
     <>
       <Box className="projects-grid">
         {items.map((project) => (
           <Box
-            key={project.name}
+            key={project.key}
             className={`projects-card projects-card--${project.colorKey}`}
           >
             <Box className="projects-card__strip">
@@ -173,76 +154,53 @@ function ProjectGrid({ items }: { items: typeof projects }) {
                 <Typography variant="h5" className="projects-card__name">
                   {project.name}
                 </Typography>
-                <Typography
-                  variant="body2"
-                  className="projects-card__tagline"
-                >
-                  {project.tagline}
+                <Typography variant="body2" className="projects-card__tagline">
+                  {t(`projects.${project.key}.tagline`)}
                 </Typography>
               </Box>
             </Box>
 
             <Box className="projects-card__body">
               <Box className="projects-card__why">
-                <Typography
-                  variant="caption"
-                  className="projects-card__why-label"
-                >
-                  Why I built it
+                <Typography variant="caption" className="projects-card__why-label">
+                  {t("projects.label_why")}
                 </Typography>
-                <Typography
-                  variant="body2"
-                  className="projects-card__why-text"
-                >
-                  {project.why}
+                <Typography variant="body2" className="projects-card__why-text">
+                  {t(`projects.${project.key}.why`)}
                 </Typography>
-                {project.description && (
-                  <Box className="projects-card__description">
-                    <Box className="projects-card__description-header">
-                      <Typography
-                        variant="caption"
-                        className="projects-card__why-label"
-                      >
-                        Description
-                      </Typography>
-                      <button
-                        className="projects-card__why-toggle"
-                        onClick={() => setSelectedProject(project)}
-                      >
-                        +
-                      </button>
-                    </Box>
+                <Box className="projects-card__description">
+                  <Box className="projects-card__description-header">
+                    <Typography variant="caption" className="projects-card__why-label">
+                      {t("projects.label_description")}
+                    </Typography>
+                    <button
+                      className="projects-card__why-toggle"
+                      onClick={() => setSelectedProject(project)}
+                    >
+                      +
+                    </button>
                   </Box>
-                )}
+                </Box>
               </Box>
 
               <Box className={`projects-card__lesson projects-card__lesson--${project.colorKey}`}>
-                <Typography
-                  variant="caption"
-                  className="projects-card__lesson-label"
-                >
-                  💡 Lesson learned
+                <Typography variant="caption" className="projects-card__lesson-label">
+                  {t("projects.label_lesson")}
                 </Typography>
-                <Typography
-                  variant="body2"
-                  className="projects-card__lesson-text"
-                >
-                  {project.lesson}
+                <Typography variant="body2" className="projects-card__lesson-text">
+                  {t(`projects.${project.key}.lesson`)}
                 </Typography>
               </Box>
 
               <Box className="projects-card__stack">
-                <Typography
-                  variant="caption"
-                  className="projects-card__stack-label"
-                >
-                  Stack
+                <Typography variant="caption" className="projects-card__stack-label">
+                  {t("projects.label_stack")}
                 </Typography>
                 <Box className="projects-card__chips">
-                  {project.tech.map((t) => (
+                  {project.tech.map((tech) => (
                     <Chip
-                      key={t}
-                      label={t}
+                      key={tech}
+                      label={tech}
                       size="small"
                       className="projects-chip"
                     />
@@ -258,7 +216,7 @@ function ProjectGrid({ items }: { items: typeof projects }) {
                     href={project.github}
                     className="projects-card__btn-github"
                   >
-                    GitHub →
+                    {t("projects.btn_github")}
                   </Button>
                 )}
                 {project.demo && (
@@ -268,7 +226,7 @@ function ProjectGrid({ items }: { items: typeof projects }) {
                     href={project.demo}
                     className="projects-card__btn-demo"
                   >
-                    Live Demo ↗
+                    {t("projects.btn_demo")}
                   </Button>
                 )}
               </Stack>
@@ -285,6 +243,7 @@ function ProjectGrid({ items }: { items: typeof projects }) {
 }
 
 export default function Projects(): JSX.Element {
+  const { t } = useTranslation();
   const professional = projects.filter((p) => p.professional === true);
   const personal = projects.filter((p) => p.professional === false);
 
@@ -293,14 +252,14 @@ export default function Projects(): JSX.Element {
       <Container maxWidth="lg">
         <SectionHeader
           className="projects-header"
-          title="Projects 📌"
-          subtitle="things I actually finished (and a few I'm still tweaking)"
+          title={t("projects.title")}
+          subtitle={t("projects.subtitle")}
         />
 
         {professional.length > 0 && (
           <Box className="projects-category">
             <Typography variant="h6" className="projects-category__title">
-              💼 Professional
+              {t("projects.label_professional")}
             </Typography>
             <ProjectGrid items={professional} />
           </Box>
@@ -309,7 +268,7 @@ export default function Projects(): JSX.Element {
         {personal.length > 0 && (
           <Box className="projects-category">
             <Typography variant="h6" className="projects-category__title">
-              🧪 Personal
+              {t("projects.label_personal")}
             </Typography>
             <ProjectGrid items={personal} />
           </Box>

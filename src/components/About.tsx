@@ -1,21 +1,24 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { cards } from "../data/about";
 import "./About.less";
 import { JSX } from "@emotion/react/jsx-dev-runtime";
 
 export default function About(): JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <Box component="section" id="about" className="about-section">
       <Container maxWidth="lg">
         <Box className="about-header">
           <Typography variant="h2" className="about-title">
-            About Me
+            {t("about.title")}
           </Typography>
           <Box className="about-title-row">
             <Box className="about-title-bar" />
             <Typography variant="body1" className="about-subtitle">
-              a few things worth knowing
+              {t("about.subtitle")}
             </Typography>
           </Box>
         </Box>
@@ -23,21 +26,20 @@ export default function About(): JSX.Element {
         <Box className="about-grid">
           {cards.map((card) => (
             <Box
-              key={card.title}
+              key={card.key}
               className={`about-card about-card--${card.colorKey}`}
             >
               <Box className="about-card__header">
                 <Typography className="about-card__icon">
                   {card.icon}
                 </Typography>
-                <Typography
-                  variant="h5"
-                  className="about-card__title"
-                >
-                  {card.title}
+                <Typography variant="h5" className="about-card__title">
+                  {t(`about.cards.${card.key}.title`)}
                 </Typography>
               </Box>
-              <Typography className="about-card__body">{card.body}</Typography>
+              <Typography className="about-card__body">
+                {t(`about.cards.${card.key}.body`)}
+              </Typography>
             </Box>
           ))}
         </Box>
@@ -46,11 +48,10 @@ export default function About(): JSX.Element {
           <Typography className="about-footnote__pin">📌</Typography>
           <Box>
             <Typography className="about-footnote__quote">
-              "I'm not trying to look perfect. I'm trying to become clearer and
-              more useful every year."
+              {t("about.footnote_quote")}
             </Typography>
             <Typography variant="caption" className="about-footnote__caption">
-              — something I remind myself every Monday morning
+              {t("about.footnote_caption")}
             </Typography>
           </Box>
         </Box>

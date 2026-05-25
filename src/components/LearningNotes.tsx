@@ -7,6 +7,7 @@ import {
   DialogContent,
   IconButton,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import SectionHeader from "./SectionHeader";
 import "./LearningNotes.less";
 
@@ -17,11 +18,9 @@ interface Mistake {
 
 interface WinItem {
   title: string;
-  details: {
-    summary: string;
-    points: string[];
-    takeaway: string;
-  };
+  summary: string;
+  points: string[];
+  takeaway: string;
 }
 
 const ConnectorLine = (): JSX.Element => (
@@ -50,57 +49,29 @@ const ConnectorLine = (): JSX.Element => (
   </svg>
 );
 
-const WIN_ITEMS: WinItem[] = [
-  {
-    title: "🎯 How React reconciliation actually works (finally)",
-    details: {
-      summary:
-        "React doesn't re-render the whole DOM on every state change — it compares a virtual DOM tree with the previous one and only patches what changed.",
-      points: [
-        "The reconciler builds a 'fiber tree' — each node represents a component with its state, props, and work queue.",
-        "Diffing is O(n) thanks to two heuristics: elements of different types produce different trees, and keys help identify stable list items across renders.",
-        "Without a key (or with index as key), React re-creates list items when order changes — causing layout jumps and lost local state.",
-        "Concurrent Mode (React 18) lets the reconciler pause, prioritize, and resume work — that's why transitions feel smoother.",
-        "useTransition and useDeferredValue are direct hooks into this priority system.",
-      ],
-      takeaway:
-        "Keys aren't just a lint rule. They're the contract React uses to decide whether to update or unmount+remount a component.",
-    },
-  },
-  {
-    title: "✍️ Writing for clarity makes you think more clearly",
-    details: {
-      summary:
-        "Vague writing is a symptom of vague thinking. The act of writing forces you to surface assumptions and fill in gaps you didn't know existed.",
-      points: [
-        "If you can't explain it in one clear sentence, you probably don't fully understand it yet.",
-        "Writing a design doc before coding exposes edge cases early — when they're cheap to fix.",
-        "Active voice + short sentences reduce cognitive load for the reader and force precision in the author.",
-        "The rubber-duck effect: writing to explain something to someone else reactivates your own understanding.",
-        "Docs written right after solving a problem are the most accurate — delay and you lose the 'why' behind decisions.",
-      ],
-      takeaway:
-        "Writing is thinking made visible. If the sentence is fuzzy, the idea behind it is too.",
-    },
-  },
-];
-
 export default function LearningNotes(): JSX.Element {
-  const [selectedWin, setSelectedWin] = useState<WinItem | null>(null);
+  const { t } = useTranslation();
+  const [selectedWinIndex, setSelectedWinIndex] = useState<number | null>(null);
+
+  const exploringItems = t("notes.exploring_items", { returnObjects: true }) as string[];
+  const questions = t("notes.questions", { returnObjects: true }) as string[];
+  const mistakes = t("notes.mistakes", { returnObjects: true }) as Mistake[];
+  const winItems = t("notes.win_items", { returnObjects: true }) as WinItem[];
+  const selectedWin = selectedWinIndex !== null ? winItems[selectedWinIndex] : null;
 
   return (
     <Box component="section" id="notes" className="notes-section">
       <Container maxWidth="lg">
         <SectionHeader
           className="notes-header"
-          title="🧠 Thinking Board"
-          subtitle="notes to self, questions I'm chasing, things that recently clicked"
+          title={t("notes.title")}
+          subtitle={t("notes.subtitle")}
         />
 
         <Box className="notes-board">
           <Box className="notes-board__tab">
             <Typography className="notes-board__tab-text">
-              brainstorm / ongoing
+              {t("notes.tab")}
             </Typography>
           </Box>
 
@@ -109,15 +80,10 @@ export default function LearningNotes(): JSX.Element {
             <Box className="notes-col-exploring">
               <Box className="notes-exploring">
                 <Typography variant="h6" className="notes-exploring__title">
-                  🔭 Currently exploring
+                  {t("notes.exploring_title")}
                 </Typography>
-                {[
-                  "How to create reusables agent skills",
-                  "Improving productivity with AI",
-                  "Writing cleaner abstractions",
-                  'Why some codebases feel "good"',
-                ].map((item) => (
-                  <Box key={item} className="notes-exploring__item">
+                {exploringItems.map((item, i) => (
+                  <Box key={i} className="notes-exploring__item">
                     <Typography className="notes-exploring__arrow">
                       →
                     </Typography>
@@ -133,7 +99,7 @@ export default function LearningNotes(): JSX.Element {
 
               <Box className="notes-sticky">
                 <Typography className="notes-sticky__text">
-                  "Understanding beats memorizing. Every single time."
+                  {t("notes.sticky")}
                 </Typography>
               </Box>
             </Box>
@@ -142,13 +108,10 @@ export default function LearningNotes(): JSX.Element {
             <Box className="notes-col-questions">
               <Box className="notes-questions">
                 <Typography variant="h6" className="notes-questions__title">
-                  ❓ Questions I'm chasing
+                  {t("notes.questions_title")}
                 </Typography>
-                {[
-                  "When is abstraction helpful vs. just clever?",
-                  'Is "good enough" ever actually good enough?',
-                ].map((q) => (
-                  <Box key={q} className="notes-questions__item">
+                {questions.map((q, i) => (
+                  <Box key={i} className="notes-questions__item">
                     <Typography className="notes-questions__mark">?</Typography>
                     <Typography
                       variant="body2"
@@ -163,12 +126,12 @@ export default function LearningNotes(): JSX.Element {
               <Box className="notes-flows">
                 <Box className="notes-flow notes-flow--read">
                   <Typography className="notes-flow__text">
-                    Read → try → break → fix → repeat
+                    {t("notes.flow_read")}
                   </Typography>
                 </Box>
                 <Box className="notes-flow notes-flow--ask">
                   <Typography className="notes-flow__text">
-                    Ask → explore → document → share
+                    {t("notes.flow_ask")}
                   </Typography>
                 </Box>
               </Box>
@@ -178,28 +141,18 @@ export default function LearningNotes(): JSX.Element {
             <Box>
               <Box className="notes-mistakes">
                 <Typography variant="h6" className="notes-mistakes__title">
-                  🐛 Mistakes that taught me
+                  {t("notes.mistakes_title")}
                 </Typography>
-                {[
-                  {
-                    bad: "Pushed to prod on a Friday",
-                    learned: "Never. Again.",
-                  },
-                  {
-                    bad: "Skipped documentation",
-                    learned:
-                      "Suffered 3 months later. Documented everything after.",
-                  },
-                ].map(({ bad, learned }: Mistake) => (
-                  <Box key={bad} className="notes-mistake">
+                {mistakes.map((m, i) => (
+                  <Box key={i} className="notes-mistake">
                     <Typography variant="body2" className="notes-mistake__bad">
-                      ✗ {bad}
+                      ✗ {m.bad}
                     </Typography>
                     <Typography
                       variant="body2"
                       className="notes-mistake__learned"
                     >
-                      → {learned}
+                      → {m.learned}
                     </Typography>
                   </Box>
                 ))}
@@ -209,20 +162,20 @@ export default function LearningNotes(): JSX.Element {
 
           <Box className="notes-recent">
             <Typography className="notes-recent__label">
-              ⭐ recently learned / recently clicked:
+              {t("notes.recent_label")}
             </Typography>
             <Box className="notes-wins-grid">
-              {WIN_ITEMS.map((win) => (
-                <Box key={win.title} className="notes-win">
+              {winItems.map((win, i) => (
+                <Box key={i} className="notes-win">
                   <Typography variant="body2" className="notes-win__text">
                     {win.title}
                   </Typography>
                   <Box
                     component="button"
                     className="notes-win__expand-btn"
-                    onClick={() => setSelectedWin(win)}
+                    onClick={() => setSelectedWinIndex(i)}
                   >
-                    développer →
+                    {t("notes.expand_btn")}
                   </Box>
                 </Box>
               ))}
@@ -233,7 +186,7 @@ export default function LearningNotes(): JSX.Element {
 
       <Dialog
         open={selectedWin !== null}
-        onClose={() => setSelectedWin(null)}
+        onClose={() => setSelectedWinIndex(null)}
         maxWidth="sm"
         fullWidth
         disableScrollLock
@@ -242,7 +195,7 @@ export default function LearningNotes(): JSX.Element {
         {selectedWin && (
           <DialogContent className="notes-modal__content">
             <IconButton
-              onClick={() => setSelectedWin(null)}
+              onClick={() => setSelectedWinIndex(null)}
               className="notes-modal__close"
               size="small"
             >
@@ -254,11 +207,11 @@ export default function LearningNotes(): JSX.Element {
             </Typography>
 
             <Typography className="notes-modal__summary">
-              {selectedWin.details.summary}
+              {selectedWin.summary}
             </Typography>
 
             <Box className="notes-modal__points">
-              {selectedWin.details.points.map((point, i) => (
+              {selectedWin.points.map((point, i) => (
                 <Box key={i} className="notes-modal__point">
                   <Typography className="notes-modal__point-bullet">
                     →
@@ -275,7 +228,7 @@ export default function LearningNotes(): JSX.Element {
 
             <Box className="notes-modal__takeaway">
               <Typography className="notes-modal__takeaway-text">
-                💡 {selectedWin.details.takeaway}
+                💡 {selectedWin.takeaway}
               </Typography>
             </Box>
           </DialogContent>

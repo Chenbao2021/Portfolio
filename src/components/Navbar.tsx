@@ -13,7 +13,9 @@ import {
   ListItemText,
   Container,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { navLinks } from "../data/navbar";
+import LanguageSwitcher from "./LanguageSwitcher";
 import "./Navbar.less";
 
 const HamburgerIcon = (): JSX.Element => (
@@ -75,6 +77,7 @@ export default function Navbar(): JSX.Element {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const onScroll = useCallback(() => setScrolled(window.scrollY > 24), []);
   const openDrawer = useCallback(() => setDrawerOpen(true), []);
@@ -109,19 +112,29 @@ export default function Navbar(): JSX.Element {
                     variant="text"
                     className={`navbar-link${isActive ? " is-active" : ""}`}
                   >
-                    {link.label}
+                    {t(`navbar.${link.label.toLowerCase()}`)}
                   </Button>
                 );
               })}
+              {/* Desktop: switcher juste après les liens */}
+              <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", ml: 1 }}>
+                <LanguageSwitcher />
+              </Box>
             </Box>
 
-            <IconButton
-              className="navbar-hamburger"
-              onClick={openDrawer}
-              aria-label="open menu"
-            >
-              <HamburgerIcon />
-            </IconButton>
+            {/* Mobile: switcher à gauche du hamburger */}
+            <Box sx={{ display: { xs: "flex", md: "none" }, alignItems: "center" }}>
+              <Box sx={{ display: { xs: "flex", md: "none" }, alignItems: "center" }}>
+                <LanguageSwitcher />
+              </Box>
+              <IconButton
+                className="navbar-hamburger"
+                onClick={openDrawer}
+                aria-label="open menu"
+              >
+                <HamburgerIcon />
+              </IconButton>
+            </Box>
           </Box>
         </Container>
       </AppBar>
@@ -151,7 +164,7 @@ export default function Navbar(): JSX.Element {
                   className={`navbar-drawer-link${isActive ? " is-active" : ""}`}
                 >
                   <ListItemText
-                    primary={link.label}
+                    primary={t(`navbar.${link.label.toLowerCase()}`)}
                     primaryTypographyProps={{
                       fontFamily: '"Caveat", cursive',
                       fontSize: "1.3rem",
@@ -164,6 +177,9 @@ export default function Navbar(): JSX.Element {
             );
           })}
         </List>
+        <Box sx={{ p: 2, borderTop: "1.5px dashed #d1d5db", mt: "auto" }}>
+          <LanguageSwitcher />
+        </Box>
       </Drawer>
     </>
   );

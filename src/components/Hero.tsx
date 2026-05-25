@@ -1,6 +1,7 @@
 import React, { JSX, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, Button, Container, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import "./Hero.less";
 
 const GameControllerDoodle = (): JSX.Element => (
@@ -143,11 +144,13 @@ const StarDoodle = (): JSX.Element => (
 
 export default function Hero(): JSX.Element {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const createNavigateHandler = useCallback((path: string) => {
     return () => {
       navigate(path);
     };
   }, []);
+
   return (
     <Box component="section" className="hero-section">
       <Box aria-hidden className="hero-dot-grid" />
@@ -159,12 +162,12 @@ export default function Hero(): JSX.Element {
             <Box className="hero-badge">
               <Box className="hero-badge__dot" />
               <Typography variant="body2" className="hero-badge__text">
-                Open to opportunities
+                {t("hero.badge")}
               </Typography>
             </Box>
 
             <Typography variant="h1" className="hero-name">
-              Hey, I'm{" "}
+              {t("hero.greeting")}{" "}
               <Box component="span" className="hero-name__highlight">
                 Chen
               </Box>{" "}
@@ -172,20 +175,18 @@ export default function Hero(): JSX.Element {
             </Typography>
 
             <Typography variant="h3" className="hero-role">
-              Developer → Builder → Learner
+              {t("hero.role")}
             </Typography>
 
             <Box className="hero-tagline">
               <Box aria-hidden className="hero-tagline__pin" />
               <Typography className="hero-tagline__text">
-                "I build things, break them, figure out why,
-                <br />
-                and write notes so future me doesn't suffer."
+                {t("hero.tagline")}
               </Typography>
               <Box className="hero-tagline__footer">
                 <DoodleArrow />
                 <Typography variant="caption" className="hero-tagline__caption">
-                  still learning, always curious
+                  {t("hero.caption")}
                 </Typography>
               </Box>
             </Box>
@@ -200,21 +201,21 @@ export default function Hero(): JSX.Element {
                 onClick={createNavigateHandler("/projects")}
                 className="hero-btn--projects"
               >
-                🚀 View My Projects
+                {t("hero.cta_projects")}
               </Button>
               <Button
                 variant="outlined"
                 onClick={createNavigateHandler("/notes")}
                 className="hero-btn--notes"
               >
-                Read My Notes 📓
+                {t("hero.cta_notes")}
               </Button>
               <Button
                 variant="outlined"
                 onClick={createNavigateHandler("/contact")}
                 className="hero-btn--contact"
               >
-                Contact Me ✉️
+                {t("hero.cta_contact")}
               </Button>
             </Stack>
           </Box>
@@ -223,7 +224,7 @@ export default function Hero(): JSX.Element {
           <Box className="hero-right">
             <Box className="hero-game-board">
               <Typography className="hero-board-label">
-                🎮 game space
+                {t("hero.game_label")}
               </Typography>
 
               <Box className="hero-controller">
@@ -235,10 +236,10 @@ export default function Hero(): JSX.Element {
                 className="hero-play-btn"
               >
                 <Typography className="hero-play-btn__label">
-                  ▶ ENTER GAME SPACE
+                  {t("hero.game_cta")}
                 </Typography>
                 <Typography className="hero-play-btn__sub">
-                  3 games · click to play
+                  {t("hero.game_sub")}
                 </Typography>
               </Box>
 

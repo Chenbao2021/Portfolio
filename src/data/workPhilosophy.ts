@@ -1,14 +1,13 @@
 export interface Principle {
-  emoji: string
-  rule: string
-  note: string
+  emoji: string;
+  index: number;
 }
 
 export const principles: Principle[] = [
-  { emoji: '🎯', rule: 'Clarity over cleverness.', note: 'Smart code that no one can read is not smart code.' },
-  { emoji: '📝', rule: "Write notes so future me doesn't suffer.", note: 'Documentation is a love letter to your future self.' },
-  { emoji: '🌱', rule: 'Prefer simple systems that can grow.', note: "You don't need to solve next year's problem today." },
-  { emoji: '❓', rule: 'Good questions are part of good engineering.', note: 'The right question saves more time than the fastest code.' },
-  { emoji: '🔄', rule: "Iterate; don't over-plan.", note: 'Ship something. Learn from it. Adjust. Repeat.' },
-  { emoji: '🤝', rule: 'Code is communication.', note: "You're writing for humans first, machines second." },
-]
+  { emoji: "🎯", index: 0 },
+  { emoji: "📝", index: 1 },
+  { emoji: "🌱", index: 2 },
+  { emoji: "❓", index: 3 },
+  { emoji: "🔄", index: 4 },
+  { emoji: "🤝", index: 5 },
+];

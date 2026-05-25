@@ -1,33 +1,12 @@
 export interface Card {
-  title: string;
+  key: string;
   icon: string;
-  body: string;
   colorKey: "yellow" | "blue" | "green" | "pink";
 }
 
 export const cards: Card[] = [
-  {
-    title: "What I do",
-    icon: "🔨",
-    body: "full-stack developer at TotalEnergies in France. Frontend with React and TypeScript, and backend with C# and SQL Server, and increasingly cloud work with Azure and Terraform. I build things that are usable, maintainable, and don't make future-me miserable.",
-    colorKey: "yellow",
-  },
-  {
-    title: "What I'm learning",
-    icon: "📚",
-    body: "Deliberately expanding from frontend toward cloud and system-level thinking. Currently digging into React/TypeScript architecture, Azure and Terraform and system design fundamentals. I'm still learning — and that's the point.",
-    colorKey: "blue",
-  },
-  {
-    title: "What I care about",
-    icon: "❤️",
-    body: "Clarity and maintainability. After every task, I write a recap — what the problem was, what I changed, and where to start reading next time. Code that future-me (and teammates) can understand without a phone call.",
-    colorKey: "green",
-  },
-  {
-    title: "How I think",
-    icon: "🧠",
-    body: "Break the problem down, write things down, ask better questions. I use AI tools to move faster — but I still care about understanding the problem, checking the trade-offs, and knowing why the solution works. AI as thinking partner, not autopilot.",
-    colorKey: "pink",
-  },
+  { key: "whatIDo",   icon: "🔨", colorKey: "yellow" },
+  { key: "learning",  icon: "📚", colorKey: "blue"   },
+  { key: "care",      icon: "❤️",  colorKey: "green"  },
+  { key: "think",     icon: "🧠", colorKey: "pink"   },
 ];

@@ -1,0 +1,235 @@
+{
+  "navbar": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "notes": "Notes",
+    "philosophy": "Philosophy",
+    "games": "Games",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Open to opportunities",
+    "greeting": "Hey, I'm",
+    "role": "Developer → Builder → Learner",
+    "tagline": "\"I build things, break them, figure out why, and write notes so future me doesn't suffer.\"",
+    "caption": "still learning, always curious",
+    "cta_projects": "🚀 View My Projects",
+    "cta_notes": "Read My Notes 📓",
+    "cta_contact": "Contact Me ✉️",
+    "game_label": "🎮 game space",
+    "game_cta": "▶ ENTER GAME SPACE",
+    "game_sub": "3 games · click to play"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "a few things worth knowing",
+    "footnote_quote": "\"I'm not trying to look perfect. I'm trying to become clearer and more useful every year.\"",
+    "footnote_caption": "— something I remind myself every Monday morning",
+    "cards": {
+      "whatIDo": {
+        "title": "What I do",
+        "body": "full-stack developer at TotalEnergies in France. Frontend with React and TypeScript, and backend with C# and SQL Server, and increasingly cloud work with Azure and Terraform. I build things that are usable, maintainable, and don't make future-me miserable."
+      },
+      "learning": {
+        "title": "What I'm learning",
+        "body": "Deliberately expanding from frontend toward cloud and system-level thinking. Currently digging into React/TypeScript architecture, Azure and Terraform and system design fundamentals. I'm still learning — and that's the point."
+      },
+      "care": {
+        "title": "What I care about",
+        "body": "Clarity and maintainability. After every task, I write a recap — what the problem was, what I changed, and where to start reading next time. Code that future-me (and teammates) can understand without a phone call."
+      },
+      "think": {
+        "title": "How I think",
+        "body": "Break the problem down, write things down, ask better questions. I use AI tools to move faster — but I still care about understanding the problem, checking the trade-offs, and knowing why the solution works. AI as thinking partner, not autopilot."
+      }
+    }
+  },
+  "skills": {
+    "title": "Skills & Tools 🧰",
+    "subtitle": "things I actually use, not things I put on a resumé and forgot about",
+    "footer": "✏️ Always adding to this list. Ask me about recent obsessions.",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "cloud": "Cloud / Infra",
+      "ai": "AI Tools",
+      "design": "Design / Thinking",
+      "writing": "Writing & Clarity"
+    }
+  },
+  "projects": {
+    "title": "Projects 📌",
+    "subtitle": "things I actually finished (and a few I'm still tweaking)",
+    "label_professional": "💼 Professional",
+    "label_personal": "🧪 Personal",
+    "label_why": "Why I built it",
+    "label_description": "Description",
+    "label_lesson": "💡 Lesson learned",
+    "label_stack": "Stack",
+    "btn_github": "GitHub →",
+    "btn_demo": "Live Demo ↗",
+    "inspectare": {
+      "tagline": "A PWA used by Vetting teams to manage and edit vessel audit reports, with offline access and data synchronization.",
+      "why": "A project developed within the TotalEnergies group at the request of the Vetting team to replace paper-based maritime inspection reports with a digital solution.",
+      "description": [
+        "Development of a PWA for managing and editing vessel audit reports with offline mode and a standardized format for worker requests.",
+        "Implementation of data synchronization across multiple promises and integration of Service Workers for offline usage.",
+        "Management of complex front-end states with IndexedDB, speeding up data access.",
+        "Automation of deployments and Azure resource management via Terraform, reducing manual tasks by 90%.",
+        "Close collaboration with the DevOps team to set up CI/CD pipelines and secure cloud access."
+      ],
+      "lesson": "Learned more about PWA, Azure Cloud, React, LESS and teamwork — and I'm honestly glad I did."
+    },
+    "kds": {
+      "tagline": "A digital screen system used in restaurants to manage kitchen orders",
+      "why": "A project I worked on during my apprenticeship year, which was commercialized before the end",
+      "description": [
+        "Development of a real-time mobile application for restaurant order management.",
+        "Implementation of data synchronization via Firebase and real-time communication via TCP sockets.",
+        "Design of the user interface with Figma and compliance with ESLint standards.",
+        "Participation in the commercialization phase and delivery of two stable versions.",
+        "Independent work: code writing, testing, and debugging."
+      ],
+      "lesson": "Learned more about React Native, teamwork, and how to build a project from A to Z — and I'm honestly glad I did."
+    },
+    "narrio": {
+      "tagline": "A small web application to support story progression",
+      "why": "As one of the organizers of social events, I created this website to reduce the need for excessive paper printing",
+      "description": [
+        "Most of the codebase was generated with Claude Code, while I focused on refinement, integration, and UI/UX improvements."
+      ],
+      "lesson": "Learned how to work efficiently with Claude, discover what its limits are, and create a reusable SKILL."
+    }
+  },
+  "notes": {
+    "title": "🧠 Thinking Board",
+    "subtitle": "notes to self, questions I'm chasing, things that recently clicked",
+    "tab": "brainstorm / ongoing",
+    "exploring_title": "🔭 Currently exploring",
+    "exploring_items": [
+      "How to create reusables agent skills",
+      "Improving productivity with AI",
+      "Writing cleaner abstractions",
+      "Why some codebases feel \"good\""
+    ],
+    "sticky": "\"Understanding beats memorizing. Every single time.\"",
+    "questions_title": "❓ Questions I'm chasing",
+    "questions": [
+      "When is abstraction helpful vs. just clever?",
+      "Is \"good enough\" ever actually good enough?"
+    ],
+    "flow_read": "Read → try → break → fix → repeat",
+    "flow_ask": "Ask → explore → document → share",
+    "mistakes_title": "🐛 Mistakes that taught me",
+    "mistakes": [
+      { "bad": "Pushed to prod on a Friday", "learned": "Never. Again." },
+      { "bad": "Skipped documentation", "learned": "Suffered 3 months later. Documented everything after." }
+    ],
+    "recent_label": "⭐ recently learned / recently clicked:",
+    "expand_btn": "expand →",
+    "win_items": [
+      {
+        "title": "🎯 How React reconciliation actually works (finally)",
+        "summary": "React doesn't re-render the whole DOM on every state change — it compares a virtual DOM tree with the previous one and only patches what changed.",
+        "points": [
+          "The reconciler builds a 'fiber tree' — each node represents a component with its state, props, and work queue.",
+          "Diffing is O(n) thanks to two heuristics: elements of different types produce different trees, and keys help identify stable list items across renders.",
+          "Without a key (or with index as key), React re-creates list items when order changes — causing layout jumps and lost local state.",
+          "Concurrent Mode (React 18) lets the reconciler pause, prioritize, and resume work — that's why transitions feel smoother.",
+          "useTransition and useDeferredValue are direct hooks into this priority system."
+        ],
+        "takeaway": "Keys aren't just a lint rule. They're the contract React uses to decide whether to update or unmount+remount a component."
+      },
+      {
+        "title": "✍️ Writing for clarity makes you think more clearly",
+        "summary": "Vague writing is a symptom of vague thinking. The act of writing forces you to surface assumptions and fill in gaps you didn't know existed.",
+        "points": [
+          "If you can't explain it in one clear sentence, you probably don't fully understand it yet.",
+          "Writing a design doc before coding exposes edge cases early — when they're cheap to fix.",
+          "Active voice + short sentences reduce cognitive load for the reader and force precision in the author.",
+          "The rubber-duck effect: writing to explain something to someone else reactivates your own understanding.",
+          "Docs written right after solving a problem are the most accurate — delay and you lose the 'why' behind decisions."
+        ],
+        "takeaway": "Writing is thinking made visible. If the sentence is fuzzy, the idea behind it is too."
+      }
+    ]
+  },
+  "philosophy": {
+    "title": "How I Work",
+    "intro": "A few principles I try to live by — not because I always succeed, but because they keep me honest and moving in the right direction.",
+    "quote": "\"The best code I've written is the code I didn't write.\"",
+    "attribution": "— something I learned the hard way",
+    "sticky": "📌 measure twice, cut once.\n(also: read the error message)",
+    "principles": [
+      { "rule": "Clarity over cleverness.", "note": "Smart code that no one can read is not smart code." },
+      { "rule": "Write notes so future me doesn't suffer.", "note": "Documentation is a love letter to your future self." },
+      { "rule": "Prefer simple systems that can grow.", "note": "You don't need to solve next year's problem today." },
+      { "rule": "Good questions are part of good engineering.", "note": "The right question saves more time than the fastest code." },
+      { "rule": "Iterate; don't over-plan.", "note": "Ship something. Learn from it. Adjust. Repeat." },
+      { "rule": "Code is communication.", "note": "You're writing for humans first, machines second." }
+    ]
+  },
+  "contact": {
+    "title": "Let's Talk 👋",
+    "quote": "\"Want to talk about code, projects, learning, or why a bug took 3 hours but the fix was 3 lines?\"",
+    "caption": "I'm always happy to chat.",
+    "footer_built": "Built with React + TypeScript + Material UI · Designed like a whiteboard ✏️",
+    "footer_copy": "© 2025 Chen Bao · All opinions are my own — all bugs are definitely someone else's fault",
+    "links": {
+      "email_label": "Email",
+      "email_btn": "Send Email",
+      "github_label": "GitHub",
+      "github_btn": "View GitHub",
+      "linkedin_label": "LinkedIn",
+      "linkedin_btn": "Connect"
+    }
+  },
+  "games": {
+    "title": "Game Space 🎮",
+    "subtitle": "small games I built for fun — more coming",
+    "click_to_play": "click to play →",
+    "choose_game": "🎮 Choose a game",
+    "ttt": {
+      "title": "Tic-Tac-Toe",
+      "desc": "You vs CPU — first to three in a row"
+    },
+    "rps": {
+      "title": "Rock Paper Scissors",
+      "desc": "2 players — hidden choices, then reveal"
+    },
+    "mem": {
+      "title": "Memory",
+      "desc": "Flip cards and find all 8 pairs"
+    },
+    "ttt_game": {
+      "you": "You",
+      "cpu": "CPU",
+      "your_turn": "Your turn  (X)",
+      "cpu_thinking": "CPU thinking...",
+      "draw": "Draw! 🤝",
+      "you_win": "You win! 🎉",
+      "cpu_wins": "CPU wins 🤖"
+    },
+    "rps_game": {
+      "p1": "Player 1",
+      "p2": "Player 2",
+      "p1_pick": "Player 1, pick your move:",
+      "p2_pick": "Player 2, pick your move:",
+      "p1_hidden": "Player 1 has chosen — hidden!",
+      "p1_wins": "Player 1 wins! 🎉",
+      "p2_wins": "Player 2 wins! 🎉",
+      "draw": "It's a draw! 🤝",
+      "rock": "Rock",
+      "paper": "Paper",
+      "scissors": "Scissors"
+    },
+    "mem_game": {
+      "moves": "Moves",
+      "pairs": "pairs",
+      "complete": "Done in {{moves}} moves! 🎉",
+      "play_again": "Play again ↺",
+      "reset": "Reset ↺"
+    }
+  }
+}

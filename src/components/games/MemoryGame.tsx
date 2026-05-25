@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import GameScoreRow from "./GameScoreRow";
 import GameResetButton from "./GameResetButton";
 import "./MemoryGame.less";
@@ -16,6 +17,7 @@ export default function MemoryGame(): JSX.Element {
   const [matched, setMatched] = useState<Set<number>>(new Set());
   const [moves, setMoves] = useState(0);
   const [locked, setLocked] = useState(false);
+  const { t } = useTranslation();
 
   const handleFlip = useCallback((i: number) => {
     if (locked || flipped.includes(i) || matched.has(i)) return;
@@ -51,8 +53,8 @@ export default function MemoryGame(): JSX.Element {
   return (
     <Box>
       <GameScoreRow
-        left={`Moves: ${moves}`}
-        right={`${matched.size / 2} / ${EMOJIS.length} pairs`}
+        left={`${t("games.mem_game.moves")}: ${moves}`}
+        right={`${matched.size / 2} / ${EMOJIS.length} ${t("games.mem_game.pairs")}`}
       />
 
       <Box className="mem-grid">
@@ -78,10 +80,15 @@ export default function MemoryGame(): JSX.Element {
       </Box>
 
       {isComplete && (
-        <Typography className="mem-complete">Done in {moves} moves! 🎉</Typography>
+        <Typography className="mem-complete">
+          {t("games.mem_game.complete", { moves })}
+        </Typography>
       )}
 
-      <GameResetButton onClick={reset} label={isComplete ? "Play again ↺" : "Reset ↺"} />
+      <GameResetButton
+        onClick={reset}
+        label={isComplete ? t("games.mem_game.play_again") : t("games.mem_game.reset")}
+      />
     </Box>
   );
 }

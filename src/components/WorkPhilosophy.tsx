@@ -1,10 +1,14 @@
 import React from "react";
 import { Box, Typography, Container } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { principles } from "../data/workPhilosophy";
 import "./WorkPhilosophy.less";
 import { JSX } from "@emotion/react/jsx-dev-runtime";
 
 export default function WorkPhilosophy(): JSX.Element {
+  const { t } = useTranslation();
+  const principleItems = t("philosophy.principles", { returnObjects: true }) as { rule: string; note: string }[];
+
   return (
     <Box component="section" id="philosophy" className="philosophy-section">
       <Container maxWidth="lg">
@@ -12,11 +16,10 @@ export default function WorkPhilosophy(): JSX.Element {
           {/* ── Left ── */}
           <Box>
             <Typography variant="h2" className="philosophy-title">
-              How I Work
+              {t("philosophy.title")}
             </Typography>
             <Typography variant="body1" className="philosophy-intro">
-              A few principles I try to live by — not because I always succeed,
-              but because they keep me honest and moving in the right direction.
+              {t("philosophy.intro")}
             </Typography>
 
             <Box className="philosophy-blackboard">
@@ -27,12 +30,10 @@ export default function WorkPhilosophy(): JSX.Element {
               </Box>
 
               <Typography className="philosophy-blackboard__quote">
-                "The best code I've written
-                <br />
-                is the code I didn't write."
+                {t("philosophy.quote")}
               </Typography>
               <Typography className="philosophy-blackboard__attribution">
-                — something I learned the hard way
+                {t("philosophy.attribution")}
               </Typography>
 
               <Box aria-hidden className="philosophy-blackboard__chalk">
@@ -44,9 +45,7 @@ export default function WorkPhilosophy(): JSX.Element {
 
             <Box className="philosophy-sticky">
               <Typography className="philosophy-sticky__text">
-                📌 measure twice, cut once.
-                <br />
-                (also: read the error message)
+                {t("philosophy.sticky")}
               </Typography>
             </Box>
           </Box>
@@ -54,19 +53,19 @@ export default function WorkPhilosophy(): JSX.Element {
           {/* ── Right ── */}
           <Box className="philosophy-principles">
             {principles.map((p) => (
-              <Box key={p.rule} className="philosophy-principle">
+              <Box key={p.index} className="philosophy-principle">
                 <Typography className="philosophy-principle__emoji">
                   {p.emoji}
                 </Typography>
                 <Box>
                   <Typography className="philosophy-principle__rule">
-                    {p.rule}
+                    {principleItems[p.index]?.rule}
                   </Typography>
                   <Typography
                     variant="body2"
                     className="philosophy-principle__note"
                   >
-                    {p.note}
+                    {principleItems[p.index]?.note}
                   </Typography>
                 </Box>
               </Box>

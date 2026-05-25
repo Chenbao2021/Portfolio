@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import GameScoreRow from "./GameScoreRow";
 import GameResetButton from "./GameResetButton";
 import "./TicTacToe.less";
@@ -45,6 +46,7 @@ export default function TicTacToe(): JSX.Element {
   const [board, setBoard] = useState<Cell[]>(Array(9).fill(null));
   const [playerTurn, setPlayerTurn] = useState(true);
   const [score, setScore] = useState<Score>({ you: 0, cpu: 0 });
+  const { t } = useTranslation();
 
   const winner = checkWinner(board);
 
@@ -75,12 +77,15 @@ export default function TicTacToe(): JSX.Element {
   }, []);
 
   const status = winner
-    ? winner === "draw" ? "Draw! 🤝" : winner === "X" ? "You win! 🎉" : "CPU wins 🤖"
-    : playerTurn ? "Your turn  (X)" : "CPU thinking...";
+    ? winner === "draw" ? t("games.ttt_game.draw") : winner === "X" ? t("games.ttt_game.you_win") : t("games.ttt_game.cpu_wins")
+    : playerTurn ? t("games.ttt_game.your_turn") : t("games.ttt_game.cpu_thinking");
 
   return (
     <Box>
-      <GameScoreRow left={`You: ${score.you}`} right={`CPU: ${score.cpu}`} />
+      <GameScoreRow
+        left={`${t("games.ttt_game.you")}: ${score.you}`}
+        right={`${t("games.ttt_game.cpu")}: ${score.cpu}`}
+      />
 
       <Box className="ttt-grid">
         {board.map((cell, i) => {
@@ -104,7 +109,7 @@ export default function TicTacToe(): JSX.Element {
 
       <Typography className="ttt-status">{status}</Typography>
 
-      {winner && <GameResetButton onClick={reset} />}
+      {winner && <GameResetButton onClick={reset} label={t("games.mem_game.play_again")} />}
     </Box>
   );
 }

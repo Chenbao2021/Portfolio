@@ -1,5 +1,6 @@
 import React, { JSX } from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { links } from "../data/contact";
 import "./Contact.less";
 
@@ -16,20 +17,20 @@ const WaveDoodle = (): JSX.Element => (
 );
 
 export default function Contact(): JSX.Element {
+  const { t } = useTranslation();
+
   return (
     <Box component="section" id="contact" className="contact-section">
       <Container maxWidth="lg">
         <Box className="contact-header">
           <Typography variant="h2" className="contact-title">
-            Let's Talk 👋
+            {t("contact.title")}
           </Typography>
 
           <Box className="contact-quote-card">
             <Box aria-hidden className="contact-quote-card__pin" />
             <Typography className="contact-quote-card__text">
-              "Want to talk about code, projects, learning,
-              <br />
-              or why a bug took 3 hours but the fix was 3 lines?"
+              {t("contact.quote")}
             </Typography>
             <Box className="contact-quote-card__footer">
               <WaveDoodle />
@@ -37,7 +38,7 @@ export default function Contact(): JSX.Element {
                 variant="caption"
                 className="contact-quote-card__caption"
               >
-                I'm always happy to chat.
+                {t("contact.caption")}
               </Typography>
             </Box>
           </Box>
@@ -46,14 +47,14 @@ export default function Contact(): JSX.Element {
         <Box className="contact-cards-grid">
           {links.map((link) => (
             <Box
-              key={link.label}
+              key={link.key}
               className={`contact-card contact-card--${link.colorKey}`}
             >
               <Typography className="contact-card__icon">
                 {link.icon}
               </Typography>
               <Typography variant="h6" className="contact-card__label">
-                {link.label}
+                {t(`contact.links.${link.key}_label`)}
               </Typography>
               <Typography variant="body2" className="contact-card__handle">
                 {link.handle}
@@ -64,7 +65,7 @@ export default function Contact(): JSX.Element {
                 href={link.href}
                 className="contact-card__btn"
               >
-                {link.btnText} →
+                {t(`contact.links.${link.key}_btn`)} →
               </Button>
             </Box>
           ))}
@@ -72,12 +73,10 @@ export default function Contact(): JSX.Element {
 
         <Box className="contact-footer">
           <Typography className="contact-footer__built">
-            Built with React + TypeScript + Material UI · Designed like a
-            whiteboard ✏️
+            {t("contact.footer_built")}
           </Typography>
           <Typography variant="caption" className="contact-footer__copy">
-            © 2025 Chen Bao · All opinions are my own — all bugs are definitely
-            someone else's fault
+            {t("contact.footer_copy")}
           </Typography>
         </Box>
       </Container>

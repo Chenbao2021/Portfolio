@@ -1,35 +1,31 @@
 export interface ContactLink {
-  label: string;
+  key: string;
   handle: string;
   href: string;
   icon: string;
   colorKey: "yellow" | "gray" | "blue";
-  btnText: string;
 }
 
 export const links: ContactLink[] = [
   {
-    label: "Email",
+    key: "email",
     handle: "yuchenbao2015@gmail.com",
     href: "mailto:yuchenbao2015@gmail.com",
     icon: "✉️",
     colorKey: "yellow",
-    btnText: "Send Email",
   },
   {
-    label: "GitHub",
+    key: "github",
     handle: "@yuchenbao",
     href: "https://github.com/Chenbao2021",
     icon: "🐙",
     colorKey: "gray",
-    btnText: "View GitHub",
   },
   {
-    label: "LinkedIn",
+    key: "linkedin",
     handle: "in/yuchenbao",
     href: "https://www.linkedin.com/in/yuchenbao/",
     icon: "💼",
     colorKey: "blue",
-    btnText: "Connect",
   },
 ];

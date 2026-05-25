@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import GameScoreRow from "./GameScoreRow";
 import GameResetButton from "./GameResetButton";
 import "./RockPaperScissors.less";
@@ -12,10 +13,10 @@ interface Score {
   p2: number;
 }
 
-const OPTIONS: { value: Choice; emoji: string; label: string }[] = [
-  { value: "rock", emoji: "🪨", label: "Rock" },
-  { value: "paper", emoji: "📄", label: "Paper" },
-  { value: "scissors", emoji: "✂️", label: "Scissors" },
+const OPTIONS: { value: Choice; emoji: string; key: string }[] = [
+  { value: "rock",     emoji: "🪨", key: "rock"     },
+  { value: "paper",    emoji: "📄", key: "paper"    },
+  { value: "scissors", emoji: "✂️", key: "scissors" },
 ];
 
 const BEATS: Record<Choice, Choice> = {
@@ -34,6 +35,7 @@ export default function RockPaperScissors(): JSX.Element {
   const [p1Choice, setP1Choice] = useState<Choice | null>(null);
   const [p2Choice, setP2Choice] = useState<Choice | null>(null);
   const [score, setScore] = useState<Score>({ p1: 0, p2: 0 });
+  const { t } = useTranslation();
 
   const handleP1 = useCallback((choice: Choice) => {
     setP1Choice(choice);
@@ -56,23 +58,26 @@ export default function RockPaperScissors(): JSX.Element {
 
   const result = phase === "result" && p1Choice && p2Choice ? getResult(p1Choice, p2Choice) : null;
   const resultText =
-    result === "p1" ? "Player 1 wins! 🎉"
-    : result === "p2" ? "Player 2 wins! 🎉"
-    : result === "draw" ? "It's a draw! 🤝"
+    result === "p1" ? t("games.rps_game.p1_wins")
+    : result === "p2" ? t("games.rps_game.p2_wins")
+    : result === "draw" ? t("games.rps_game.draw")
     : "";
 
   return (
     <Box>
-      <GameScoreRow left={`P1: ${score.p1}`} right={`P2: ${score.p2}`} />
+      <GameScoreRow
+        left={`${t("games.rps_game.p1")}: ${score.p1}`}
+        right={`${t("games.rps_game.p2")}: ${score.p2}`}
+      />
 
       {phase === "p1" && (
         <Box>
-          <Typography className="rps-prompt">Player 1, pick your move:</Typography>
+          <Typography className="rps-prompt">{t("games.rps_game.p1_pick")}</Typography>
           <Box className="rps-choices">
             {OPTIONS.map((o) => (
               <Box key={o.value} onClick={() => handleP1(o.value)} className="rps-choice rps-choice--p1">
                 <Typography className="rps-choice__emoji">{o.emoji}</Typography>
-                <Typography className="rps-choice__label">{o.label}</Typography>
+                <Typography className="rps-choice__label">{t(`games.rps_game.${o.key}`)}</Typography>
               </Box>
             ))}
           </Box>
@@ -83,14 +88,14 @@ export default function RockPaperScissors(): JSX.Element {
         <Box>
           <Box className="rps-p1-hidden">
             <Typography className="rps-p1-hidden__icon">🫥</Typography>
-            <Typography className="rps-p1-hidden__text">Player 1 has chosen — hidden!</Typography>
+            <Typography className="rps-p1-hidden__text">{t("games.rps_game.p1_hidden")}</Typography>
           </Box>
-          <Typography className="rps-prompt">Player 2, pick your move:</Typography>
+          <Typography className="rps-prompt">{t("games.rps_game.p2_pick")}</Typography>
           <Box className="rps-choices">
             {OPTIONS.map((o) => (
               <Box key={o.value} onClick={() => handleP2(o.value)} className="rps-choice rps-choice--p2">
                 <Typography className="rps-choice__emoji">{o.emoji}</Typography>
-                <Typography className="rps-choice__label">{o.label}</Typography>
+                <Typography className="rps-choice__label">{t(`games.rps_game.${o.key}`)}</Typography>
               </Box>
             ))}
           </Box>
@@ -104,14 +109,14 @@ export default function RockPaperScissors(): JSX.Element {
               <Typography className="rps-reveal__emoji">
                 {OPTIONS.find((o) => o.value === p1Choice)!.emoji}
               </Typography>
-              <Typography className="rps-reveal__name">Player 1</Typography>
+              <Typography className="rps-reveal__name">{t("games.rps_game.p1")}</Typography>
             </Box>
             <Typography className="rps-reveal__vs">vs</Typography>
             <Box className="rps-reveal__player">
               <Typography className="rps-reveal__emoji">
                 {OPTIONS.find((o) => o.value === p2Choice)!.emoji}
               </Typography>
-              <Typography className="rps-reveal__name">Player 2</Typography>
+              <Typography className="rps-reveal__name">{t("games.rps_game.p2")}</Typography>
             </Box>
           </Box>
 
@@ -119,7 +124,7 @@ export default function RockPaperScissors(): JSX.Element {
             {resultText}
           </Typography>
 
-          <GameResetButton onClick={reset} />
+          <GameResetButton onClick={reset} label={t("games.mem_game.play_again")} />
         </Box>
       )}
     </Box>

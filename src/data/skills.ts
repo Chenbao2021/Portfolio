@@ -1,5 +1,5 @@
 export interface Category {
-  name: string;
+  key: string;
   icon: string;
   colorKey: "blue" | "green" | "pink" | "yellow" | "purple" | "orange";
   skills: string[];
@@ -7,31 +7,31 @@ export interface Category {
 
 export const categories: Category[] = [
   {
-    name: "Frontend",
+    key: "frontend",
     icon: "🎨",
     colorKey: "blue",
     skills: ["React", "TypeScript", "CSS", "PWA", "HTML / CSS", "LESS"],
   },
   {
-    name: "Backend",
+    key: "backend",
     icon: "⚙️",
     colorKey: "green",
     skills: ["C#", "SQL Server", "Node.js"],
   },
   {
-    name: "Cloud / Infra",
+    key: "cloud",
     icon: "☁️",
     colorKey: "pink",
     skills: ["Azure", "Terraform", "CI/CD"],
   },
   {
-    name: "AI Tools",
+    key: "ai",
     icon: "🤖",
     colorKey: "yellow",
     skills: ["CLAUDE CODE", "Prompt thinking", "SKILLS", "CHATGPT API"],
   },
   {
-    name: "Design / Thinking",
+    key: "design",
     icon: "✏️",
     colorKey: "purple",
     skills: [
@@ -42,7 +42,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    name: "Writing & Clarity",
+    key: "writing",
     icon: "📝",
     colorKey: "orange",
     skills: [

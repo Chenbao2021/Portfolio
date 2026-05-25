@@ -7,6 +7,7 @@ import {
   DialogContent,
   IconButton,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import TicTacToe from "./games/TicTacToe";
 import RockPaperScissors from "./games/RockPaperScissors";
 import MemoryGame from "./games/MemoryGame";
@@ -18,38 +19,15 @@ type DialogView = "picker" | GameId;
 
 interface GameConfig {
   id: GameId;
-  title: string;
   icon: string;
-  desc: string;
   colorKey: "yellow" | "blue" | "green";
   Component: React.ComponentType;
 }
 
-const games: GameConfig[] = [
-  {
-    id: "ttt",
-    title: "Tic-Tac-Toe",
-    icon: "⭕",
-    desc: "You vs CPU — first to three in a row",
-    colorKey: "yellow",
-    Component: TicTacToe,
-  },
-  {
-    id: "rps",
-    title: "Rock Paper Scissors",
-    icon: "✂️",
-    desc: "2 players — hidden choices, then reveal",
-    colorKey: "blue",
-    Component: RockPaperScissors,
-  },
-  {
-    id: "mem",
-    title: "Memory",
-    icon: "🃏",
-    desc: "Flip cards and find all 8 pairs",
-    colorKey: "green",
-    Component: MemoryGame,
-  },
+const GAME_CONFIGS: GameConfig[] = [
+  { id: "ttt", icon: "⭕", colorKey: "yellow", Component: TicTacToe },
+  { id: "rps", icon: "✂️", colorKey: "blue",   Component: RockPaperScissors },
+  { id: "mem", icon: "🃏", colorKey: "green",  Component: MemoryGame },
 ];
 
 const CloseIcon = (): JSX.Element => (
@@ -90,6 +68,7 @@ const BackIcon = (): JSX.Element => (
 export default function Games(): JSX.Element {
   const [open, setOpen] = useState(false);
   const [view, setView] = useState<DialogView>("picker");
+  const { t } = useTranslation();
 
   const openPicker = useCallback(() => {
     setView("picker");
@@ -102,7 +81,7 @@ export default function Games(): JSX.Element {
   const close = useCallback(() => setOpen(false), []);
 
   const activeGame =
-    view !== "picker" ? (games.find((g) => g.id === view) ?? null) : null;
+    view !== "picker" ? (GAME_CONFIGS.find((g) => g.id === view) ?? null) : null;
   const isPicker = view === "picker";
 
   return (
@@ -110,13 +89,12 @@ export default function Games(): JSX.Element {
       <Container maxWidth="lg">
         <SectionHeader
           className="games-header"
-          // badge="take a break"
-          title="Game Space 🎮"
-          subtitle="small games I built for fun — more coming"
+          title={t("games.title")}
+          subtitle={t("games.subtitle")}
         />
 
         <Box className="games-grid">
-          {games.map((game) => (
+          {GAME_CONFIGS.map((game) => (
             <Box
               key={game.id}
               onClick={() => openGame(game.id)}
@@ -127,12 +105,14 @@ export default function Games(): JSX.Element {
                   {game.icon}
                 </Typography>
                 <Typography variant="h5" className="games-card__title">
-                  {game.title}
+                  {t(`games.${game.id}.title`)}
                 </Typography>
               </Box>
-              <Typography className="games-card__desc">{game.desc}</Typography>
+              <Typography className="games-card__desc">
+                {t(`games.${game.id}.desc`)}
+              </Typography>
               <Typography className="games-card__cta">
-                click to play →
+                {t("games.click_to_play")}
               </Typography>
             </Box>
           ))}
@@ -160,8 +140,8 @@ export default function Games(): JSX.Element {
           )}
           <Typography className="games-dialog-title">
             {isPicker
-              ? "🎮 Choose a game"
-              : `${activeGame?.icon} ${activeGame?.title}`}
+              ? t("games.choose_game")
+              : `${activeGame?.icon} ${t(`games.${activeGame?.id}.title`)}`}
           </Typography>
           <IconButton
             onClick={close}
@@ -175,7 +155,7 @@ export default function Games(): JSX.Element {
         <DialogContent className="games-dialog-content">
           {isPicker ? (
             <Box className="games-picker">
-              {games.map((game) => (
+              {GAME_CONFIGS.map((game) => (
                 <Box
                   key={game.id}
                   onClick={() => setView(game.id)}
@@ -186,10 +166,10 @@ export default function Games(): JSX.Element {
                   </Typography>
                   <Box>
                     <Typography className="games-picker-item__title">
-                      {game.title}
+                      {t(`games.${game.id}.title`)}
                     </Typography>
                     <Typography className="games-picker-item__desc">
-                      {game.desc}
+                      {t(`games.${game.id}.desc`)}
                     </Typography>
                   </Box>
                   <Typography className="games-picker-item__arrow">
