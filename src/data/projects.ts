@@ -52,7 +52,7 @@ export const projects: Project[] = [
     tech: ["React Native", "TypeScript", "Firebase"],
     role: "Solo — designed, built, wrote the docs (all three lines of them)",
     // github: "#",
-    colorKey: "yellow",
+    colorKey: "pink",
     emoji: "🗂️",
     professional: true,
   },

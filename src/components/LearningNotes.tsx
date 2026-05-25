@@ -1,11 +1,27 @@
-import React, { JSX } from "react";
-import { Box, Typography, Container } from "@mui/material";
+import React, { JSX, useState } from "react";
+import {
+  Box,
+  Typography,
+  Container,
+  Dialog,
+  DialogContent,
+  IconButton,
+} from "@mui/material";
 import SectionHeader from "./SectionHeader";
 import "./LearningNotes.less";
 
 interface Mistake {
   bad: string;
   learned: string;
+}
+
+interface WinItem {
+  title: string;
+  details: {
+    summary: string;
+    points: string[];
+    takeaway: string;
+  };
 }
 
 const ConnectorLine = (): JSX.Element => (
@@ -34,7 +50,44 @@ const ConnectorLine = (): JSX.Element => (
   </svg>
 );
 
+const WIN_ITEMS: WinItem[] = [
+  {
+    title: "🎯 How React reconciliation actually works (finally)",
+    details: {
+      summary:
+        "React doesn't re-render the whole DOM on every state change — it compares a virtual DOM tree with the previous one and only patches what changed.",
+      points: [
+        "The reconciler builds a 'fiber tree' — each node represents a component with its state, props, and work queue.",
+        "Diffing is O(n) thanks to two heuristics: elements of different types produce different trees, and keys help identify stable list items across renders.",
+        "Without a key (or with index as key), React re-creates list items when order changes — causing layout jumps and lost local state.",
+        "Concurrent Mode (React 18) lets the reconciler pause, prioritize, and resume work — that's why transitions feel smoother.",
+        "useTransition and useDeferredValue are direct hooks into this priority system.",
+      ],
+      takeaway:
+        "Keys aren't just a lint rule. They're the contract React uses to decide whether to update or unmount+remount a component.",
+    },
+  },
+  {
+    title: "✍️ Writing for clarity makes you think more clearly",
+    details: {
+      summary:
+        "Vague writing is a symptom of vague thinking. The act of writing forces you to surface assumptions and fill in gaps you didn't know existed.",
+      points: [
+        "If you can't explain it in one clear sentence, you probably don't fully understand it yet.",
+        "Writing a design doc before coding exposes edge cases early — when they're cheap to fix.",
+        "Active voice + short sentences reduce cognitive load for the reader and force precision in the author.",
+        "The rubber-duck effect: writing to explain something to someone else reactivates your own understanding.",
+        "Docs written right after solving a problem are the most accurate — delay and you lose the 'why' behind decisions.",
+      ],
+      takeaway:
+        "Writing is thinking made visible. If the sentence is fuzzy, the idea behind it is too.",
+    },
+  },
+];
+
 export default function LearningNotes(): JSX.Element {
+  const [selectedWin, setSelectedWin] = useState<WinItem | null>(null);
+
   return (
     <Box component="section" id="notes" className="notes-section">
       <Container maxWidth="lg">
@@ -59,7 +112,6 @@ export default function LearningNotes(): JSX.Element {
                   🔭 Currently exploring
                 </Typography>
                 {[
-                  "Cloud infra (making it less scary)",
                   "Better system design patterns",
                   "How LLMs handle context windows",
                   "Writing cleaner abstractions",
@@ -94,8 +146,6 @@ export default function LearningNotes(): JSX.Element {
                 </Typography>
                 {[
                   "When is abstraction helpful vs. just clever?",
-                  "How do you build software that ages well?",
-                  "What makes a codebase a joy to work in?",
                   'Is "good enough" ever actually good enough?',
                 ].map((q) => (
                   <Box key={q} className="notes-questions__item">
@@ -140,14 +190,6 @@ export default function LearningNotes(): JSX.Element {
                     learned:
                       "Suffered 3 months later. Documented everything after.",
                   },
-                  {
-                    bad: "Over-engineered a simple feature",
-                    learned: "YAGNI is real wisdom, not just a meme.",
-                  },
-                  {
-                    bad: "Didn't write any tests",
-                    learned: "Now I write them second. Improvement.",
-                  },
                 ].map(({ bad, learned }: Mistake) => (
                   <Box key={bad} className="notes-mistake">
                     <Typography variant="body2" className="notes-mistake__bad">
@@ -170,21 +212,75 @@ export default function LearningNotes(): JSX.Element {
               ⭐ recently learned / recently clicked:
             </Typography>
             <Box className="notes-wins-grid">
-              {[
-                "🎯 How React reconciliation actually works (finally)",
-                "📦 Proper Docker layer caching saves so much CI time",
-                "✍️ Writing for clarity makes you think more clearly",
-              ].map((win) => (
-                <Box key={win} className="notes-win">
+              {WIN_ITEMS.map((win) => (
+                <Box key={win.title} className="notes-win">
                   <Typography variant="body2" className="notes-win__text">
-                    {win}
+                    {win.title}
                   </Typography>
+                  <Box
+                    component="button"
+                    className="notes-win__expand-btn"
+                    onClick={() => setSelectedWin(win)}
+                  >
+                    développer →
+                  </Box>
                 </Box>
               ))}
             </Box>
           </Box>
         </Box>
       </Container>
+
+      <Dialog
+        open={selectedWin !== null}
+        onClose={() => setSelectedWin(null)}
+        maxWidth="sm"
+        fullWidth
+        disableScrollLock
+        PaperProps={{ className: "notes-modal" }}
+      >
+        {selectedWin && (
+          <DialogContent className="notes-modal__content">
+            <IconButton
+              onClick={() => setSelectedWin(null)}
+              className="notes-modal__close"
+              size="small"
+            >
+              ✕
+            </IconButton>
+
+            <Typography className="notes-modal__title">
+              {selectedWin.title}
+            </Typography>
+
+            <Typography className="notes-modal__summary">
+              {selectedWin.details.summary}
+            </Typography>
+
+            <Box className="notes-modal__points">
+              {selectedWin.details.points.map((point, i) => (
+                <Box key={i} className="notes-modal__point">
+                  <Typography className="notes-modal__point-bullet">
+                    →
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    className="notes-modal__point-text"
+                  >
+                    {point}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+
+            <Box className="notes-modal__takeaway">
+              <Typography className="notes-modal__takeaway-text">
+                💡 {selectedWin.details.takeaway}
+              </Typography>
+            </Box>
+          </DialogContent>
+        )}
+      </Dialog>
     </Box>
   );
 }

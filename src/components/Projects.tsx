@@ -25,6 +25,7 @@ function ProjectModal({
       onClose={onClose}
       maxWidth="sm"
       fullWidth
+      disableScrollLock
       PaperProps={{ className: "projects-modal" }}
     >
       {project && (

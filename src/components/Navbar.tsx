@@ -130,6 +130,7 @@ export default function Navbar(): JSX.Element {
         anchor="right"
         open={drawerOpen}
         onClose={closeDrawer}
+        disableScrollLock
         PaperProps={{ className: "navbar-drawer-paper" }}
       >
         <Box className="navbar-drawer-header">

@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
+const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+const page = await context.newPage();
+await page.goto('http://localhost:5174', { waitUntil: 'networkidle' });
+await page.waitForTimeout(1000);
+await page.evaluate(() => document.getElementById('notes')?.scrollIntoView());
+const html = await page.evaluate(() => document.getElementById('notes')?.innerHTML?.slice(0, 2000));
+console.log('Notes HTML:', html);
+await browser.close();
