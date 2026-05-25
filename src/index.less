@@ -65,6 +65,20 @@ body {
   animation: fadeInUp 0.5s ease forwards;
 }
 
+/* Navigation progress bar */
+@keyframes navProgressFill {
+  0% { width: 0%; opacity: 1; }
+  60% { width: 82%; opacity: 1; }
+  85% { width: 95%; opacity: 1; }
+  100% { width: 100%; opacity: 0; }
+}
+
+/* Page loader spinner (hand-drawn circle) */
+@keyframes spinnerRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Pulse for status dot */
 @keyframes pulse {
   0%,

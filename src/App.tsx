@@ -4,6 +4,8 @@ import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material'
 import { StyledEngineProvider } from '@mui/material/styles'
 import './App.less'
 import Navbar from './components/Navbar'
+import NavigationProgress from './components/NavigationProgress'
+import PageLoader from './components/PageLoader'
 
 const Hero = React.lazy(() => import('./components/Hero'))
 const About = React.lazy(() => import('./components/About'))
@@ -91,6 +93,7 @@ function Layout(): JSX.Element {
   return (
     <Box className="app-layout">
       <ScrollToTop />
+      <NavigationProgress />
       <Navbar />
       <main className="app-main">
         <Outlet />
@@ -105,7 +108,7 @@ export default function App(): JSX.Element {
       <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Suspense fallback={<Box sx={{ minHeight: '100vh' }} />}>
+        <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<Hero />} />
