@@ -1,60 +1,74 @@
 export interface Project {
-  name: string
-  tagline: string
-  why: string
-  lesson: string
-  tech: string[]
-  role: string
-  github?: string
-  demo?: string
-  colorKey: 'yellow' | 'blue' | 'green' | 'pink'
-  emoji: string
+  name: string;
+  tagline: string;
+  why: string;
+  description?: string[];
+  lesson: string;
+  tech: string[];
+  role: string;
+  github?: string;
+  demo?: string;
+  colorKey: "yellow" | "blue" | "green" | "pink";
+  emoji: string;
+  professional: boolean;
 }
 
 export const projects: Project[] = [
   {
-    name: 'Batch Renamer CLI',
-    tagline: "File renaming that doesn't make you want to rage-quit",
-    why: 'Had 300 files to rename manually. Refused to do it the boring way.',
-    lesson: "Learned more about Node.js streams and regex edge cases than I expected — and honestly, I'm glad I did.",
-    tech: ['Node.js', 'TypeScript', 'CLI', 'Regex'],
-    role: 'Solo — designed, built, wrote the docs (all three lines of them)',
-    github: '#',
-    colorKey: 'yellow',
-    emoji: '🗂️',
+    name: "Inspectare",
+    tagline:
+      "A PWA used by Vetting teams to manage and edit vessel audit reports, with offline access and data synchronization.",
+    why: "A project developed within the TotalEnergies group at the request of the Vetting team to replace paper-based maritime inspection reports with a digital solution.",
+    description: [
+      "Développement d'une PWA pour la getion et l'édition des rapports d'audit de navires avec mode hors ligne et proposer un format standards pour les requêtes de worker.",
+      "Implémentation de la synchronisation des données entre plusieurs promesses et intégration de Service Workers pour un usage hors ligne.",
+      "Gestion des états complexes côté front)end avec IndexedDB, accélérant l'accès aux données.",
+      "Automisation des déploiements et gestion des ressources Azure via Terraform, réduisant les tâches manuelles de 90%.",
+      "Collaboration étroite avec l'équipe DevOps pour la mise en place des pipelines CI/CD et la sécurisation des accès cloud.",
+    ],
+    lesson:
+      "Learned more about PWA, Azure Cloud, React, LESS and teamwork — and I’m honestly glad I did.",
+    tech: ["React", "PWA", "Azure Cloud", "Terraform", "LESS", "CICD"],
+    role: "Solo — designed, built, wrote the docs (all three lines of them)",
+    // github: "#",
+    colorKey: "yellow",
+    emoji: "🗂️",
+    professional: true,
   },
   {
-    name: 'DevNotes Dashboard',
-    tagline: 'A personal Notion-lite for organizing learning notes',
-    why: 'My notes lived across 6 different apps. That was genuinely chaotic.',
-    lesson: 'UI state management is harder than business logic. Every single time.',
-    tech: ['React', 'TypeScript', 'Supabase', 'Tailwind'],
-    role: 'Full-stack — both the product idea and all the code',
-    github: '#',
-    demo: '#',
-    colorKey: 'blue',
-    emoji: '📒',
+    name: "Kitchen Display System",
+    tagline:
+      "A digital screen system used in restaurants to manage kitchen orders",
+    why: "A project I worked on during my apprenticeship year, which was commercialized before the end",
+    description: [
+      "Development of a real-time mobile application for restaurant order management.",
+      "Implementation of data synchronization via Firebase and real-time communication via TCP sockets.",
+      "Design of the user interface with Figma and compliance with ESLint standards.",
+      "Participation in the commercialization phase and delivery of two stable versions.",
+      "Independent work: code writing, testing, and debugging.",
+    ],
+    lesson:
+      "Learned more about React Native, teamwork, and how to build a project from A to Z — and I’m honestly glad I did.",
+    tech: ["React Native", "TypeScript", "Firebase"],
+    role: "Solo — designed, built, wrote the docs (all three lines of them)",
+    // github: "#",
+    colorKey: "yellow",
+    emoji: "🗂️",
+    professional: true,
   },
+
   {
-    name: 'Link Analyzer Bot',
-    tagline: 'Paste a URL, get back a human-readable summary',
-    why: "Tired of reading long articles to discover they weren't useful.",
-    lesson: 'LLM APIs are easy to start, hard to make reliable. Rate limits are very real.',
-    tech: ['Python', 'FastAPI', 'OpenAI API', 'BeautifulSoup'],
-    role: 'Backend + prompt engineering — the prompts took longer than the code',
-    github: '#',
-    colorKey: 'green',
-    emoji: '🔗',
+    name: "Narrio",
+    tagline: "A small web application to support story progression",
+    why: "",
+    description: ["Test."],
+    lesson:
+      "Learned more about React Native, teamwork, and how to build a project from A to Z — and I’m honestly glad I did.",
+    tech: ["React Native", "TypeScript", "Firebase"],
+    role: "Solo — designed, built, wrote the docs (all three lines of them)",
+    github: "#",
+    colorKey: "green",
+    emoji: "🗂️",
+    professional: false,
   },
-  {
-    name: 'Habit Tracker PWA',
-    tagline: 'Simple daily habit tracking, offline-first',
-    why: 'Other habit apps have too many features. I wanted one screen, one job.',
-    lesson: 'Service workers are way more nuanced than the docs suggest. Also: the design took longer than the code.',
-    tech: ['React', 'PWA', 'IndexedDB', 'Vite'],
-    role: 'Design + development. The design took embarrassingly long.',
-    demo: '#',
-    colorKey: 'pink',
-    emoji: '✅',
-  },
-]
+];

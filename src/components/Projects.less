@@ -8,13 +8,35 @@
   margin-bottom: 56px;
 }
 
+.projects-category {
+  margin-bottom: 48px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.projects-category__title {
+  font-family: "Caveat", cursive !important;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+  margin-bottom: 20px !important;
+  padding-bottom: 8px !important;
+  border-bottom: 2px solid @dark !important;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 20px;
 
   @media @md {
     grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -24,7 +46,9 @@
   border-radius: 4px 14px 10px 4px;
   box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: rotate(0deg) translateY(-5px) !important;
@@ -34,31 +58,39 @@
 
 .projects-card--yellow {
   transform: rotate(-1.2deg);
-  .projects-card__strip { background-color: #fef9c3; }
+  .projects-card__strip {
+    background-color: #fef9c3;
+  }
 }
 .projects-card--blue {
   transform: rotate(0.8deg);
-  .projects-card__strip { background-color: #dbeafe; }
+  .projects-card__strip {
+    background-color: #dbeafe;
+  }
 }
 .projects-card--green {
   transform: rotate(-0.6deg);
-  .projects-card__strip { background-color: #dcfce7; }
+  .projects-card__strip {
+    background-color: #dcfce7;
+  }
 }
 .projects-card--pink {
   transform: rotate(1.1deg);
-  .projects-card__strip { background-color: #fce7f3; }
+  .projects-card__strip {
+    background-color: #fce7f3;
+  }
 }
 
 .projects-card__strip {
   border-bottom: 2px solid @dark;
-  padding: 20px 24px;
+  padding: 11px 14px;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 8px;
 }
 
 .projects-card__emoji {
-  font-size: 2rem;
+  font-size: 1.3rem;
   line-height: 1.2;
   margin-top: 1.6px;
 }
@@ -71,16 +103,16 @@
 
 .projects-card__tagline {
   color: #6b7280 !important;
-  margin-top: 2.4px !important;
-  font-size: 0.88rem !important;
+  margin-top: 2px !important;
+  font-size: 0.72rem !important;
 }
 
 .projects-card__body {
-  padding: 24px;
+  padding: 13px 14px;
 }
 
 .projects-card__why {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .projects-card__why-label {
@@ -92,35 +124,107 @@
 }
 
 .projects-card__why-text {
-  margin-top: 4px !important;
+  margin-top: 3px !important;
   color: #374151 !important;
-  line-height: 1.65 !important;
+  line-height: 1.5 !important;
+  font-size: 0.82rem !important;
+}
+
+.projects-card__why-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  &--expanded {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+}
+
+.projects-card__why-toggle {
+  flex-shrink: 0;
+  background: none;
+  border: 1.5px solid @dark;
+  border-radius: 3px 6px 3px 6px;
+  color: @dark;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 1px 5px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+}
+
+.projects-card__description {
+  margin-top: 8px;
+}
+
+.projects-card__description-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.projects-card__description-lines {
+  margin-top: 6px;
+}
+
+.projects-card__description-row {
+  position: relative;
+  padding-left: 12px;
+
+  &::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: #9ca3af;
+  }
+}
+
+.projects-card__description-line {
+  color: #6b7280 !important;
+  font-size: 0.85rem !important;
+  line-height: 1.6 !important;
+  font-style: italic !important;
 }
 
 .projects-card__lesson {
-  background-color: #fef9c3;
-  border: 1.5px solid #fde047;
+  border: 1.5px solid;
   border-radius: 2px 8px 5px 2px;
-  padding: 14.4px;
-  margin-bottom: 20px;
+  padding: 8px 10px;
+  margin-bottom: 11px;
+
+  &--yellow { background-color: #fef9c3; border-color: #fde047; }
+  &--blue   { background-color: #dbeafe; border-color: #93c5fd; }
+  &--green  { background-color: #dcfce7; border-color: #86efac; }
+  &--pink   { background-color: #fce7f3; border-color: #f9a8d4; }
 }
 
 .projects-card__lesson-label {
   font-weight: 700 !important;
-  color: #78350f !important;
-  font-size: 0.68rem !important;
+  font-size: 0.62rem !important;
   display: block !important;
-  margin-bottom: 4px !important;
+  margin-bottom: 3px !important;
+
+  .projects-card__lesson--yellow & { color: #78350f !important; }
+  .projects-card__lesson--blue &   { color: #1e3a5f !important; }
+  .projects-card__lesson--green &  { color: #14532d !important; }
+  .projects-card__lesson--pink &   { color: #831843 !important; }
 }
 
 .projects-card__lesson-text {
   color: #374151 !important;
-  font-size: 0.88rem !important;
-  line-height: 1.55 !important;
+  font-size: 0.75rem !important;
+  line-height: 1.45 !important;
 }
 
 .projects-card__stack {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .projects-card__stack-label {
@@ -134,8 +238,8 @@
 .projects-card__chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6.4px;
-  margin-top: 6.4px;
+  gap: 5px;
+  margin-top: 5px;
 }
 
 .projects-chip {
@@ -143,27 +247,109 @@
   border: 1.5px solid #d1d5db !important;
   border-radius: 3px 6px 3px 6px !important;
   font-weight: 600 !important;
-  font-size: 0.75rem !important;
-}
-
-.projects-card__role {
-  color: #9ca3af !important;
-  font-style: italic !important;
-  display: block !important;
-  margin-bottom: 20px !important;
+  font-size: 0.65rem !important;
 }
 
 .projects-card__btn-github {
-  font-size: 0.82rem !important;
-  padding: 4.8px 16px !important;
+  font-size: 0.7rem !important;
+  padding: 3px 12px !important;
   background-color: #fff !important;
   border-color: @dark !important;
   color: @dark !important;
 }
 
+// Modal
+.projects-modal {
+  border: 2px solid @dark !important;
+  border-radius: 4px 16px 12px 4px !important;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 80vh !important;
+  overflow: hidden !important;
+}
+
+.projects-modal__strip {
+  border-bottom: 2px solid @dark;
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  &--yellow { background-color: #fef9c3; }
+  &--blue   { background-color: #dbeafe; }
+  &--green  { background-color: #dcfce7; }
+  &--pink   { background-color: #fce7f3; }
+}
+
+.projects-modal__name {
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  color: @dark !important;
+}
+
+.projects-modal__close {
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-left: auto;
+  background: none;
+  border: 1.5px solid @dark;
+  border-radius: 3px 6px 3px 6px;
+  color: @dark;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+  }
+}
+
+.projects-modal__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.projects-modal__why-text {
+  margin-top: 4px !important;
+  color: #374151 !important;
+  line-height: 1.6 !important;
+}
+
+.projects-modal__description-line {
+  color: #6b7280 !important;
+  font-size: 0.88rem !important;
+  line-height: 1.65 !important;
+  font-style: italic !important;
+}
+
+.projects-modal__lesson {
+  border: 1.5px solid;
+  border-radius: 2px 8px 5px 2px;
+  padding: 12px 14px;
+
+  &--yellow { background-color: #fef9c3; border-color: #fde047; }
+  &--blue   { background-color: #dbeafe; border-color: #93c5fd; }
+  &--green  { background-color: #dcfce7; border-color: #86efac; }
+  &--pink   { background-color: #fce7f3; border-color: #f9a8d4; }
+}
+
+.projects-modal__lesson-text {
+  color: #374151 !important;
+  line-height: 1.6 !important;
+}
+
 .projects-card__btn-demo {
-  font-size: 0.82rem !important;
-  padding: 4.8px 16px !important;
+  font-size: 0.7rem !important;
+  padding: 3px 12px !important;
   background-color: @dark !important;
   color: #fff !important;
 
