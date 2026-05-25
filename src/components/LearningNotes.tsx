@@ -112,8 +112,8 @@ export default function LearningNotes(): JSX.Element {
                   🔭 Currently exploring
                 </Typography>
                 {[
-                  "Better system design patterns",
-                  "How LLMs handle context windows",
+                  "How to create reusables agent skills",
+                  "Improving productivity with AI",
                   "Writing cleaner abstractions",
                   'Why some codebases feel "good"',
                 ].map((item) => (

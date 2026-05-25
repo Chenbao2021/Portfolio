@@ -200,7 +200,7 @@ export default function Hero(): JSX.Element {
                 onClick={createNavigateHandler("/projects")}
                 className="hero-btn--projects"
               >
-                View Projects ↓
+                🚀 View My Projects
               </Button>
               <Button
                 variant="outlined"

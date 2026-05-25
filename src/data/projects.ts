@@ -60,11 +60,11 @@ export const projects: Project[] = [
   {
     name: "Narrio",
     tagline: "A small web application to support story progression",
-    why: "",
+    why: "As one of the organizers of social events, I created this website to reduce the need for excessive paper printing",
     description: ["Test."],
     lesson:
-      "Learned more about React Native, teamwork, and how to build a project from A to Z — and I’m honestly glad I did.",
-    tech: ["React Native", "TypeScript", "Firebase"],
+      "Learned how to work efficiently with Claude, discover what its limits are, and create a reusable SKILL.",
+    tech: ["CLAUDE CODE", "SKILL", "React", "Firebase"],
     role: "Solo — designed, built, wrote the docs (all three lines of them)",
     github: "#",
     colorKey: "green",

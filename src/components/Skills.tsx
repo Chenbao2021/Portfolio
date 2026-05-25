@@ -10,7 +10,7 @@ export default function Skills(): JSX.Element {
       <Container maxWidth="lg">
         <SectionHeader
           className="skills-header"
-          badge="my toolbox"
+          // badge="my toolbox"
           title="Skills & Tools 🧰"
           subtitle="things I actually use, not things I put on a resumé and forgot about"
         />
