@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material'
 import { StyledEngineProvider } from '@mui/material/styles'
 import './App.less'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import LearningNotes from './components/LearningNotes'
-import WorkPhilosophy from './components/WorkPhilosophy'
-import Games from './components/Games'
-import Contact from './components/Contact'
-import NotePage from './pages/NotePage'
+
+const Hero = React.lazy(() => import('./components/Hero'))
+const About = React.lazy(() => import('./components/About'))
+const Skills = React.lazy(() => import('./components/Skills'))
+const Projects = React.lazy(() => import('./components/Projects'))
+const LearningNotes = React.lazy(() => import('./components/LearningNotes'))
+const WorkPhilosophy = React.lazy(() => import('./components/WorkPhilosophy'))
+const Games = React.lazy(() => import('./components/Games'))
+const Contact = React.lazy(() => import('./components/Contact'))
+const NotePage = React.lazy(() => import('./pages/NotePage'))
 
 const theme = createTheme({
   palette: {
@@ -97,19 +98,21 @@ export default function App(): JSX.Element {
       <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Hero />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/notes" element={<LearningNotes />} />
-            <Route path="/notes/:slug" element={<NotePage />} />
-            <Route path="/philosophy" element={<WorkPhilosophy />} />
-            <Route path="/games" element={<Games />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
-        </Routes>
+        <Suspense fallback={<Box sx={{ minHeight: '100vh' }} />}>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Hero />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/notes" element={<LearningNotes />} />
+              <Route path="/notes/:slug" element={<NotePage />} />
+              <Route path="/philosophy" element={<WorkPhilosophy />} />
+              <Route path="/games" element={<Games />} />
+              <Route path="/contact" element={<Contact />} />
+            </Route>
+          </Routes>
+        </Suspense>
       </ThemeProvider>
       </StyledEngineProvider>
     </BrowserRouter>
