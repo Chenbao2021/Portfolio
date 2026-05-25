@@ -21,19 +21,19 @@ export const categories: Category[] = [
   {
     key: "cloud",
     icon: "☁️",
-    colorKey: "pink",
+    colorKey: "yellow",
     skills: ["Azure", "Terraform", "CI/CD"],
   },
   {
     key: "ai",
     icon: "🤖",
-    colorKey: "yellow",
+    colorKey: "pink",
     skills: ["CLAUDE CODE", "Prompt thinking", "SKILLS", "CHATGPT API"],
   },
   {
     key: "design",
     icon: "✏️",
-    colorKey: "purple",
+    colorKey: "orange",
     skills: [
       "UX Thinking",
       "Component Design",
@@ -44,7 +44,7 @@ export const categories: Category[] = [
   {
     key: "writing",
     icon: "📝",
-    colorKey: "orange",
+    colorKey: "purple",
     skills: [
       "Technical Writing",
       "Task Recaps",
