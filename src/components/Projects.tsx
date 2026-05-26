@@ -111,6 +111,8 @@ function ProjectModal({
                   variant="outlined"
                   size="small"
                   href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="projects-card__btn-github"
                 >
                   {t("projects.btn_github")}
@@ -121,6 +123,8 @@ function ProjectModal({
                   variant="contained"
                   size="small"
                   href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="projects-card__btn-demo"
                 >
                   {t("projects.btn_demo")}
@@ -214,6 +218,8 @@ function ProjectGrid({ items }: { items: typeof projects }) {
                     variant="outlined"
                     size="small"
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="projects-card__btn-github"
                   >
                     {t("projects.btn_github")}
@@ -224,6 +230,8 @@ function ProjectGrid({ items }: { items: typeof projects }) {
                     variant="contained"
                     size="small"
                     href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="projects-card__btn-demo"
                   >
                     {t("projects.btn_demo")}
