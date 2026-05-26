@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { JSX, Suspense, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Outlet, useLocation } from 'react-router-dom'
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material'
 import { StyledEngineProvider } from '@mui/material/styles'

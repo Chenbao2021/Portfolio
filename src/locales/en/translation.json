@@ -9,7 +9,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Open to opportunities",
+    "badge": "Learning Make Me Happy",
     "greeting": "Hey, I'm",
     "role": "Developer → Builder → Learner",
     "tagline": "\"I build things, break them, figure out why, and write notes so future me doesn't suffer.\"",
@@ -124,7 +124,10 @@
     "mistakes_title": "🐛 Mistakes that taught me",
     "mistakes": [
       { "bad": "Pushed to prod on a Friday", "learned": "Never. Again." },
-      { "bad": "Skipped documentation", "learned": "Suffered 3 months later. Documented everything after." }
+      {
+        "bad": "Skipped documentation",
+        "learned": "Suffered 3 months later. Documented everything after."
+      }
     ],
     "recent_label": "⭐ recently learned / recently clicked:",
     "expand_btn": "expand →",
@@ -162,12 +165,30 @@
     "attribution": "— something I learned the hard way",
     "sticky": "📌 measure twice, cut once.\n(also: read the error message)",
     "principles": [
-      { "rule": "Clarity over cleverness.", "note": "Smart code that no one can read is not smart code." },
-      { "rule": "Write notes so future me doesn't suffer.", "note": "Documentation is a love letter to your future self." },
-      { "rule": "Prefer simple systems that can grow.", "note": "You don't need to solve next year's problem today." },
-      { "rule": "Good questions are part of good engineering.", "note": "The right question saves more time than the fastest code." },
-      { "rule": "Iterate; don't over-plan.", "note": "Ship something. Learn from it. Adjust. Repeat." },
-      { "rule": "Code is communication.", "note": "You're writing for humans first, machines second." }
+      {
+        "rule": "Clarity over cleverness.",
+        "note": "Smart code that no one can read is not smart code."
+      },
+      {
+        "rule": "Write notes so future me doesn't suffer.",
+        "note": "Documentation is a love letter to your future self."
+      },
+      {
+        "rule": "Prefer simple systems that can grow.",
+        "note": "You don't need to solve next year's problem today."
+      },
+      {
+        "rule": "Good questions are part of good engineering.",
+        "note": "The right question saves more time than the fastest code."
+      },
+      {
+        "rule": "Iterate; don't over-plan.",
+        "note": "Ship something. Learn from it. Adjust. Repeat."
+      },
+      {
+        "rule": "Code is communication.",
+        "note": "You're writing for humans first, machines second."
+      }
     ]
   },
   "contact": {
