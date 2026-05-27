@@ -19,7 +19,7 @@
     "cta_contact": "Contact Me ✉️",
     "game_label": "🎮 game space",
     "game_cta": "▶ ENTER GAME SPACE",
-    "game_sub": "3 games · click to play"
+    "game_sub": "6 games · click to play"
   },
   "about": {
     "title": "About Me",
@@ -199,6 +199,18 @@
       "title": "Memory",
       "desc": "Flip cards and find all 8 pairs"
     },
+    "snake": {
+      "title": "Snake",
+      "desc": "Eat the dots, don't hit the walls — high score saved"
+    },
+    "wg": {
+      "title": "Word Guess",
+      "desc": "Guess a 5-letter dev word in 6 tries — stats saved"
+    },
+    "gm": {
+      "title": "Gold Miner",
+      "desc": "Swing your hook, grab gold and diamonds before time runs out"
+    },
     "ttt_game": {
       "you": "You",
       "cpu": "CPU",
@@ -227,6 +239,41 @@
       "complete": "Done in {{moves}} moves! 🎉",
       "play_again": "Play again ↺",
       "reset": "Reset ↺"
+    },
+    "snake_game": {
+      "score": "Score",
+      "best": "Best",
+      "press_start": "Press Start to play",
+      "game_over": "Game Over 💀",
+      "final_score": "You scored {{score}}",
+      "start": "Start ▶",
+      "restart": "Restart ↺"
+    },
+    "wg_game": {
+      "played": "Played",
+      "win_pct": "Win%",
+      "streak": "Streak",
+      "best": "Best",
+      "win": "You got it! 🎉",
+      "lose": "The word was:"
+    },
+    "gm_game": {
+      "score": "Score",
+      "target": "Target",
+      "level": "Level",
+      "time": "Time",
+      "best": "Best",
+      "shoot": "SHOOT",
+      "start": "Start Game ▶",
+      "next_level": "Next Level",
+      "title_screen": "Gold Miner",
+      "how_to": "Click SHOOT or press Space to fire the hook",
+      "level_clear": "Level Clear!",
+      "level_score": "Collected {{score}} pts",
+      "time_up": "Time's Up!",
+      "needed": "Target was {{target}} pts",
+      "win": "You Win!",
+      "final": "Final score: {{score}} pts"
     }
   }
 }
