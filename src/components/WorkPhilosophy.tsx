@@ -7,7 +7,9 @@ import { JSX } from "@emotion/react/jsx-dev-runtime";
 
 export default function WorkPhilosophy(): JSX.Element {
   const { t } = useTranslation();
-  const principleItems = t("philosophy.principles", { returnObjects: true }) as { rule: string; note: string }[];
+  const principleItems = t("philosophy.principles", {
+    returnObjects: true,
+  }) as { rule: string; note: string }[];
 
   return (
     <Box component="section" id="philosophy" className="philosophy-section">
@@ -18,9 +20,9 @@ export default function WorkPhilosophy(): JSX.Element {
             <Typography variant="h2" className="philosophy-title">
               {t("philosophy.title")}
             </Typography>
-            <Typography variant="body1" className="philosophy-intro">
+            {/* <Typography variant="body1" className="philosophy-intro">
               {t("philosophy.intro")}
-            </Typography>
+            </Typography> */}
 
             <Box className="philosophy-blackboard">
               <Box className="philosophy-blackboard__dots">

@@ -29,11 +29,11 @@
     "cards": {
       "whatIDo": {
         "title": "What I do",
-        "body": "full-stack developer at TotalEnergies in France. Frontend with React and TypeScript, and backend with C# and SQL Server, and increasingly cloud work with Azure and Terraform. I build things that are usable, maintainable, and don't make future-me miserable."
+        "body": "Full-stack developer at TotalEnergies in France, I work on the frontend with React and TypeScript, on the backend with C# and SQL Server, and on Azure Cloud with Terraform and CI/CD pipelines in YAML on GitHub. I also write reusable and maintainable procedures that make it considerably easier to reproduce tasks already done."
       },
       "learning": {
         "title": "What I'm learning",
-        "body": "Deliberately expanding from frontend toward cloud and system-level thinking. Currently digging into React/TypeScript architecture, Azure and Terraform and system design fundamentals. I'm still learning — and that's the point."
+        "body": "Deliberately expanding my skill set, from frontend toward cloud and systems thinking. Right now, I'm deepening my knowledge of infrastructure, CI/CD, concepts around Claude Code, and system design fundamentals. I'm still learning — and that's the whole point."
       },
       "care": {
         "title": "What I care about",
@@ -41,7 +41,7 @@
       },
       "think": {
         "title": "How I think",
-        "body": "Break the problem down, write things down, ask better questions. I use AI tools to move faster — but I still care about understanding the problem, checking the trade-offs, and knowing why the solution works. AI as thinking partner, not autopilot."
+        "body": "Understand the business first, then break the problem down and ask the right questions — even the simplest ones. I use AI tools to move faster, but I still care about understanding the problem, checking the trade-offs, and knowing why the solution works. AI as a thinking partner, not autopilot."
       }
     }
   },
@@ -133,18 +133,6 @@
     "expand_btn": "expand →",
     "win_items": [
       {
-        "title": "🎯 How React reconciliation actually works (finally)",
-        "summary": "React doesn't re-render the whole DOM on every state change — it compares a virtual DOM tree with the previous one and only patches what changed.",
-        "points": [
-          "The reconciler builds a 'fiber tree' — each node represents a component with its state, props, and work queue.",
-          "Diffing is O(n) thanks to two heuristics: elements of different types produce different trees, and keys help identify stable list items across renders.",
-          "Without a key (or with index as key), React re-creates list items when order changes — causing layout jumps and lost local state.",
-          "Concurrent Mode (React 18) lets the reconciler pause, prioritize, and resume work — that's why transitions feel smoother.",
-          "useTransition and useDeferredValue are direct hooks into this priority system."
-        ],
-        "takeaway": "Keys aren't just a lint rule. They're the contract React uses to decide whether to update or unmount+remount a component."
-      },
-      {
         "title": "✍️ Writing for clarity makes you think more clearly",
         "summary": "Vague writing is a symptom of vague thinking. The act of writing forces you to surface assumptions and fill in gaps you didn't know existed.",
         "points": [
@@ -161,33 +149,21 @@
   "philosophy": {
     "title": "How I Work",
     "intro": "A few principles I try to live by — not because I always succeed, but because they keep me honest and moving in the right direction.",
-    "quote": "\"The best code I've written is the code I didn't write.\"",
+    "quote": "\"Make everything reusable\"",
     "attribution": "— something I learned the hard way",
     "sticky": "📌 measure twice, cut once.\n(also: read the error message)",
     "principles": [
       {
-        "rule": "Clarity over cleverness.",
-        "note": "Smart code that no one can read is not smart code."
+        "rule": "Make it, then improve it.",
+        "note": "A working solution teaches you more than the perfect plan ever could."
       },
       {
-        "rule": "Write notes so future me doesn't suffer.",
-        "note": "Documentation is a love letter to your future self."
+        "rule": "Learning by doing.",
+        "note": "The best way to understand something is to build it, break it, and build it again."
       },
       {
-        "rule": "Prefer simple systems that can grow.",
-        "note": "You don't need to solve next year's problem today."
-      },
-      {
-        "rule": "Good questions are part of good engineering.",
-        "note": "The right question saves more time than the fastest code."
-      },
-      {
-        "rule": "Iterate; don't over-plan.",
-        "note": "Ship something. Learn from it. Adjust. Repeat."
-      },
-      {
-        "rule": "Code is communication.",
-        "note": "You're writing for humans first, machines second."
+        "rule": "Ownership mindset.",
+        "note": "Treat the codebase like your own house — you'll keep it clean if you know you're the one who lives in it."
       }
     ]
   },

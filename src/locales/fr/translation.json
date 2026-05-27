@@ -29,11 +29,11 @@
     "cards": {
       "whatIDo": {
         "title": "Ce que je fais",
-        "body": "développeur full-stack chez TotalEnergies en France. Frontend avec React et TypeScript, backend avec C# et SQL Server, et de plus en plus du travail cloud avec Azure et Terraform. Je construis des choses utilisables, maintenables, qui ne rendent pas mon futur moi misérable."
+        "body": "Développeur full-stack chez TotalEnergies en France, je travaille côté frontend avec React et TypeScript, côté backend avec C# et SQL Server, ainsi que sur Azure Cloud avec Terraform et la mise en place de pipelines CI/CD en YAML sur GitHub. Je rédige également des procédures réutilisables et maintenables, qui facilitent considérablement la réalisation de tâches déjà effectuées."
       },
       "learning": {
         "title": "Ce que j'apprends",
-        "body": "Je m'étends délibérément du frontend vers le cloud et la réflexion système. En ce moment, je creuse l'architecture React/TypeScript, Azure, Terraform et les fondamentaux du design système. J'apprends encore — et c'est là tout l'intérêt."
+        "body": "J'élargis délibérément mon champ de compétences, du frontend vers le cloud et la réflexion système. En ce moment, j'approfondis l'infrastructure, la CI/CD, les notions autour de Claude Code, ainsi que les fondamentaux du design système. J'apprends encore — et c'est là tout l'intérêt."
       },
       "care": {
         "title": "Ce qui m'importe",
@@ -41,7 +41,7 @@
       },
       "think": {
         "title": "Comment je pense",
-        "body": "Décomposer le problème, noter les choses, poser de meilleures questions. J'utilise les outils IA pour aller plus vite — mais je tiens toujours à comprendre le problème, vérifier les compromis, et savoir pourquoi la solution fonctionne. L'IA comme partenaire de réflexion, pas comme pilote automatique."
+        "body": "Comprendre le métier en premier, puis décomposer le problème et poser les bonnes questions, même les plus simples. J'utilise les outils d'IA pour aller plus vite, mais je tiens toujours à comprendre le problème, à vérifier les compromis et à savoir pourquoi la solution fonctionne. L'IA comme partenaire de réflexion, pas comme pilote automatique."
       }
     }
   },
@@ -133,18 +133,6 @@
     "expand_btn": "développer →",
     "win_items": [
       {
-        "title": "🎯 Comment fonctionne réellement la réconciliation React (enfin)",
-        "summary": "React ne re-rend pas tout le DOM à chaque changement d'état — il compare un arbre DOM virtuel avec le précédent et ne met à jour que ce qui a changé.",
-        "points": [
-          "Le réconciliateur construit un « arbre de fibres » — chaque nœud représente un composant avec son état, ses props et sa file de travail.",
-          "Le diffing est en O(n) grâce à deux heuristiques : les éléments de types différents produisent des arbres différents, et les clés identifient les éléments de liste stables d'un rendu à l'autre.",
-          "Sans clé (ou avec l'index comme clé), React recrée les éléments de liste quand l'ordre change — provoquant des sauts de mise en page et une perte d'état local.",
-          "Le Mode Concurrent (React 18) laisse le réconciliateur mettre en pause, prioriser et reprendre le travail — c'est pourquoi les transitions semblent plus fluides.",
-          "useTransition et useDeferredValue sont des hooks directs dans ce système de priorité."
-        ],
-        "takeaway": "Les clés ne sont pas juste une règle de linting. C'est le contrat que React utilise pour décider s'il faut mettre à jour ou démonter+remonter un composant."
-      },
-      {
         "title": "✍️ Écrire clairement vous fait penser plus clairement",
         "summary": "L'écriture vague est un symptôme de pensée vague. L'acte d'écrire force à faire surface les hypothèses et combler les lacunes dont on ne savait pas qu'elles existaient.",
         "points": [
@@ -161,33 +149,21 @@
   "philosophy": {
     "title": "Comment je travaille",
     "intro": "Quelques principes que j'essaie de vivre — pas parce que je réussis toujours, mais parce qu'ils me gardent honnête et dans la bonne direction.",
-    "quote": "\"Le meilleur code que j'ai écrit est le code que je n'ai pas écrit.\"",
+    "quote": "\"Rends tout réutilisable\"",
     "attribution": "— quelque chose que j'ai appris à la dure",
     "sticky": "📌 mesurer deux fois, couper une fois.\n(aussi : lire le message d'erreur)",
     "principles": [
       {
-        "rule": "La clarté avant l'astuce.",
-        "note": "Du code intelligent que personne ne peut lire n'est pas du code intelligent."
+        "rule": "Construis-le, puis améliore-le.",
+        "note": "Une solution qui fonctionne vous apprend plus que le plan parfait ne le fera jamais."
       },
       {
-        "rule": "Écrire des notes pour que mon futur moi ne souffre pas.",
-        "note": "La documentation est une lettre d'amour à votre futur vous."
+        "rule": "Apprendre en faisant.",
+        "note": "La meilleure façon de comprendre quelque chose, c'est de le construire, le casser, puis le reconstruire."
       },
       {
-        "rule": "Préférer des systèmes simples qui peuvent grandir.",
-        "note": "Vous n'avez pas besoin de résoudre le problème de l'année prochaine aujourd'hui."
-      },
-      {
-        "rule": "Les bonnes questions font partie du bon ingénieur.",
-        "note": "La bonne question fait gagner plus de temps que le code le plus rapide."
-      },
-      {
-        "rule": "Itérer ; ne pas trop planifier.",
-        "note": "Livrer quelque chose. En tirer des leçons. Ajuster. Répéter."
-      },
-      {
-        "rule": "Le code est une communication.",
-        "note": "Vous écrivez d'abord pour les humains, ensuite pour les machines."
+        "rule": "Penser comme un propriétaire.",
+        "note": "Traitez le code comme votre propre maison — vous le garderez propre si c'est vous qui y vivez."
       }
     ]
   },
