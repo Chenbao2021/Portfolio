@@ -19,7 +19,7 @@
     "cta_contact": "Me contacter ✉️",
     "game_label": "🎮 espace jeux",
     "game_cta": "▶ ENTRER DANS L'ESPACE JEU",
-    "game_sub": "6 jeux · cliquer pour jouer"
+    "game_sub": "4 jeux · cliquer pour jouer"
   },
   "about": {
     "title": "À propos de moi",
@@ -199,17 +199,9 @@
       "title": "Memory",
       "desc": "Retournez les cartes et trouvez les 8 paires"
     },
-    "snake": {
-      "title": "Snake",
-      "desc": "Mange les points, évite les murs — meilleur score sauvegardé"
-    },
     "wg": {
       "title": "Devinette",
-      "desc": "Devine un mot tech de 5 lettres en 6 essais — stats sauvegardées"
-    },
-    "gm": {
-      "title": "Mineur d'Or",
-      "desc": "Balance ton crochet, attrape de l'or et des diamants avant la fin du temps"
+      "desc": "Devine un mot de 5 lettres en 6 essais — stats sauvegardées"
     },
     "ttt_game": {
       "you": "Vous",
@@ -235,19 +227,27 @@
     },
     "mem_game": {
       "moves": "Coups",
+      "moves_short": "coups",
       "pairs": "paires",
-      "complete": "Terminé en {{moves}} coups ! 🎉",
-      "play_again": "Rejouer ↺",
-      "reset": "Réinitialiser ↺"
-    },
-    "snake_game": {
-      "score": "Score",
+      "time": "temps",
       "best": "Meilleur",
-      "press_start": "Appuie sur Démarrer pour jouer",
-      "game_over": "Game Over 💀",
-      "final_score": "Tu as fait {{score}} points",
-      "start": "Démarrer ▶",
-      "restart": "Recommencer ↺"
+      "complete": "Terminé en {{moves}} coups ! 🎉",
+      "new_record": "Nouveau record ! {{moves}} coups · {{time}}s 🏆",
+      "play_again": "Rejouer ↺",
+      "reset": "Réinitialiser ↺",
+      "pick_mode": "Choisir un mode",
+      "mode_solo": "Solo",
+      "mode_solo_desc": "Minimise les coups et le temps — meilleur score sauvegardé",
+      "mode_2p": "2 Joueurs",
+      "mode_2p_desc": "Tours alternés — le plus de paires gagne",
+      "p1": "Joueur 1",
+      "p2": "Joueur 2",
+      "p1_turn": "Tour du Joueur 1 🟢",
+      "p2_turn": "Tour du Joueur 2 🔵",
+      "p1_wins": "Joueur 1 gagne ! 🎉",
+      "p2_wins": "Joueur 2 gagne ! 🎉",
+      "tie": "Égalité ! 🤝",
+      "change_mode": "Changer de mode"
     },
     "wg_game": {
       "played": "Parties",
@@ -255,25 +255,22 @@
       "streak": "Série",
       "best": "Record",
       "win": "Bien joué ! 🎉",
-      "lose": "Le mot était :"
-    },
-    "gm_game": {
-      "score": "Score",
-      "target": "Objectif",
-      "level": "Niveau",
-      "time": "Temps",
-      "best": "Meilleur",
-      "shoot": "TIRER",
-      "start": "Démarrer ▶",
-      "next_level": "Niveau suivant",
-      "title_screen": "Mineur d'Or",
-      "how_to": "Clique sur TIRER ou appuie sur Espace pour lancer le crochet",
-      "level_clear": "Niveau réussi !",
-      "level_score": "{{score}} pts collectés",
-      "time_up": "Temps écoulé !",
-      "needed": "Objectif : {{target}} pts",
-      "win": "Victoire !",
-      "final": "Score final : {{score}} pts"
+      "lose": "Le mot était :",
+      "pick_theme": "Choisir un thème",
+      "theme_tech": "Tech",
+      "theme_animals": "Animaux",
+      "theme_food": "Cuisine",
+      "theme_sports": "Sports",
+      "theme_nature": "Nature",
+      "theme_custom": "Personnalisé",
+      "custom_title": "Joueur 1 — tape ton mot secret",
+      "custom_hint": "5 lettres · caché pour le Joueur 2",
+      "confirm": "Confirmer ✓",
+      "handoff_title": "Prêt, Joueur 2 ?",
+      "handoff_sub": "Passe l'écran au Joueur 2 🤝",
+      "handoff_btn": "Commencer à deviner →",
+      "custom_mode": "Mode personnalisé",
+      "change_theme": "Changer de thème"
     }
   }
 }

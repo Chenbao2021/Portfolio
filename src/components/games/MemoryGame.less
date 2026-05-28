@@ -1,5 +1,7 @@
 @import "../../styles/mixins";
 
+// ── Card grid ──────────────────────────────────────────────────────────────
+
 .mem-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -27,26 +29,22 @@
 .mem-card--flipped {
   background-color: #fef9c3;
   cursor: default;
-
-  &:hover {
-    background-color: #fef9c3;
-    transform: none;
-  }
+  &:hover { background-color: #fef9c3; transform: none; }
 }
 
 .mem-card--matched {
   background-color: #dcfce7;
   cursor: default;
-
-  &:hover {
-    background-color: #dcfce7;
-    transform: none;
-  }
+  &:hover { background-color: #dcfce7; transform: none; }
 }
 
-.mem-card__emoji {
-  font-size: 1.4rem;
+.mem-card--matched-p2 {
+  background-color: #dbeafe;
+  cursor: default;
+  &:hover { background-color: #dbeafe; transform: none; }
 }
+
+.mem-card__emoji { font-size: 1.4rem; }
 
 .mem-card__back {
   font-family: "Caveat", cursive;
@@ -54,10 +52,191 @@
   color: #6b7280;
 }
 
+// ── Completion text ────────────────────────────────────────────────────────
+
 .mem-complete {
   font-family: "Caveat", cursive;
   font-size: 1.05rem;
   color: #ca8a04;
   text-align: center;
   margin-bottom: 8px;
+}
+
+// ── Mode selector ──────────────────────────────────────────────────────────
+
+.mem-phase-title {
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+  text-align: center;
+  margin-bottom: 12px !important;
+}
+
+.mem-mode-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.mem-mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 2px solid @dark;
+  border-radius: 4px 10px 6px 4px;
+  cursor: pointer;
+  background-color: #f9fafb;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.15s ease;
+  user-select: none;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.12);
+    background-color: #f3f4f6;
+  }
+  &:active { transform: translateY(0); box-shadow: 1px 1px 0 rgba(0,0,0,0.06); }
+}
+
+.mem-mode-btn__emoji { font-size: 1.8rem !important; }
+
+.mem-mode-btn__label {
+  font-family: "Caveat", cursive;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+}
+
+.mem-mode-btn__desc {
+  font-size: 0.78rem !important;
+  color: #6b7280 !important;
+  font-style: italic;
+}
+
+.mem-best-display {
+  font-size: 0.78rem !important;
+  color: #9ca3af !important;
+  text-align: center;
+  font-style: italic;
+}
+
+// ── Solo header ────────────────────────────────────────────────────────────
+
+.mem-solo-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 8px;
+}
+
+.mem-solo-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.mem-solo-stat__val {
+  font-family: "Caveat", cursive;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+  line-height: 1 !important;
+}
+
+.mem-solo-stat__lbl {
+  font-size: 0.6rem !important;
+  color: #9ca3af !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+// ── 2P header ──────────────────────────────────────────────────────────────
+
+.mem-2p-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.mem-2p-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 4px 8px 4px 8px;
+  transition: all 0.2s ease;
+  min-width: 64px;
+}
+
+.mem-2p-player--active {
+  border-color: @dark;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+
+  &:first-child { background-color: #dcfce7; }
+  &:last-child  { background-color: #dbeafe; }
+}
+
+.mem-2p-player__score {
+  font-family: "Caveat", cursive;
+  font-size: 1.6rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+  line-height: 1 !important;
+}
+
+.mem-2p-player__name {
+  font-size: 0.62rem !important;
+  color: #9ca3af !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mem-2p-vs {
+  font-family: "Caveat", cursive;
+  font-size: 1rem !important;
+  color: #9ca3af !important;
+}
+
+// ── 2P turn banner ─────────────────────────────────────────────────────────
+
+.mem-turn-banner {
+  text-align: center;
+  padding: 5px 12px;
+  border-radius: 4px 8px 4px 8px;
+  border: 1.5px solid @dark;
+  margin-bottom: 8px;
+}
+
+.mem-turn-banner--p1 { background-color: #dcfce7; }
+.mem-turn-banner--p2 { background-color: #dbeafe; }
+
+.mem-turn-banner__text {
+  font-family: "Caveat", cursive;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+}
+
+// ── Back link ──────────────────────────────────────────────────────────────
+
+.mem-back-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.mem-back-link {
+  font-size: 0.75rem !important;
+  color: #9ca3af !important;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  user-select: none;
+  &:hover { color: @dark !important; }
 }

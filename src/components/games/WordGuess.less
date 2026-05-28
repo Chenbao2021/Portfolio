@@ -155,3 +155,127 @@
   color: @dark !important;
   line-height: 1 !important;
 }
+
+// ── Theme selector ─────────────────────────────────────────────────────────
+
+.wg-phase-title {
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+  text-align: center;
+  margin-bottom: 12px !important;
+}
+
+.wg-phase-hint {
+  font-size: 0.78rem !important;
+  color: #9ca3af !important;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 10px !important;
+}
+
+.wg-theme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.wg-theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 2px solid @dark;
+  border-radius: 4px 8px 4px 8px;
+  cursor: pointer;
+  background-color: #f9fafb;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.15s ease;
+  user-select: none;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.12);
+    background-color: #f3f4f6;
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.06);
+  }
+}
+
+.wg-theme-btn--custom {
+  background-color: #fef9c3;
+  border-style: dashed;
+}
+
+.wg-theme-btn__emoji {
+  font-size: 1.2rem !important;
+  line-height: 1 !important;
+}
+
+.wg-theme-btn__label {
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+}
+
+// ── Handoff screen ─────────────────────────────────────────────────────────
+
+.wg-handoff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0 8px;
+}
+
+.wg-handoff__emoji {
+  font-size: 2.5rem !important;
+  line-height: 1 !important;
+}
+
+.wg-handoff__title {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  color: @dark !important;
+  text-align: center;
+}
+
+.wg-handoff__sub {
+  font-size: 0.85rem !important;
+  color: #6b7280 !important;
+  text-align: center;
+  margin-bottom: 8px !important;
+}
+
+// ── In-game extras ─────────────────────────────────────────────────────────
+
+.wg-custom-badge {
+  font-family: "Caveat", cursive;
+  font-size: 0.95rem !important;
+  color: #9ca3af !important;
+  text-align: center;
+  margin-bottom: 6px !important;
+}
+
+.wg-back-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.wg-back-link {
+  font-size: 0.75rem !important;
+  color: #9ca3af !important;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  user-select: none;
+
+  &:hover { color: @dark !important; }
+}

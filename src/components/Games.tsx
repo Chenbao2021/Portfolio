@@ -11,29 +11,25 @@ import { useTranslation } from "react-i18next";
 import TicTacToe from "./games/TicTacToe";
 import RockPaperScissors from "./games/RockPaperScissors";
 import MemoryGame from "./games/MemoryGame";
-import Snake from "./games/Snake";
 import WordGuess from "./games/WordGuess";
-import GoldMiner from "./games/GoldMiner";
 import SectionHeader from "./SectionHeader";
 import "./Games.less";
 
-type GameId = "ttt" | "rps" | "mem" | "snake" | "wg" | "gm";
+type GameId = "ttt" | "rps" | "mem" | "wg";
 type DialogView = "picker" | GameId;
 
 interface GameConfig {
   id: GameId;
   icon: string;
-  colorKey: "yellow" | "blue" | "green" | "pink" | "purple" | "orange";
+  colorKey: "yellow" | "blue" | "green" | "purple";
   Component: React.ComponentType;
 }
 
 const GAME_CONFIGS: GameConfig[] = [
-  { id: "ttt",   icon: "⭕", colorKey: "yellow", Component: TicTacToe },
-  { id: "rps",   icon: "✂️", colorKey: "blue",   Component: RockPaperScissors },
-  { id: "mem",   icon: "🃏", colorKey: "green",  Component: MemoryGame },
-  { id: "snake", icon: "🐍", colorKey: "pink",   Component: Snake },
-  { id: "wg",    icon: "🔤", colorKey: "purple", Component: WordGuess },
-  { id: "gm",    icon: "⛏️", colorKey: "orange", Component: GoldMiner },
+  { id: "ttt", icon: "⭕", colorKey: "yellow", Component: TicTacToe },
+  { id: "rps", icon: "✂️", colorKey: "blue",   Component: RockPaperScissors },
+  { id: "mem", icon: "🃏", colorKey: "green",  Component: MemoryGame },
+  { id: "wg",  icon: "🔤", colorKey: "purple", Component: WordGuess },
 ];
 
 const CloseIcon = (): JSX.Element => (

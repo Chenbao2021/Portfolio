@@ -19,7 +19,7 @@
     "cta_contact": "Contact Me ✉️",
     "game_label": "🎮 game space",
     "game_cta": "▶ ENTER GAME SPACE",
-    "game_sub": "6 games · click to play"
+    "game_sub": "4 games · click to play"
   },
   "about": {
     "title": "About Me",
@@ -199,17 +199,9 @@
       "title": "Memory",
       "desc": "Flip cards and find all 8 pairs"
     },
-    "snake": {
-      "title": "Snake",
-      "desc": "Eat the dots, don't hit the walls — high score saved"
-    },
     "wg": {
       "title": "Word Guess",
-      "desc": "Guess a 5-letter dev word in 6 tries — stats saved"
-    },
-    "gm": {
-      "title": "Gold Miner",
-      "desc": "Swing your hook, grab gold and diamonds before time runs out"
+      "desc": "Guess a 5-letter word in 6 tries — pick a theme or enter your own"
     },
     "ttt_game": {
       "you": "You",
@@ -235,19 +227,27 @@
     },
     "mem_game": {
       "moves": "Moves",
+      "moves_short": "moves",
       "pairs": "pairs",
-      "complete": "Done in {{moves}} moves! 🎉",
-      "play_again": "Play again ↺",
-      "reset": "Reset ↺"
-    },
-    "snake_game": {
-      "score": "Score",
+      "time": "time",
       "best": "Best",
-      "press_start": "Press Start to play",
-      "game_over": "Game Over 💀",
-      "final_score": "You scored {{score}}",
-      "start": "Start ▶",
-      "restart": "Restart ↺"
+      "complete": "Done in {{moves}} moves! 🎉",
+      "new_record": "New record! {{moves}} moves · {{time}}s 🏆",
+      "play_again": "Play again ↺",
+      "reset": "Reset ↺",
+      "pick_mode": "Pick a mode",
+      "mode_solo": "Solo",
+      "mode_solo_desc": "Minimise moves & time — best score saved",
+      "mode_2p": "2 Players",
+      "mode_2p_desc": "Alternate turns — most pairs wins",
+      "p1": "Player 1",
+      "p2": "Player 2",
+      "p1_turn": "Player 1's turn 🟢",
+      "p2_turn": "Player 2's turn 🔵",
+      "p1_wins": "Player 1 wins! 🎉",
+      "p2_wins": "Player 2 wins! 🎉",
+      "tie": "Tie! 🤝",
+      "change_mode": "Change mode"
     },
     "wg_game": {
       "played": "Played",
@@ -255,25 +255,22 @@
       "streak": "Streak",
       "best": "Best",
       "win": "You got it! 🎉",
-      "lose": "The word was:"
-    },
-    "gm_game": {
-      "score": "Score",
-      "target": "Target",
-      "level": "Level",
-      "time": "Time",
-      "best": "Best",
-      "shoot": "SHOOT",
-      "start": "Start Game ▶",
-      "next_level": "Next Level",
-      "title_screen": "Gold Miner",
-      "how_to": "Click SHOOT or press Space to fire the hook",
-      "level_clear": "Level Clear!",
-      "level_score": "Collected {{score}} pts",
-      "time_up": "Time's Up!",
-      "needed": "Target was {{target}} pts",
-      "win": "You Win!",
-      "final": "Final score: {{score}} pts"
+      "lose": "The word was:",
+      "pick_theme": "Pick a theme",
+      "theme_tech": "Tech",
+      "theme_animals": "Animals",
+      "theme_food": "Food",
+      "theme_sports": "Sports",
+      "theme_nature": "Nature",
+      "theme_custom": "Custom",
+      "custom_title": "Player 1 — type your secret word",
+      "custom_hint": "5 letters · hidden from Player 2",
+      "confirm": "Confirm ✓",
+      "handoff_title": "Ready, Player 2?",
+      "handoff_sub": "Pass the device over 🤝",
+      "handoff_btn": "Start Guessing →",
+      "custom_mode": "Custom mode",
+      "change_theme": "Change theme"
     }
   }
 }
