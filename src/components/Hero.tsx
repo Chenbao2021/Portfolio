@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { Box, Typography, Button, Container, Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Hero.less";
+import ThreeRocket from "./ThreeRocket";
 
 const GameControllerDoodle = (): JSX.Element => (
   <svg
-    width="140"
-    height="88"
+    width="185"
+    height="116"
     viewBox="0 0 140 88"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -200,7 +201,9 @@ export default function Hero(): JSX.Element {
                 variant="contained"
                 onClick={createNavigateHandler("/projects")}
                 className="hero-btn--projects"
+                sx={{ display: "inline-flex", alignItems: "center", gap: "6px" }}
               >
+                <ThreeRocket />
                 {t("hero.cta_projects")}
               </Button>
               <Button

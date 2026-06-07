@@ -79,6 +79,15 @@ body {
   to { transform: rotate(360deg); }
 }
 
+
+/* Shooting star */
+@keyframes shootingStar {
+  0%   { transform: rotate(35deg) translateX(-120px); opacity: 0; }
+  8%   { opacity: 0.85; }
+  80%  { opacity: 0.6; }
+  100% { transform: rotate(35deg) translateX(1100px); opacity: 0; }
+}
+
 /* Pulse for status dot */
 @keyframes pulse {
   0%,

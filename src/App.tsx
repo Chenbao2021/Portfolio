@@ -6,6 +6,7 @@ import './App.less'
 import Navbar from './components/Navbar'
 import NavigationProgress from './components/NavigationProgress'
 import PageLoader from './components/PageLoader'
+import StarField from './components/StarField'
 
 const Hero = React.lazy(() => import('./components/Hero'))
 const About = React.lazy(() => import('./components/About'))
@@ -94,6 +95,7 @@ function Layout(): JSX.Element {
     <Box className="app-layout">
       <ScrollToTop />
       <NavigationProgress />
+      <StarField />
       <Navbar />
       <main className="app-main">
         <Outlet />
