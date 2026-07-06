@@ -180,7 +180,15 @@
       "github_btn": "Voir GitHub",
       "linkedin_label": "LinkedIn",
       "linkedin_btn": "Se connecter"
-    }
+    },
+    "form_title": "Envoyer un message direct ✉️",
+    "field_name": "Ton nom",
+    "field_email": "Ton email",
+    "field_message": "Ton message",
+    "btn_send": "Envoyer →",
+    "btn_sending": "Envoi...",
+    "success": "Message envoyé ! Je te répondrai bientôt.",
+    "error": "Oups, quelque chose s'est mal passé. Réessaie !"
   },
   "games": {
     "title": "Espace Jeux 🎮",

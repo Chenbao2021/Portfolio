@@ -180,7 +180,15 @@
       "github_btn": "View GitHub",
       "linkedin_label": "LinkedIn",
       "linkedin_btn": "Connect"
-    }
+    },
+    "form_title": "Send a direct message ✉️",
+    "field_name": "Your name",
+    "field_email": "Your email",
+    "field_message": "Your message",
+    "btn_send": "Send →",
+    "btn_sending": "Sending...",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Oops, something went wrong. Please try again!"
   },
   "games": {
     "title": "Game Space 🎮",

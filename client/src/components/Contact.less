@@ -135,6 +135,56 @@
   padding-bottom: 6.4px !important;
 }
 
+.contact-form {
+  max-width: 600px;
+  margin: 64px auto 0;
+  background-color: #ffffff;
+  border: 2px solid @dark;
+  border-radius: 4px 14px 10px 4px;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.09);
+  padding: 32px;
+}
+
+.contact-form__title {
+  font-family: "Caveat", cursive !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 24px !important;
+}
+
+.contact-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form__footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-form__btn {
+  background-color: @dark !important;
+  color: #ffffff !important;
+  border-radius: 4px 10px 8px 4px !important;
+  font-weight: 600 !important;
+  padding: 8px 24px !important;
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+.contact-form__feedback {
+  font-size: 0.9rem !important;
+
+  &--success { color: #16a34a !important; }
+  &--error   { color: #dc2626 !important; }
+}
+
 .contact-footer {
   margin-top: 80px;
   padding-top: 40px;
