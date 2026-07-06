@@ -12,33 +12,30 @@ router.post('/', async (req: Request, res: Response) => {
     return;
   }
 
-  const rows = await sql`
-    INSERT INTO contacts (name, email, message)
-    VALUES (${name}, ${email}, ${message})
-    RETURNING *
-  `;
-
-  res.status(201).json(rows[0]);
-});
-
-// GET /contact/test — insère un message fictif pour tester la DB
-router.get('/test', async (_req: Request, res: Response) => {
-  const rows = await sql`
-    INSERT INTO contacts (name, email, message)
-    VALUES ('Test User', 'test@test.com', 'Ceci est un message de test')
-    RETURNING *
-  `;
-
-  res.json({ message: 'Test OK — enregistré en DB', data: rows[0] });
+  try {
+    const rows = await sql`
+      INSERT INTO contacts (name, email, message)
+      VALUES (${name}, ${email}, ${message})
+      RETURNING *
+    `;
+    res.status(201).json(rows[0]);
+  } catch (err) {
+    console.error('Erreur INSERT contacts:', err);
+    res.status(500).json({ error: 'Impossible de sauvegarder le message.' });
+  }
 });
 
 // GET /contact — récupère tous les messages enregistrés
 router.get('/', async (_req: Request, res: Response) => {
-  const rows = await sql`
-    SELECT * FROM contacts ORDER BY created_at DESC
-  `;
-
-  res.json(rows);
+  try {
+    const rows = await sql`
+      SELECT * FROM contacts ORDER BY created_at DESC
+    `;
+    res.json(rows);
+  } catch (err) {
+    console.error('Erreur SELECT contacts:', err);
+    res.status(500).json({ error: 'Impossible de récupérer les messages.' });
+  }
 });
 
 export default router;

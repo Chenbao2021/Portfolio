@@ -105,6 +105,10 @@ function Layout(): JSX.Element {
 }
 
 export default function App(): JSX.Element {
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/health`).catch(() => {});
+  }, []);
+
   return (
     <BrowserRouter>
       <StyledEngineProvider injectFirst>
