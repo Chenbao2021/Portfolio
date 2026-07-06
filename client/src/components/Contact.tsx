@@ -6,18 +6,6 @@ import "./Contact.less";
 
 const API_URL = import.meta.env.VITE_API_URL as string;
 
-const WaveDoodle = (): JSX.Element => (
-  <svg width="80" height="16" viewBox="0 0 80 16" fill="none">
-    <path
-      d="M2 8 Q 12 2 22 8 Q 32 14 42 8 Q 52 2 62 8 Q 72 14 78 8"
-      stroke="#d1d5db"
-      strokeWidth="2"
-      fill="none"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
 type FormStatus = "idle" | "loading" | "success" | "error";
 
 export default function Contact(): JSX.Element {
@@ -53,28 +41,6 @@ export default function Contact(): JSX.Element {
   return (
     <Box component="section" id="contact" className="contact-section">
       <Container maxWidth="lg">
-        <Box className="contact-header">
-          <Typography variant="h2" className="contact-title">
-            {t("contact.title")}
-          </Typography>
-
-          <Box className="contact-quote-card">
-            <Box aria-hidden className="contact-quote-card__pin" />
-            <Typography className="contact-quote-card__text">
-              {t("contact.quote")}
-            </Typography>
-            <Box className="contact-quote-card__footer">
-              <WaveDoodle />
-              <Typography
-                variant="caption"
-                className="contact-quote-card__caption"
-              >
-                {t("contact.caption")}
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
-
         <Box className="contact-cards-grid">
           {links.map((link) => (
             <Box
