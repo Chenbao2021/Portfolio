@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
+import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 import sql from "./db";
 import contactRouter from "./routes/contact";
@@ -9,19 +10,23 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT ?? 3001;
 
-// Middleware — parse le JSON et autorise les requêtes depuis le frontend React test
-app.use(cors());
+// CORS restreint — seul le frontend autorisé peut appeler l'API
+app.use(cors({ origin: process.env.ALLOWED_ORIGIN }));
 app.use(express.json());
 
-// Routes
-app.use("/contact", contactRouter);
+// Rate limiting — max 5 requêtes par IP toutes les 15 minutes sur /contact
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 5,
+  message: { error: "Trop de messages envoyés. Réessaie dans 15 minutes." },
+});
+app.use("/contact", contactLimiter, contactRouter);
 
-// Route de test pour vérifier que le serveur tourne
 app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
 });
 
-// Gestionnaire d'erreurs global — attrape tout ce qui n'est pas géré ailleurs
+// Gestionnaire d'erreurs global
 // Les 4 paramètres sont obligatoires pour qu'Express reconnaisse ce middleware comme gestionnaire d'erreurs
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error("Erreur non gérée:", err);
@@ -30,7 +35,6 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 
 async function start() {
   try {
-    // Crée la table contacts si elle n'existe pas encore
     await sql`
       CREATE TABLE IF NOT EXISTS contacts (
         id         SERIAL PRIMARY KEY,
