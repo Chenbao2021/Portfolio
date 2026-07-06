@@ -1,4 +1,4 @@
-import React, { JSX, useState } from "react";
+import React, { JSX, useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -7,9 +7,10 @@ import {
   Button,
   Stack,
   Dialog,
+  CircularProgress,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { projects, Project } from "../data/projects";
+import { Project } from "../data/projects";
 import SectionHeader from "./SectionHeader";
 import "./Projects.less";
 
@@ -138,7 +139,7 @@ function ProjectModal({
   );
 }
 
-function ProjectGrid({ items }: { items: typeof projects }) {
+function ProjectGrid({ items }: { items: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const { t } = useTranslation();
 
@@ -252,8 +253,42 @@ function ProjectGrid({ items }: { items: typeof projects }) {
 
 export default function Projects(): JSX.Element {
   const { t } = useTranslation();
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/projects`)
+      .then((res) => res.json())
+      .then((data) => {
+        const mapped: Project[] = data.map((p: Record<string, unknown>) => ({
+          key: p.key,
+          name: p.name,
+          tech: p.tech,
+          role: p.role,
+          github: p.github ?? undefined,
+          demo: p.demo ?? undefined,
+          colorKey: p.color_key,
+          emoji: p.emoji,
+          professional: p.professional,
+        }));
+        setProjects(mapped);
+      })
+      .catch((err) => console.error('Erreur fetch projects:', err))
+      .finally(() => setLoading(false));
+  }, []);
+
   const professional = projects.filter((p) => p.professional === true);
   const personal = projects.filter((p) => p.professional === false);
+
+  if (loading) {
+    return (
+      <Box component="section" id="projects" className="projects-section">
+        <Container maxWidth="lg" sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
+          <CircularProgress />
+        </Container>
+      </Box>
+    );
+  }
 
   return (
     <Box component="section" id="projects" className="projects-section">

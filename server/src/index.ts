@@ -4,6 +4,7 @@ import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 import sql from "./db";
 import contactRouter from "./routes/contact";
+import projectsRouter from "./routes/projects";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ const contactLimiter = rateLimit({
   message: { error: "Trop de messages envoyés. Réessaie dans 15 minutes." },
 });
 app.use("/contact", contactLimiter, contactRouter);
+app.use("/projects", projectsRouter);
 
 app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
@@ -42,6 +44,21 @@ async function start() {
         email      TEXT NOT NULL,
         message    TEXT NOT NULL,
         created_at TIMESTAMPTZ DEFAULT NOW()
+      )
+    `;
+    await sql`
+      CREATE TABLE IF NOT EXISTS projects (
+        id           SERIAL PRIMARY KEY,
+        key          TEXT NOT NULL UNIQUE,
+        name         TEXT NOT NULL,
+        tech         TEXT[] NOT NULL DEFAULT '{}',
+        role         TEXT NOT NULL,
+        github       TEXT,
+        demo         TEXT,
+        color_key    TEXT NOT NULL,
+        emoji        TEXT NOT NULL,
+        professional BOOLEAN NOT NULL DEFAULT false,
+        sort_order   INTEGER NOT NULL DEFAULT 0
       )
     `;
     app.listen(PORT, () => {
