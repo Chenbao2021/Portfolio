@@ -21,6 +21,17 @@ router.post('/', async (req: Request, res: Response) => {
   res.status(201).json(rows[0]);
 });
 
+// GET /contact/test — insère un message fictif pour tester la DB
+router.get('/test', async (_req: Request, res: Response) => {
+  const rows = await sql`
+    INSERT INTO contacts (name, email, message)
+    VALUES ('Test User', 'test@test.com', 'Ceci est un message de test')
+    RETURNING *
+  `;
+
+  res.json({ message: 'Test OK — enregistré en DB', data: rows[0] });
+});
+
 // GET /contact — récupère tous les messages enregistrés
 router.get('/', async (_req: Request, res: Response) => {
   const rows = await sql`
