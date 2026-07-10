@@ -8,4 +8,8 @@ export interface Project {
   colorKey: "yellow" | "blue" | "green" | "pink";
   emoji: string;
   professional: boolean;
+  tagline: { en: string; fr: string };
+  why: { en: string; fr: string };
+  lesson: { en: string; fr: string };
+  description: { en: string[]; fr: string[] };
 }

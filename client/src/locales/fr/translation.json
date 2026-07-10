@@ -68,39 +68,7 @@
     "label_lesson": "💡 Leçon apprise",
     "label_stack": "Stack",
     "btn_github": "GitHub →",
-    "btn_demo": "Démo ↗",
-    "inspectare": {
-      "tagline": "Une PWA utilisée par les équipes Vetting pour gérer et éditer les rapports d'audit de navires, avec accès hors ligne et synchronisation des données.",
-      "why": "Un projet développé au sein du groupe TotalEnergies à la demande de l'équipe Vetting pour remplacer les rapports d'inspection maritime papier par une solution numérique.",
-      "description": [
-        "Développement d'une PWA pour la gestion et l'édition de rapports d'audit de navires avec mode hors ligne et un format standardisé pour les demandes des agents.",
-        "Implémentation de la synchronisation des données via plusieurs promises et intégration de Service Workers pour une utilisation hors ligne.",
-        "Gestion d'états front-end complexes avec IndexedDB, accélérant l'accès aux données.",
-        "Automatisation des déploiements et gestion des ressources Azure via Terraform, réduisant les tâches manuelles de 90%.",
-        "Collaboration étroite avec l'équipe DevOps pour mettre en place des pipelines CI/CD et sécuriser l'accès cloud."
-      ],
-      "lesson": "En ai appris plus sur les PWA, Azure Cloud, React, LESS et le travail en équipe — et je suis vraiment content de l'avoir fait."
-    },
-    "kds": {
-      "tagline": "Un système d'affichage numérique utilisé dans les restaurants pour gérer les commandes en cuisine",
-      "why": "Un projet sur lequel j'ai travaillé lors de mon année d'apprentissage, qui a été commercialisé avant la fin",
-      "description": [
-        "Développement d'une application mobile en temps réel pour la gestion des commandes en restaurant.",
-        "Implémentation de la synchronisation des données via Firebase et communication en temps réel via des sockets TCP.",
-        "Conception de l'interface utilisateur avec Figma et conformité aux standards ESLint.",
-        "Participation à la phase de commercialisation et livraison de deux versions stables.",
-        "Travail indépendant : écriture du code, tests et débogage."
-      ],
-      "lesson": "En ai appris plus sur React Native, le travail en équipe et comment construire un projet de A à Z — et je suis vraiment content de l'avoir fait."
-    },
-    "narrio": {
-      "tagline": "Une petite application web pour accompagner la progression d'une histoire",
-      "why": "En tant qu'organisateur d'événements sociaux, j'ai créé ce site pour réduire le besoin d'impression papier excessive",
-      "description": [
-        "La majeure partie du code a été générée avec Claude Code, pendant que je me concentrais sur l'affinage, l'intégration et les améliorations UI/UX."
-      ],
-      "lesson": "Appris à travailler efficacement avec Claude, découvert ses limites, et créé un SKILL réutilisable."
-    }
+    "btn_demo": "Démo ↗"
   },
   "notes": {
     "title": "🧠 Tableau de Réflexion",

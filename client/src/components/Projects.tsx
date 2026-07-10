@@ -21,7 +21,8 @@ function ProjectModal({
   project: Project | null;
   onClose: () => void;
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language?.startsWith("fr") ? "fr" : "en";
 
   return (
     <Dialog
@@ -45,7 +46,7 @@ function ProjectModal({
                 {project.name}
               </Typography>
               <Typography variant="body2" className="projects-card__tagline">
-                {t(`projects.${project.key}.tagline`)}
+                {project.tagline[lang]}
               </Typography>
             </Box>
             <button className="projects-modal__close" onClick={onClose}>
@@ -59,7 +60,7 @@ function ProjectModal({
                 {t("projects.label_why")}
               </Typography>
               <Typography variant="body2" className="projects-modal__why-text">
-                {t(`projects.${project.key}.why`)}
+                {project.why[lang]}
               </Typography>
             </Box>
 
@@ -68,7 +69,7 @@ function ProjectModal({
                 {t("projects.label_description")}
               </Typography>
               <Box className="projects-card__description-lines">
-                {(t(`projects.${project.key}.description`, { returnObjects: true }) as string[]).map((line, i) => (
+                {project.description[lang].map((line, i) => (
                   <Box key={i} className="projects-card__description-row">
                     <Typography
                       variant="body2"
@@ -86,7 +87,7 @@ function ProjectModal({
                 {t("projects.label_lesson")}
               </Typography>
               <Typography variant="body2" className="projects-modal__lesson-text">
-                {t(`projects.${project.key}.lesson`)}
+                {project.lesson[lang]}
               </Typography>
             </Box>
 
@@ -141,7 +142,8 @@ function ProjectModal({
 
 function ProjectGrid({ items }: { items: Project[] }) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language?.startsWith("fr") ? "fr" : "en";
 
   return (
     <>
@@ -160,7 +162,7 @@ function ProjectGrid({ items }: { items: Project[] }) {
                   {project.name}
                 </Typography>
                 <Typography variant="body2" className="projects-card__tagline">
-                  {t(`projects.${project.key}.tagline`)}
+                  {project.tagline[lang]}
                 </Typography>
               </Box>
             </Box>
@@ -171,7 +173,7 @@ function ProjectGrid({ items }: { items: Project[] }) {
                   {t("projects.label_why")}
                 </Typography>
                 <Typography variant="body2" className="projects-card__why-text">
-                  {t(`projects.${project.key}.why`)}
+                  {project.why[lang]}
                 </Typography>
                 <Box className="projects-card__description">
                   <Box className="projects-card__description-header">
@@ -193,7 +195,7 @@ function ProjectGrid({ items }: { items: Project[] }) {
                   {t("projects.label_lesson")}
                 </Typography>
                 <Typography variant="body2" className="projects-card__lesson-text">
-                  {t(`projects.${project.key}.lesson`)}
+                  {project.lesson[lang]}
                 </Typography>
               </Box>
 
@@ -270,7 +272,11 @@ export default function Projects(): JSX.Element {
           colorKey: p.color_key,
           emoji: p.emoji,
           professional: p.professional,
-        }));
+          tagline: { en: p.tagline_en, fr: p.tagline_fr },
+          why: { en: p.why_en, fr: p.why_fr },
+          lesson: { en: p.lesson_en, fr: p.lesson_fr },
+          description: { en: p.description_en, fr: p.description_fr },
+        })) as Project[];
         setProjects(mapped);
       })
       .catch((err) => console.error('Erreur fetch projects:', err))

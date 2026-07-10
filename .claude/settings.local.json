@@ -31,7 +31,20 @@
       "Bash(Read /private/tmp/claude-502/-Users-yuchenbao-Documents-React-personnal-site/7437f010-d0f9-42d4-a5b6-1973862cc50b/tasks/bbgf7538z.output)",
       "Bash(pkill -f \"vite --port 5174\")",
       "Bash(curl -s http://localhost:5175)",
-      "Bash(pkill -f \"vite --port 5175\")"
+      "Bash(pkill -f \"vite --port 5175\")",
+      "Bash(cp /tmp/_query.mjs ./_query.mjs)",
+      "Bash(rm -f ./_query.mjs)",
+      "Bash(curl *)",
+      "Bash(grep -rn \"\\\\.lesson\\\\|\\\\.why\\\\|projects\\\\.\\\\${\" src/components/Projects.tsx)",
+      "Bash(python3 -c ' *)",
+      "Bash(npx tsc *)",
+      "Bash(cat .env*)",
+      "Bash(grep -rn \"VITE_API_URL\" . --include=\"*.env*\")",
+      "Bash(npx --yes playwright --version)",
+      "Bash(cp /tmp/_verify.mjs ./_verify.mjs)",
+      "Bash(rm -f ./_verify.mjs)",
+      "Bash(grep -q \"tsconfig.tsbuildinfo\" client/.gitignore)",
+      "Bash(rm -f client/tsconfig.tsbuildinfo)"
     ]
   }
 }
